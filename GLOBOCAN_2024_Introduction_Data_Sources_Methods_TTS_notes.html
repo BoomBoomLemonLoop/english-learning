@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLOBOCAN 2024｜Introduction + Data Sources and Methods｜英语跟练笔记</title>
+<style>
+:root {
+  --bg:#f6f7f8; --paper:#ffffff; --ink:#17202a; --muted:#667085; --line:#dfe3e8;
+  --accent:#244a73; --accent-soft:#eaf1f8; --vocab:#fff2b2; --chunk:#e7f2ec; --danger:#9d2f2f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.header-inner{max-width:1180px;margin:auto;padding:18px 22px 14px}
+h1{font-size:24px;line-height:1.3;margin:0 0 6px}
+.subtitle{color:var(--muted);font-size:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+button,select,input{font:inherit}
+button{border:1px solid #cfd6dd;background:#fff;border-radius:9px;padding:7px 11px;cursor:pointer}
+button:hover{background:#f0f4f8}
+button.primary{background:var(--accent);color:white;border-color:var(--accent)}
+button.danger{color:var(--danger)}
+label.ctrl{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center}
+select{max-width:270px;padding:6px 8px;border:1px solid #cfd6dd;border-radius:8px;background:white}
+main{max-width:1180px;margin:26px auto 70px;padding:0 22px}
+section{margin:30px 0 44px}
+.section-title{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:18px}
+.section-title h2{margin:0;font-size:22px}
+.section-title span{font-size:13px;color:var(--muted)}
+.note-box{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 16px;border-radius:10px}
+.note-box ul{margin:6px 0 0 20px;padding:0}
+.sentence-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sentence-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 17px;box-shadow:0 1px 2px rgba(16,24,40,.03)}
+.sentence-head{display:flex;justify-content:space-between;align-items:center}
+.num{font-weight:700;color:var(--accent);font-size:13px}
+.mini-actions{display:flex;gap:6px}
+.speak.secondary{color:#475467;background:#f8fafc}
+.star{font-size:19px;line-height:1;padding:5px 8px}
+.star.active{color:#a66f00;background:#fff7d6}
+.en{font-size:16.5px;font-weight:600;margin:11px 0 8px}
+.en[data-click-speak]{cursor:pointer}
+.en[data-click-speak]:hover{text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px}
+.zh{margin:0 0 10px;color:#344054}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 11px}
+.tag{background:var(--accent-soft);color:#23476b;border-radius:999px;padding:3px 8px;font-size:12px}
+.analysis{font-size:13.5px;color:#475467;border-top:1px dashed var(--line);padding-top:10px}
+.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:930px}
+th,td{padding:10px 11px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;font-size:13.5px}
+th{position:sticky;top:0;background:#f1f4f7;color:#344054;font-size:12.5px}
+tr:last-child td{border-bottom:0}
+code{background:#f4f6f8;padding:2px 5px;border-radius:5px;color:#344054}
+.tiny-speak{padding:2px 6px;border-radius:6px;font-size:11px;margin-right:4px}
+.chunk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chunk-card{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:13px}
+.chunk-line{display:flex;gap:6px;align-items:center}
+.chunk-zh{margin-top:5px;color:#344054}
+.chunk-note{font-size:12.5px;color:var(--muted);margin-top:6px}
+.grammar-card{background:white;border:1px solid var(--line);border-radius:11px;margin-bottom:10px;overflow:hidden}
+.grammar-card summary{font-weight:700;padding:12px 14px;cursor:pointer;background:#fafbfc}
+.grammar-body{padding:4px 14px 13px}
+.pattern{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f4f6f8;border-radius:8px;padding:8px 10px;margin:8px 0}
+.correction-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.correction{background:white;border:1px solid var(--line);border-radius:11px;padding:13px}
+.before{color:#8b3a3a;text-decoration:line-through}
+.after{color:#1f5f45;font-weight:700}
+kbd{background:#fff;border:1px solid #cfd6dd;border-bottom-width:2px;border-radius:5px;padding:1px 5px;font-size:11px}
+.hidden-zh .zh,.hidden-zh .chunk-zh,.hidden-zh .zh-cell{display:none}
+footer{color:var(--muted);font-size:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--line)}
+@media(max-width:900px){.sentence-grid,.correction-grid{grid-template-columns:1fr}.chunk-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.chunk-grid{grid-template-columns:1fr}h1{font-size:20px}main{padding:0 14px}.header-inner{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1>Global cancer statistics 2024｜Introduction + Data Sources and Methods</h1>
+    <div class="subtitle">中英对照 · 生词 · 词块 · 难句结构 · 浏览器 TTS 跟读</div>
+    <div class="toolbar">
+      <button class="primary" id="playAll">▶ 朗读全部重点句（EN）</button>
+      <button id="pauseResume">⏸ 暂停</button>
+      <button class="danger" id="stopAll">■ 停止</button>
+      <button id="toggleZh">隐藏中文</button>
+      <label class="ctrl">语速 <input id="rate" type="range" min="0.65" max="1.25" step="0.05" value="0.9"><span id="rateVal">0.90×</span></label>
+      <label class="ctrl">English voice <select id="voiceEn"></select></label>
+      <label class="ctrl">中文 voice <select id="voiceZh"></select></label>
+    </div>
+  </div>
+</header>
+
+<main id="pageRoot">
+<section>
+  <div class="section-title"><h2>0. 笔记规范化说明</h2><span>只围绕你读到的 Introduction 与 Data Sources and Methods</span></div>
+  <div class="note-box">
+    <strong>本页处理原则：</strong>
+    <ul>
+      <li>保留你已经划出的词、词块和重点句，但把断行、连字符和明显的排版问题统一整理。</li>
+      <li>中文不做逐词硬译，而按本文癌症流行病学语境校正；例如 <b>incidence burden</b> 处理为“发病负担/新发病例负担”，而不只等同于“发病率”。</li>
+      <li>重点区分：单词含义、可直接复用的学术词块、以及长句的语法骨架。</li>
+      <li>点击任意英文重点句本身，或点击 <kbd>▶ EN</kbd>，即可朗读；收藏按钮会保存在本地浏览器。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>1. 重点句｜Key Sentences</h2><span>先抓主干，再看修饰成分</span></div>
+  <div class="sentence-grid">
+    
+    <article class="sentence-card" id="sentence-1">
+      <div class="sentence-head">
+        <span class="num">01</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Although global variation in cancer profiles demands a nuanced approach to cancer control at national and regional levels, primary prevention must be at the forefront, including intensified efforts to reduce tobacco use, prevent infections, lower alcohol consumption and excess body weight, and increase physical activity.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="尽管全球癌症谱存在差异，因此国家和地区层面的癌症控制需要采取更具针对性、兼顾差异的方法，但初级预防仍必须处于核心位置，包括进一步加强减少烟草使用、预防感染、降低酒精摄入和超重，以及增加身体活动等措施。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="1">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Although global variation in cancer profiles demands a nuanced approach to cancer control at national and regional levels, primary prevention must be at the forefront, including intensified efforts to reduce tobacco use, prevent infections, lower alcohol consumption and excess body weight, and increase physical activity.">Although global variation in cancer profiles demands a nuanced approach to cancer control at national and regional levels, primary prevention must be at the forefront, including intensified efforts to reduce tobacco use, prevent infections, lower alcohol consumption and excess body weight, and increase physical activity.</p>
+      <p class="zh">尽管全球癌症谱存在差异，因此国家和地区层面的癌症控制需要采取更具针对性、兼顾差异的方法，但初级预防仍必须处于核心位置，包括进一步加强减少烟草使用、预防感染、降低酒精摄入和超重，以及增加身体活动等措施。</p>
+      <div class="tags"><span class="tag">nuanced approach</span><span class="tag">primary prevention</span><span class="tag">at the forefront</span><span class="tag">including intensified efforts to</span></div>
+      <div class="analysis"><strong>结构：</strong>主干：Although A demands B, C must be at the forefront. 句末 including ... 是补充说明 primary prevention 具体包含哪些措施。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-2">
+      <div class="sentence-head">
+        <span class="num">02</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="In 2021, it accounted for nearly one in six deaths (17%) globally, and almost one in four deaths (23%) from noncommunicable diseases.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="2021 年，癌症约占全球全部死亡的六分之一（17%），并占非传染性疾病死亡的近四分之一（23%）。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="2">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="In 2021, it accounted for nearly one in six deaths (17%) globally, and almost one in four deaths (23%) from noncommunicable diseases.">In 2021, it accounted for nearly one in six deaths (17%) globally, and almost one in four deaths (23%) from noncommunicable diseases.</p>
+      <p class="zh">2021 年，癌症约占全球全部死亡的六分之一（17%），并占非传染性疾病死亡的近四分之一（23%）。</p>
+      <div class="tags"><span class="tag">account for</span><span class="tag">one in six</span><span class="tag">noncommunicable diseases</span></div>
+      <div class="analysis"><strong>结构：</strong>account for = 占……比例。one in six = 每六个中有一个，不要机械翻译成“六分之一例”。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-3">
+      <div class="sentence-head">
+        <span class="num">03</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="The disease also imposes substantial societal and macroeconomic costs.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="癌症还造成了巨大的社会成本和宏观经济成本。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="3">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="The disease also imposes substantial societal and macroeconomic costs.">The disease also imposes substantial societal and macroeconomic costs.</p>
+      <p class="zh">癌症还造成了巨大的社会成本和宏观经济成本。</p>
+      <div class="tags"><span class="tag">impose substantial costs</span><span class="tag">societal costs</span><span class="tag">macroeconomic costs</span></div>
+      <div class="analysis"><strong>结构：</strong>impose costs = 使……承担成本 / 带来成本，是论文中非常常见的正式表达。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-4">
+      <div class="sentence-head">
+        <span class="num">04</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="In 2022, premature deaths from cancer resulted in an estimated US $566 billion in global productivity losses, comprising losses from both paid work (US $305 billion) and unpaid activities (US $260 billion), including caregiving and domestic labor.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="2022 年，癌症导致的过早死亡估计造成了 5660 亿美元的全球生产力损失，其中包括有偿工作损失（3050 亿美元）和无偿活动损失（2600 亿美元），后者包括照护和家务劳动。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="4">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="In 2022, premature deaths from cancer resulted in an estimated US $566 billion in global productivity losses, comprising losses from both paid work (US $305 billion) and unpaid activities (US $260 billion), including caregiving and domestic labor.">In 2022, premature deaths from cancer resulted in an estimated US $566 billion in global productivity losses, comprising losses from both paid work (US $305 billion) and unpaid activities (US $260 billion), including caregiving and domestic labor.</p>
+      <p class="zh">2022 年，癌症导致的过早死亡估计造成了 5660 亿美元的全球生产力损失，其中包括有偿工作损失（3050 亿美元）和无偿活动损失（2600 亿美元），后者包括照护和家务劳动。</p>
+      <div class="tags"><span class="tag">premature deaths</span><span class="tag">result in</span><span class="tag">productivity losses</span><span class="tag">comprising losses from</span></div>
+      <div class="analysis"><strong>结构：</strong>result in = 导致；comprising ... = 现在分词补充说明损失的构成；including ... 继续细化 unpaid activities。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-5">
+      <div class="sentence-head">
+        <span class="num">05</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Indeed, nearly one half (48%) of all cancer-related deaths are estimated to be potentially avoidable worldwide, through either primary prevention targeting modifiable risk factors (33%) or early detection and improved access to treatment (15%).">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="事实上，全球近一半（48%）的癌症相关死亡被估计为具有潜在可避免性：其中 33% 可通过针对可改变危险因素的初级预防来避免，另有 15% 可通过早期发现和改善治疗可及性来避免。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="5">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Indeed, nearly one half (48%) of all cancer-related deaths are estimated to be potentially avoidable worldwide, through either primary prevention targeting modifiable risk factors (33%) or early detection and improved access to treatment (15%).">Indeed, nearly one half (48%) of all cancer-related deaths are estimated to be potentially avoidable worldwide, through either primary prevention targeting modifiable risk factors (33%) or early detection and improved access to treatment (15%).</p>
+      <p class="zh">事实上，全球近一半（48%）的癌症相关死亡被估计为具有潜在可避免性：其中 33% 可通过针对可改变危险因素的初级预防来避免，另有 15% 可通过早期发现和改善治疗可及性来避免。</p>
+      <div class="tags"><span class="tag">be estimated to be</span><span class="tag">potentially avoidable</span><span class="tag">targeting modifiable risk factors</span><span class="tag">access to treatment</span></div>
+      <div class="analysis"><strong>结构：</strong>be estimated to be = 据估计为……；through either A or B = 通过 A 或 B；targeting ... 是现在分词修饰 primary prevention。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-6">
+      <div class="sentence-head">
+        <span class="num">06</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Yet the proportion of avoidable deaths varies markedly by world region because of differences in risk factor profiles and the availability of effective interventions.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="然而，由于危险因素谱以及有效干预措施可获得性的差异，可避免死亡所占比例在不同世界地区之间存在显著差异。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="6">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Yet the proportion of avoidable deaths varies markedly by world region because of differences in risk factor profiles and the availability of effective interventions.">Yet the proportion of avoidable deaths varies markedly by world region because of differences in risk factor profiles and the availability of effective interventions.</p>
+      <p class="zh">然而，由于危险因素谱以及有效干预措施可获得性的差异，可避免死亡所占比例在不同世界地区之间存在显著差异。</p>
+      <div class="tags"><span class="tag">vary markedly by</span><span class="tag">risk factor profiles</span><span class="tag">availability of</span><span class="tag">effective interventions</span></div>
+      <div class="analysis"><strong>结构：</strong>vary markedly by ... = 随……而显著不同；because of 后接两个并列名词成分。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-7">
+      <div class="sentence-head">
+        <span class="num">07</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="In sub-Saharan Africa, for example, the proportion estimated to be avoidable exceeds 60%, reflecting the high burden of cancer deaths that are either largely preventable (e.g., cervical cancer) or highly treatable when detected early.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="例如，在撒哈拉以南非洲，估计可避免的癌症死亡比例超过 60%，这反映出该地区癌症死亡负担很高，而这些死亡所对应的癌症要么在很大程度上可以预防（如宫颈癌），要么在早期发现时具有较高的可治疗性。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="7">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="In sub-Saharan Africa, for example, the proportion estimated to be avoidable exceeds 60%, reflecting the high burden of cancer deaths that are either largely preventable (e.g., cervical cancer) or highly treatable when detected early.">In sub-Saharan Africa, for example, the proportion estimated to be avoidable exceeds 60%, reflecting the high burden of cancer deaths that are either largely preventable (e.g., cervical cancer) or highly treatable when detected early.</p>
+      <p class="zh">例如，在撒哈拉以南非洲，估计可避免的癌症死亡比例超过 60%，这反映出该地区癌症死亡负担很高，而这些死亡所对应的癌症要么在很大程度上可以预防（如宫颈癌），要么在早期发现时具有较高的可治疗性。</p>
+      <div class="tags"><span class="tag">estimated to be avoidable</span><span class="tag">reflecting</span><span class="tag">high burden</span><span class="tag">when detected early</span></div>
+      <div class="analysis"><strong>结构：</strong>reflecting ... 是结果/解释性的分词结构；when detected early = when they are detected early 的省略，语义上修饰 highly treatable。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-8">
+      <div class="sentence-head">
+        <span class="num">08</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Consistent with previous reports, our objectives are three-fold:">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="与以往报告一致，我们的研究目标有三个方面：">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="8">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Consistent with previous reports, our objectives are three-fold:">Consistent with previous reports, our objectives are three-fold:</p>
+      <p class="zh">与以往报告一致，我们的研究目标有三个方面：</p>
+      <div class="tags"><span class="tag">consistent with</span><span class="tag">objectives are three-fold</span></div>
+      <div class="analysis"><strong>结构：</strong>three-fold 在这里不是“三重的”，而是“三方面的 / 分为三项”。consistent with = 与……一致。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-9">
+      <div class="sentence-head">
+        <span class="num">09</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Cancer type–specific, aggregated counts at global, regional, and national levels were used to identify the most common cancer types for incidence and mortality at each level.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="研究使用了按癌症类型划分、并在全球、区域和国家层面汇总的病例数，以识别各层面发病和死亡最常见的癌症类型。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="9">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Cancer type–specific, aggregated counts at global, regional, and national levels were used to identify the most common cancer types for incidence and mortality at each level.">Cancer type–specific, aggregated counts at global, regional, and national levels were used to identify the most common cancer types for incidence and mortality at each level.</p>
+      <p class="zh">研究使用了按癌症类型划分、并在全球、区域和国家层面汇总的病例数，以识别各层面发病和死亡最常见的癌症类型。</p>
+      <div class="tags"><span class="tag">cancer type–specific</span><span class="tag">aggregated counts</span><span class="tag">at ... levels</span><span class="tag">be used to identify</span></div>
+      <div class="analysis"><strong>结构：</strong>Cancer type–specific 与 aggregated 是两个并列的前置形容词性修饰语，共同修饰 counts；were used to identify 是被动语态 + 目的不定式。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-10">
+      <div class="sentence-head">
+        <span class="num">10</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Throughout, the terms transitioning, emerging, and lower HDI countries/economies refer to nations classified as low or medium HDI, whereas transitioned or higher HDI countries/economies refer to nations classified as high or very high HDI.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="全文中，transitioning、emerging 和 lower-HDI countries/economies 这些术语指被归类为低或中等 HDI 的国家；而 transitioned 或 higher-HDI countries/economies 则指被归类为高或极高 HDI 的国家。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="10">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Throughout, the terms transitioning, emerging, and lower HDI countries/economies refer to nations classified as low or medium HDI, whereas transitioned or higher HDI countries/economies refer to nations classified as high or very high HDI.">Throughout, the terms transitioning, emerging, and lower HDI countries/economies refer to nations classified as low or medium HDI, whereas transitioned or higher HDI countries/economies refer to nations classified as high or very high HDI.</p>
+      <p class="zh">全文中，transitioning、emerging 和 lower-HDI countries/economies 这些术语指被归类为低或中等 HDI 的国家；而 transitioned 或 higher-HDI countries/economies 则指被归类为高或极高 HDI 的国家。</p>
+      <div class="tags"><span class="tag">throughout</span><span class="tag">refer to</span><span class="tag">classified as</span><span class="tag">whereas</span></div>
+      <div class="analysis"><strong>结构：</strong>Throughout = 在全文中；refer to = 指；whereas = 而、相比之下；classified as ... 是过去分词短语修饰 nations。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-11">
+      <div class="sentence-head">
+        <span class="num">11</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Finally, we project the global cancer burden to 2050 using demographic projections while assuming constant incidence or mortality rates.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="最后，我们利用人口学预测将全球癌症负担推算至 2050 年，同时假定发病率或死亡率保持不变。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="11">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Finally, we project the global cancer burden to 2050 using demographic projections while assuming constant incidence or mortality rates.">Finally, we project the global cancer burden to 2050 using demographic projections while assuming constant incidence or mortality rates.</p>
+      <p class="zh">最后，我们利用人口学预测将全球癌症负担推算至 2050 年，同时假定发病率或死亡率保持不变。</p>
+      <div class="tags"><span class="tag">project ... to 2050</span><span class="tag">using demographic projections</span><span class="tag">while assuming</span><span class="tag">constant incidence or mortality rates</span></div>
+      <div class="analysis"><strong>结构：</strong>科研英语高频结构：We + verb + object + using B + while assuming C. using 表示方法，while assuming 表示计算时同时采用的假设条件。</div>
+    </article>
+    
+    <article class="sentence-card" id="sentence-12">
+      <div class="sentence-head">
+        <span class="num">12</span>
+        <div class="mini-actions">
+          <button class="speak" data-lang="en" data-text="Geographic and socioeconomic variation in the burden and profile of cancer was examined across 20 aggregated regions defined by the United Nations Population Division and by countries classified according to the HDI, based on the 2022 Human Development Report from the United Nations Development Program.">▶ EN</button>
+          <button class="speak secondary" data-lang="zh" data-text="研究考察了癌症负担及癌症谱在地理和社会经济层面的差异：一方面按联合国人口司定义的 20 个汇总区域进行分析，另一方面按 HDI 对国家进行分类；该 HDI 分类依据联合国开发计划署《2022 年人类发展报告》。">▶ 中</button>
+          <button class="star" aria-label="收藏难句" data-star="12">☆</button>
+        </div>
+      </div>
+      <p class="en sentence-text" data-click-speak="en" data-text="Geographic and socioeconomic variation in the burden and profile of cancer was examined across 20 aggregated regions defined by the United Nations Population Division and by countries classified according to the HDI, based on the 2022 Human Development Report from the United Nations Development Program.">Geographic and socioeconomic variation in the burden and profile of cancer was examined across 20 aggregated regions defined by the United Nations Population Division and by countries classified according to the HDI, based on the 2022 Human Development Report from the United Nations Development Program.</p>
+      <p class="zh">研究考察了癌症负担及癌症谱在地理和社会经济层面的差异：一方面按联合国人口司定义的 20 个汇总区域进行分析，另一方面按 HDI 对国家进行分类；该 HDI 分类依据联合国开发计划署《2022 年人类发展报告》。</p>
+      <div class="tags"><span class="tag">geographic and socioeconomic variation</span><span class="tag">burden and profile of cancer</span><span class="tag">classified according to</span><span class="tag">based on</span></div>
+      <div class="analysis"><strong>结构：</strong>这是典型科研写作中的名词化 + 被动语态。Geographic and socioeconomic variation ... 是长主语；was examined 是谓语。句末 based on ... 被逗号隔开，作为补充信息，说明 HDI 分类依据。</div>
+    </article>
+    
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>2. 生词｜Vocabulary</h2><span>按本文语境规范含义</span></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>词 / 表达</th><th>词形</th><th>词性</th><th>本文义</th><th>原文搭配</th><th>学习提醒</th></tr></thead>
+      <tbody>
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="compiling">▶</button> <strong>compiling</strong></td>
+      <td>compile</td><td>v.</td><td>汇编、整理、汇总（资料/数据）</td>
+      <td><code>compiling cancer estimates</code></td><td>不要只记“编译”；科研文本中常指汇总资料。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="mortality">▶</button> <strong>mortality</strong></td>
+      <td>mortality</td><td>n.</td><td>死亡率；死亡（统计学语境）</td>
+      <td><code>incidence and mortality</code></td><td>常与 incidence 成对出现。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="demographic trends">▶</button> <strong>demographic trends</strong></td>
+      <td>demographic</td><td>adj.</td><td>人口统计学的；人口结构相关的</td>
+      <td><code>demographic trends / projections</code></td><td>demography = 人口统计学。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="equivalent to">▶</button> <strong>equivalent to</strong></td>
+      <td>equivalent</td><td>adj.</td><td>相当于；等同于</td>
+      <td><code>be equivalent to</code></td><td>固定搭配，to 是介词。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="incidence burden">▶</button> <strong>incidence burden</strong></td>
+      <td>incidence</td><td>n.</td><td>发病负担 / 新发病例负担</td>
+      <td><code>cancer incidence burden</code></td><td>不是单纯“发病率”；burden 强调疾病造成的规模或负担。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="noncommunicable">▶</button> <strong>noncommunicable</strong></td>
+      <td>noncommunicable</td><td>adj.</td><td>非传染性的</td>
+      <td><code>noncommunicable diseases</code></td><td>NCDs = noncommunicable diseases。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="macroeconomic costs">▶</button> <strong>macroeconomic costs</strong></td>
+      <td>macroeconomic</td><td>adj.</td><td>宏观经济成本</td>
+      <td><code>societal and macroeconomic costs</code></td><td>macro- = 宏观。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="premature deaths">▶</button> <strong>premature deaths</strong></td>
+      <td>premature</td><td>adj.</td><td>过早死亡</td>
+      <td><code>premature deaths from cancer</code></td><td>论文中常用于可避免死亡和生产力损失。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="prevention">▶</button> <strong>prevention</strong></td>
+      <td>prevention</td><td>n.</td><td>预防</td>
+      <td><code>primary prevention</code></td><td>prevent v. → prevention n. → preventable adj.</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="preventable">▶</button> <strong>preventable</strong></td>
+      <td>preventable</td><td>adj.</td><td>可预防的</td>
+      <td><code>largely preventable</code></td><td>注意与 avoidable 接近但并不完全等同。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="targeting">▶</button> <strong>targeting</strong></td>
+      <td>target</td><td>v.</td><td>针对；以……为目标</td>
+      <td><code>prevention targeting modifiable risk factors</code></td><td>现在分词可后置修饰名词。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="interventions">▶</button> <strong>interventions</strong></td>
+      <td>intervention</td><td>n.</td><td>干预措施</td>
+      <td><code>effective interventions</code></td><td>公共卫生、临床和政策研究高频词。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="markedly">▶</button> <strong>markedly</strong></td>
+      <td>markedly</td><td>adv.</td><td>显著地；明显地</td>
+      <td><code>varies markedly</code></td><td>比 very / greatly 更书面。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="detected">▶</button> <strong>detected</strong></td>
+      <td>detect</td><td>v.</td><td>发现；检测出</td>
+      <td><code>when detected early</code></td><td>医学语境常对应“早期发现/检出”。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="three-fold">▶</button> <strong>three-fold</strong></td>
+      <td>three-fold</td><td>adj./adv.</td><td>三个方面的；分为三项的</td>
+      <td><code>objectives are three-fold</code></td><td>本句不要翻成“三重”。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="assess">▶</button> <strong>assess</strong></td>
+      <td>assess</td><td>v.</td><td>评估；评价</td>
+      <td><code>assess cancer burden</code></td><td>比 evaluate 更常见于定量评估语境。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="projections">▶</button> <strong>projections</strong></td>
+      <td>projection</td><td>n.</td><td>预测；推算结果</td>
+      <td><code>demographic projections</code></td><td>区别 prediction：projection 常基于模型/假设外推。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="underlying">▶</button> <strong>underlying</strong></td>
+      <td>underlying</td><td>adj.</td><td>潜在的；根本的；构成基础的</td>
+      <td><code>underlying determinant</code></td><td>具体译法取决于被修饰名词。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="determinant">▶</button> <strong>determinant</strong></td>
+      <td>determinant</td><td>n.</td><td>决定因素；影响因素</td>
+      <td><code>underlying determinant</code></td><td>流行病学/公共卫生高频。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="tabulating">▶</button> <strong>tabulating</strong></td>
+      <td>tabulate</td><td>v.</td><td>制表；以表格方式汇总</td>
+      <td><code>tabulating estimates</code></td><td>不仅是“列出”，强调结构化表格整理。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="aggregated">▶</button> <strong>aggregated</strong></td>
+      <td>aggregate</td><td>adj./v.</td><td>汇总的；聚合的</td>
+      <td><code>aggregated counts / regions</code></td><td>数据分析高频。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="cumulative">▶</button> <strong>cumulative</strong></td>
+      <td>cumulative</td><td>adj.</td><td>累积的</td>
+      <td><code>cumulative risk of</code></td><td>强调随时间或范围累积。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="binary grouping">▶</button> <strong>binary grouping</strong></td>
+      <td>binary</td><td>adj.</td><td>二元分组</td>
+      <td><code>binary grouping</code></td><td>将对象划为两类。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="profiles">▶</button> <strong>profiles</strong></td>
+      <td>profile</td><td>n.</td><td>谱；构成特征；分布特征</td>
+      <td><code>cancer profiles / risk factor profiles</code></td><td>此处不宜机械译为“简介”。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="constant incidence">▶</button> <strong>constant incidence</strong></td>
+      <td>constant</td><td>adj.</td><td>发病率保持不变</td>
+      <td><code>assuming constant incidence</code></td><td>constant 修饰 incidence rate 的概念。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="throughout">▶</button> <strong>throughout</strong></td>
+      <td>throughout</td><td>adv.</td><td>全文中；始终</td>
+      <td><code>Throughout, the terms ...</code></td><td>句首副词，界定术语在全文中的用法。</td>
+    </tr>
+    
+    <tr>
+      <td><button class="tiny-speak speak" data-lang="en" data-text="geographic">▶</button> <strong>geographic</strong></td>
+      <td>geographic</td><td>adj.</td><td>地理上的</td>
+      <td><code>geographic variation</code></td><td>常与 socioeconomic 并列。</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>3. 词块｜Reusable Chunks</h2><span>比孤立背单词更适合科研英语</span></div>
+  <div class="chunk-grid">
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="a nuanced approach to ...">▶</button><strong>a nuanced approach to ...</strong></div>
+      <div class="chunk-zh">针对……采取细致、因地制宜的处理方法</div>
+      <div class="chunk-note">nuanced 不宜死记“微妙的”；论文中常表示考虑差异和复杂性的。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="be at the forefront">▶</button><strong>be at the forefront</strong></div>
+      <div class="chunk-zh">处于最重要/最前沿的位置</div>
+      <div class="chunk-note">表示某事应被优先考虑。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="account for ...">▶</button><strong>account for ...</strong></div>
+      <div class="chunk-zh">占……（比例）</div>
+      <div class="chunk-note">流行病学、经济学、统计学高频。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="impose substantial costs">▶</button><strong>impose substantial costs</strong></div>
+      <div class="chunk-zh">造成/带来巨大的成本</div>
+      <div class="chunk-note">impose + burden/cost/risk 常见。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="result in ...">▶</button><strong>result in ...</strong></div>
+      <div class="chunk-zh">导致……</div>
+      <div class="chunk-note">结果关系，后接名词。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="comprise losses from A and B">▶</button><strong>comprise losses from A and B</strong></div>
+      <div class="chunk-zh">由来自 A 和 B 的损失构成</div>
+      <div class="chunk-note">comprise = include / consist of 的正式写法。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="access to treatment">▶</button><strong>access to treatment</strong></div>
+      <div class="chunk-zh">获得治疗的机会 / 治疗可及性</div>
+      <div class="chunk-note">access to + healthcare/treatment/services。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="vary markedly by ...">▶</button><strong>vary markedly by ...</strong></div>
+      <div class="chunk-zh">因……而显著不同 / 在……之间差异明显</div>
+      <div class="chunk-note">by 后常接 region, sex, age group。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="risk factor profiles">▶</button><strong>risk factor profiles</strong></div>
+      <div class="chunk-zh">危险因素谱 / 危险因素构成</div>
+      <div class="chunk-note">profile 强调构成和分布，不是单一数值。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="be estimated to be ...">▶</button><strong>be estimated to be ...</strong></div>
+      <div class="chunk-zh">据估计为……</div>
+      <div class="chunk-note">典型客观化学术表达。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="reflect the high burden of ...">▶</button><strong>reflect the high burden of ...</strong></div>
+      <div class="chunk-zh">反映出……的高负担</div>
+      <div class="chunk-note">reflecting 可构成分词补充说明。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="when detected early">▶</button><strong>when detected early</strong></div>
+      <div class="chunk-zh">在早期发现时</div>
+      <div class="chunk-note">完整形式 when they are detected early；主语与前文被修饰对象一致。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="consistent with previous reports">▶</button><strong>consistent with previous reports</strong></div>
+      <div class="chunk-zh">与既往报告一致</div>
+      <div class="chunk-note">结果比较、文献对照高频句首结构。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="objectives are three-fold">▶</button><strong>objectives are three-fold</strong></div>
+      <div class="chunk-zh">研究目标有三个方面</div>
+      <div class="chunk-note">fold 在这里表示“……方面/倍数结构”。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="aggregated counts at ... levels">▶</button><strong>aggregated counts at ... levels</strong></div>
+      <div class="chunk-zh">在……层面汇总的计数/病例数</div>
+      <div class="chunk-note">常用于多尺度统计结果。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="be used to identify ...">▶</button><strong>be used to identify ...</strong></div>
+      <div class="chunk-zh">被用于识别……</div>
+      <div class="chunk-note">被动语态 + 目的不定式。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="cumulative risk of ...">▶</button><strong>cumulative risk of ...</strong></div>
+      <div class="chunk-zh">……的累积风险</div>
+      <div class="chunk-note">流行病学中常见指标表达。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="refer to nations classified as ...">▶</button><strong>refer to nations classified as ...</strong></div>
+      <div class="chunk-zh">指被归类为……的国家</div>
+      <div class="chunk-note">refer to + 名词；classified as 为过去分词修饰。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="project A to 2050">▶</button><strong>project A to 2050</strong></div>
+      <div class="chunk-zh">将 A 推算至 2050 年</div>
+      <div class="chunk-note">project 在方法学中常作动词“预测/推算”。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="using B while assuming C">▶</button><strong>using B while assuming C</strong></div>
+      <div class="chunk-zh">使用 B，同时假定 C</div>
+      <div class="chunk-note">非常适合方法部分：方法手段 + 模型假设。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="variation in the burden and profile of cancer">▶</button><strong>variation in the burden and profile of cancer</strong></div>
+      <div class="chunk-zh">癌症负担及癌症谱的差异</div>
+      <div class="chunk-note">variation in X = X 的差异/变化。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="classified according to the HDI">▶</button><strong>classified according to the HDI</strong></div>
+      <div class="chunk-zh">按照 HDI 分类</div>
+      <div class="chunk-note">according to 表示分类依据。</div>
+    </div>
+    
+    <div class="chunk-card">
+      <div class="chunk-line"><button class="tiny-speak speak" data-lang="en" data-text="based on the 2022 Human Development Report">▶</button><strong>based on the 2022 Human Development Report</strong></div>
+      <div class="chunk-zh">依据《2022 年人类发展报告》</div>
+      <div class="chunk-note">逗号隔开时通常是补充说明。</div>
+    </div>
+    </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>4. 难句与科研句法｜Sentence Patterns</h2><span>你这次阅读中最值得掌握的结构</span></div>
+  
+    <details class="grammar-card" open>
+      <summary>1. Although 从句 + 主句：先让步，再提出核心结论</summary>
+      <div class="grammar-body">
+        <div class="pattern">Although A, B.</div>
+        <p><strong>例句：</strong>Although global variation ... demands a nuanced approach ..., primary prevention must be at the forefront.</p>
+        <p>Although 引导让步状语从句。作者先承认全球癌症谱存在差异，再提出不受这一差异动摇的主张：初级预防仍应优先。</p>
+      </div>
+    </details>
+    
+    <details class="grammar-card" open>
+      <summary>2. 现在分词短语：including / comprising / reflecting</summary>
+      <div class="grammar-body">
+        <div class="pattern">Main clause, V-ing ...</div>
+        <p><strong>例句：</strong>..., comprising losses from both paid work and unpaid activities.</p>
+        <p>这些 V-ing 结构通常不承担主句谓语，而是补充说明前面整件事的内容、构成或结果。阅读时先抓主句，再把分词结构作为第二层信息。</p>
+      </div>
+    </details>
+    
+    <details class="grammar-card" open>
+      <summary>3. when detected early：省略的时间状语从句</summary>
+      <div class="grammar-body">
+        <div class="pattern">when + past participle</div>
+        <p><strong>例句：</strong>highly treatable when detected early</p>
+        <p>可还原为 when they are detected early。这里不是独立的“伴随”，而是说明“在什么条件/时间下高度可治疗”。</p>
+      </div>
+    </details>
+    
+    <details class="grammar-card" open>
+      <summary>4. using ... while assuming ...：方法 + 假设</summary>
+      <div class="grammar-body">
+        <div class="pattern">We estimate/project A using B while assuming C.</div>
+        <p><strong>例句：</strong>We project the global cancer burden to 2050 using demographic projections while assuming constant incidence or mortality rates.</p>
+        <p>using B 说明采用的工具/数据/方法；while assuming C 说明推算过程中同步成立的假设。两者都附属于主句，但逻辑功能不同。</p>
+      </div>
+    </details>
+    
+    <details class="grammar-card" open>
+      <summary>5. 名词化 + 被动语态：科研方法部分的典型风格</summary>
+      <div class="grammar-body">
+        <div class="pattern">Variation in X was examined ...</div>
+        <p><strong>例句：</strong>Geographic and socioeconomic variation in the burden and profile of cancer was examined ...</p>
+        <p>自然口语更可能写成 We examined how ... varied ...；论文采用名词化 variation 和被动 was examined，使分析对象成为句子主题。</p>
+      </div>
+    </details>
+    
+    <details class="grammar-card" open>
+      <summary>6. 逗号 + based on ...：补充说明分类依据</summary>
+      <div class="grammar-body">
+        <div class="pattern">..., based on ...</div>
+        <p><strong>例句：</strong>..., based on the 2022 Human Development Report ...</p>
+        <p>逗号把 based on ... 标记为补充性信息（supplementary information），而不是紧贴某个名词的限定性修饰。对比：the classification based on age 中 based on age 直接限定 classification。</p>
+      </div>
+    </details>
+    
+</section>
+
+<section>
+  <div class="section-title"><h2>5. 你原笔记中最需要修正的几个点</h2><span>避免形成错误词义映射</span></div>
+  <div class="correction-grid">
+    <div class="correction"><div class="before">nuanced approach = 微妙的方法</div><div class="after">→ 细致、兼顾差异、考虑复杂性的处理方法</div><p>nuanced 强调“有层次、考虑细微差别”，不是日常汉语里的“微妙”。</p></div>
+    <div class="correction"><div class="before">incidence burden = 发病率</div><div class="after">→ 发病负担 / 新发病例负担</div><p>incidence 单独可指发病率/新发病例；加 burden 后重点转向疾病造成的规模和负担。</p></div>
+    <div class="correction"><div class="before">three-fold = 三重</div><div class="after">→ 有三个方面 / 分为三项</div><p>在 “our objectives are three-fold” 中是在数研究目标的维度。</p></div>
+    <div class="correction"><div class="before">when detected early = 伴随</div><div class="after">→ 省略的时间/条件状语从句</div><p>可还原为 “when they are detected early”，说明何时具有较高可治疗性。</p></div>
+    <div class="correction"><div class="before">profile = 简介</div><div class="after">→ 谱 / 构成特征 / 分布特征</div><p>cancer profile、risk factor profile 都是在讲组成模式，而不是个人“简介”。</p></div>
+    <div class="correction"><div class="before">based on 前的逗号可忽略</div><div class="after">→ 逗号改变修饰关系的读取方式</div><p>“, based on …” 更像对前面分析/分类依据的补充，而不是紧贴单个名词的限定修饰。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>6. 可直接迁移到科研写作的模板</h2><span>Methods / Results 常用</span></div>
+  <div class="note-box">
+    <p><strong>A. 方法 + 假设</strong><br><code>We estimate A using B while assuming C.</code><br>
+    我们使用 B 估计 A，同时假定 C。</p>
+    <p><strong>你的 CFD/燃烧方向可迁移：</strong><br>
+    <code>We calculate the flame temperature using equilibrium chemistry while assuming adiabatic conditions.</code><br>
+    我们使用平衡化学计算火焰温度，同时假设过程绝热。</p>
+    <p><strong>B. 名词化方法句</strong><br><code>Geographic and socioeconomic variation in X was examined across Y.</code><br>
+    研究考察了 X 在地理和社会经济层面的差异。</p>
+    <p><strong>C. 客观估计</strong><br><code>A is estimated to be B.</code> / <code>A was projected to reach B by 2050.</code></p>
+  </div>
+</section>
+
+<footer>
+  Source scope: Global cancer statistics 2024: GLOBOCAN estimates of incidence and mortality worldwide for 34 cancers in 186 countries.  
+  本网页用于英语阅读与科研写作训练；中文释义围绕你当前划线内容整理。
+</footer>
+</main>
+
+<script>
+(() => {
+  const synth = window.speechSynthesis;
+  const voiceEn = document.getElementById('voiceEn');
+  const voiceZh = document.getElementById('voiceZh');
+  const rate = document.getElementById('rate');
+  const rateVal = document.getElementById('rateVal');
+  const pageRoot = document.getElementById('pageRoot');
+  let voices = [];
+  let paused = false;
+
+  const allEnglish = "Although global variation in cancer profiles demands a nuanced approach to cancer control at national and regional levels, primary prevention must be at the forefront, including intensified efforts to reduce tobacco use, prevent infections, lower alcohol consumption and excess body weight, and increase physical activity. In 2021, it accounted for nearly one in six deaths (17%) globally, and almost one in four deaths (23%) from noncommunicable diseases. The disease also imposes substantial societal and macroeconomic costs. In 2022, premature deaths from cancer resulted in an estimated US $566 billion in global productivity losses, comprising losses from both paid work (US $305 billion) and unpaid activities (US $260 billion), including caregiving and domestic labor. Indeed, nearly one half (48%) of all cancer-related deaths are estimated to be potentially avoidable worldwide, through either primary prevention targeting modifiable risk factors (33%) or early detection and improved access to treatment (15%). Yet the proportion of avoidable deaths varies markedly by world region because of differences in risk factor profiles and the availability of effective interventions. In sub-Saharan Africa, for example, the proportion estimated to be avoidable exceeds 60%, reflecting the high burden of cancer deaths that are either largely preventable (e.g., cervical cancer) or highly treatable when detected early. Consistent with previous reports, our objectives are three-fold: Cancer type–specific, aggregated counts at global, regional, and national levels were used to identify the most common cancer types for incidence and mortality at each level. Throughout, the terms transitioning, emerging, and lower HDI countries/economies refer to nations classified as low or medium HDI, whereas transitioned or higher HDI countries/economies refer to nations classified as high or very high HDI. Finally, we project the global cancer burden to 2050 using demographic projections while assuming constant incidence or mortality rates. Geographic and socioeconomic variation in the burden and profile of cancer was examined across 20 aggregated regions defined by the United Nations Population Division and by countries classified according to the HDI, based on the 2022 Human Development Report from the United Nations Development Program.";
+
+  function cleanText(t) {
+    return (t || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function loadVoices() {
+    voices = synth.getVoices();
+    const fill = (select, prefixes) => {
+      const current = select.value;
+      select.innerHTML = '';
+      const matched = voices.filter(v => prefixes.some(p => v.lang.toLowerCase().startsWith(p)));
+      const pool = matched.length ? matched : voices;
+      pool.forEach((v, i) => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = `${v.name} (${v.lang})`;
+        select.appendChild(opt);
+      });
+      if ([...select.options].some(o => o.value === current)) select.value = current;
+    };
+    fill(voiceEn, ['en']);
+    fill(voiceZh, ['zh', 'cmn']);
+  }
+
+  loadVoices();
+  if ('onvoiceschanged' in speechSynthesis) speechSynthesis.onvoiceschanged = loadVoices;
+
+  function chooseVoice(lang) {
+    const select = lang === 'zh' ? voiceZh : voiceEn;
+    const picked = voices.find(v => v.name === select.value);
+    if (picked) return picked;
+    const prefix = lang === 'zh' ? ['zh','cmn'] : ['en'];
+    return voices.find(v => prefix.some(p => v.lang.toLowerCase().startsWith(p))) || null;
+  }
+
+  function speak(text, lang='en') {
+    if (!('speechSynthesis' in window)) {
+      alert('当前浏览器不支持 Web Speech Synthesis。建议使用最新版 Edge 或 Chrome。');
+      return;
+    }
+    synth.cancel();
+    paused = false;
+    const u = new SpeechSynthesisUtterance(cleanText(text));
+    u.lang = lang === 'zh' ? 'zh-CN' : 'en-US';
+    u.rate = Number(rate.value);
+    const v = chooseVoice(lang);
+    if (v) u.voice = v;
+    synth.speak(u);
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.speak');
+    if (btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      speak(btn.dataset.text, btn.dataset.lang || 'en');
+      return;
+    }
+    const line = e.target.closest('[data-click-speak]');
+    if (line) speak(line.dataset.text, line.dataset.clickSpeak || 'en');
+  });
+
+  document.getElementById('playAll').addEventListener('click', () => speak(allEnglish, 'en'));
+  document.getElementById('stopAll').addEventListener('click', () => {
+    synth.cancel(); paused = false; document.getElementById('pauseResume').textContent='⏸ 暂停';
+  });
+  document.getElementById('pauseResume').addEventListener('click', () => {
+    if (!synth.speaking) return;
+    if (paused) {
+      synth.resume(); paused=false; document.getElementById('pauseResume').textContent='⏸ 暂停';
+    } else {
+      synth.pause(); paused=true; document.getElementById('pauseResume').textContent='▶ 继续';
+    }
+  });
+
+  rate.addEventListener('input', () => rateVal.textContent = Number(rate.value).toFixed(2) + '×');
+
+  document.getElementById('toggleZh').addEventListener('click', (e) => {
+    pageRoot.classList.toggle('hidden-zh');
+    e.currentTarget.textContent = pageRoot.classList.contains('hidden-zh') ? '显示中文' : '隐藏中文';
+  });
+
+  const key = 'globocan2024_starred_sentences';
+  const saved = new Set(JSON.parse(localStorage.getItem(key) || '[]'));
+  document.querySelectorAll('.star').forEach(btn => {
+    const id = btn.dataset.star;
+    if (saved.has(id)) { btn.classList.add('active'); btn.textContent='★'; }
+    btn.addEventListener('click', () => {
+      if (saved.has(id)) { saved.delete(id); btn.classList.remove('active'); btn.textContent='☆'; }
+      else { saved.add(id); btn.classList.add('active'); btn.textContent='★'; }
+      localStorage.setItem(key, JSON.stringify([...saved]));
+    });
+  });
+})();
+</script>
+</body>
+</html>

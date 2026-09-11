@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Li 英语精读 · TTS 跟读笔记</title>
+<style>
+:root {
+  --bg:#f5f7fb; --panel:#ffffff; --text:#162033; --muted:#667085;
+  --line:#e6eaf0; --accent:#4c6fff; --accent-soft:#edf1ff;
+  --vocab:#fff0b8; --chunk:#dff4ff; --chunk-border:#8fd3ef;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar{max-width:1180px;margin:auto;padding:14px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;margin-right:auto}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button,select,input{font:inherit}
+button{border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px;cursor:pointer}
+button:hover{border-color:#bcc6d8;background:#fafbff}
+button.primary{background:var(--accent);border-color:var(--accent);color:white}
+button.danger{color:#b42318}
+select{border:1px solid var(--line);border-radius:9px;padding:7px;background:white;max-width:260px}
+main{max-width:1180px;margin:24px auto 80px;padding:0 20px}
+.hero{background:linear-gradient(135deg,#fff,#f1f4ff);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:20px}
+.hero h1{margin:0 0 8px;font-size:clamp(26px,4vw,42px);line-height:1.2}
+.hero p{margin:6px 0;color:var(--muted)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{border-radius:999px;padding:5px 10px;font-size:13px;background:#fff;border:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.tabbtn.active{background:#162033;color:white;border-color:#162033}
+.section{display:none} .section.active{display:block}
+.sentence-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 2px 10px rgba(16,24,40,.03)}
+.sentence-card.speaking{outline:2px solid var(--accent);background:#fbfcff}
+.sentence-topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sentence-no{font-size:12px;font-weight:700;color:var(--muted)}
+.english{font-size:20px;margin:9px 0 6px}
+.chinese{margin:0;color:#505a6b}
+mark{padding:1px 3px;border-radius:4px}
+mark.vocab{background:var(--vocab)}
+mark.chunk{box-shadow:inset 0 -2px 0 var(--chunk-border)}
+mark.vocab.chunk{background:var(--vocab);box-shadow:inset 0 -2px 0 var(--chunk-border)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-bottom:10px}
+.dot{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+.dot.vocab{background:var(--vocab)} .dot.chunk{background:var(--chunk)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.vocab-card{background:white;border:1px solid var(--line);border-radius:12px;padding:14px}
+.vocab-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.vocab-head strong{font-size:17px}
+.mini-speak{padding:3px 7px;border-radius:8px;font-size:13px}
+.table-wrap{overflow-x:auto;background:white;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:960px}
+th,td{border-bottom:1px solid var(--line);padding:14px;vertical-align:top;text-align:left}
+th{background:#fafbfc;position:sticky;top:66px;z-index:2}
+tr:last-child td{border-bottom:none}
+.chunk-term{font-weight:800;white-space:nowrap}
+.example{font-style:italic}
+.note{padding:14px 16px;background:#fff8e8;border:1px solid #f1dfac;border-radius:12px;margin:14px 0}
+.status{font-size:13px;color:var(--muted);min-width:160px}
+.range-wrap{display:flex;align-items:center;gap:6px}
+#rate{width:90px}
+@media(max-width:720px){
+  .topbar{align-items:flex-start}
+  .controls{width:100%}
+  .english{font-size:18px}
+  th{top:124px}
+}
+
+.section-heading-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.vocab-card.speaking-item,
+tr.speaking-item td{
+  background:#f3f6ff !important;
+}
+.vocab-card.speaking-item{
+  outline:2px solid var(--accent);
+}
+tr.speaking-item{
+  outline:2px solid var(--accent);
+  outline-offset:-2px;
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">New Li · 英语精读 TTS</div>
+    <div class="controls">
+      <button class="primary" id="playAll">▶ 整篇连续朗读</button>
+      <button id="pauseBtn">⏸ 暂停</button>
+      <button id="resumeBtn">⏯ 继续</button>
+      <button class="danger" id="stopBtn">■ 停止</button>
+      <label class="range-wrap">语速 <input id="rate" type="range" min="0.65" max="1.35" step="0.05" value="0.95"><span id="rateVal">0.95×</span></label>
+      <select id="voiceSelect" aria-label="选择英语音色"><option>加载英语音色中…</option></select>
+      <span class="status" id="status">就绪</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>This Bad CGI Chinese Movie Is Art</h1>
+    <p>这部烂到离谱的中国 CGI 电影，居然成了艺术</p>
+    <p>点击任意“朗读本句”即可单句跟读；整篇采用单一连续 TTS 流播放，并根据朗读位置自动高亮当前句。</p>
+    <div class="badges">
+      <span class="badge">逐句中英对照</span>
+      <span class="badge">浏览器原生 TTS</span>
+      <span class="badge">生词高亮</span>
+      <span class="badge">固定搭配 / 词块</span>
+      <span class="badge">规则 + 例句</span>
+    </div>
+  </section>
+
+  <div class="tabs">
+    <button class="tabbtn active" data-tab="reading">原文精读</button>
+    <button class="tabbtn" data-tab="vocab">生词表</button>
+    <button class="tabbtn" data-tab="chunks">词块与固定搭配</button>
+  </div>
+
+  <section id="reading" class="section active">
+    <div class="legend">
+      <span><span class="dot vocab"></span>黄色：重点生词</span>
+      <span><span class="dot chunk"></span>蓝色下划感：值得整体记忆的词块</span>
+    </div>
+    <div class="note">
+      TTS 已改为“连续朗读 + 本地语音优先”：整篇朗读只创建一个语音任务，不会在每句话之间重新加载。音色菜单会标出“本地 / 在线”；若单句仍出现明显的开头停顿，请优先选择标有“本地”的 English voice。
+    </div>
+    
+    <article class="sentence-card" id="s1">
+      <div class="sentence-topline">
+        <span class="sentence-no">01</span>
+        <button class="speak-btn" data-text="When a film is so bad it&#x27;s good, it hits the realm of cult favorite." aria-label="朗读第1句">▶ 朗读本句</button>
+      </div>
+      <p class="english">When a film is <mark class="chunk" title="词块">so bad it&#x27;s good</mark>, it hits the <mark class="chunk vocab" title="领域；范畴">realm</mark> of <mark class="chunk vocab" title="小众但拥有忠实拥趸的作品；邪典式热门作品">cult favorite</mark>.</p>
+      <p class="chinese">当一部电影烂到一种“反而很好看”的程度时，它就已经进入了“邪典式热门作品（cult favorite）”的领域。</p>
+    </article>
+    
+    <article class="sentence-card" id="s2">
+      <div class="sentence-topline">
+        <span class="sentence-no">02</span>
+        <button class="speak-btn" data-text="And it seems Chinese CGI animation New Li is fitting that description." aria-label="朗读第2句">▶ 朗读本句</button>
+      </div>
+      <p class="english">And it seems Chinese CGI animation New Li is fitting that <mark class="chunk vocab" title="描述；说法">description</mark>.</p>
+      <p class="chinese">而现在看来，中国 CGI 动画电影《牛来》正好符合这种描述。</p>
+    </article>
+    
+    <article class="sentence-card" id="s3">
+      <div class="sentence-topline">
+        <span class="sentence-no">03</span>
+        <button class="speak-btn" data-text="Throngs of fans are buying cinema tickets to watch this unholy abomination of low polygon animation," aria-label="朗读第3句">▶ 朗读本句</button>
+      </div>
+      <p class="english">Throngs of fans are buying cinema tickets to watch this unholy <mark class="chunk vocab" title="极其糟糕、令人难以接受的东西（本文为夸张吐槽）">abomination</mark> of low polygon animation,</p>
+      <p class="chinese">大批观众正在买票进电影院，只为了亲眼看看这部堪称“视觉灾难”的低多边形动画作品，</p>
+    </article>
+    
+    <article class="sentence-card" id="s4">
+      <div class="sentence-topline">
+        <span class="sentence-no">04</span>
+        <button class="speak-btn" data-text="and it&#x27;s made a name for itself for its hilarious, unintentional entertainment." aria-label="朗读第4句">▶ 朗读本句</button>
+      </div>
+      <p class="english">and it&#x27;s made a name for itself for its <mark class="chunk vocab" title="非常搞笑的；令人爆笑的">hilarious</mark>, <mark class="chunk vocab" title="无意的；非刻意的">unintentional</mark> entertainment.</p>
+      <p class="chinese">而它也凭借那种极其搞笑、完全无意为之的娱乐效果出了名。</p>
+    </article>
+    
+    <article class="sentence-card" id="s5">
+      <div class="sentence-topline">
+        <span class="sentence-no">05</span>
+        <button class="speak-btn" data-text="The animals have uncanny humanish faces." aria-label="朗读第5句">▶ 朗读本句</button>
+      </div>
+      <p class="english">The animals have <mark class="chunk vocab" title="诡异的；怪异得令人不舒服的">uncanny</mark> <mark class="chunk vocab" title="有点像人的；似人类的">humanish</mark> faces.</p>
+      <p class="chinese">片中的动物都长着一种诡异的、近似人类的脸。</p>
+    </article>
+    
+    <article class="sentence-card" id="s6">
+      <div class="sentence-topline">
+        <span class="sentence-no">06</span>
+        <button class="speak-btn" data-text="The dialogue is stilted." aria-label="朗读第6句">▶ 朗读本句</button>
+      </div>
+      <p class="english">The dialogue is <mark class="chunk vocab" title="生硬的；不自然的">stilted</mark>.</p>
+      <p class="chinese">台词也十分生硬、不自然。</p>
+    </article>
+    
+    <article class="sentence-card" id="s7">
+      <div class="sentence-topline">
+        <span class="sentence-no">07</span>
+        <button class="speak-btn" data-text="And it&#x27;s become a real rags to riches story in regards to the fact that when it debuted," aria-label="朗读第7句">▶ 朗读本句</button>
+      </div>
+      <p class="english">And it&#x27;s become a real rags to riches story in regards to the fact that when it <mark class="chunk vocab" title="首次上映；首次亮相">debuted</mark>,</p>
+      <p class="chinese">而且，它甚至上演了一场真正意义上的“从一文不名到爆红”的故事，因为在刚上映的时候，</p>
+    </article>
+    
+    <article class="sentence-card" id="s8">
+      <div class="sentence-topline">
+        <span class="sentence-no">08</span>
+        <button class="speak-btn" data-text="it earned maybe a few thousand yen and then exploded into millions as audiences began seeking it out." aria-label="朗读第8句">▶ 朗读本句</button>
+      </div>
+      <p class="english">it earned maybe a few thousand yen and then exploded into millions as audiences began seeking it out.</p>
+      <p class="chinese">它的票房可能只有区区几千元，后来随着越来越多观众主动跑去寻找这部电影，票房迅速暴涨到了数百万元。</p>
+    </article>
+    
+    <article class="sentence-card" id="s9">
+      <div class="sentence-topline">
+        <span class="sentence-no">09</span>
+        <button class="speak-btn" data-text="Its fame is all thanks to its social media presence," aria-label="朗读第9句">▶ 朗读本句</button>
+      </div>
+      <p class="english">Its <mark class="chunk vocab" title="名气；知名度">fame</mark> is all thanks to its <mark class="chunk" title="词块">social media presence</mark>,</p>
+      <p class="chinese">它今天的知名度，几乎完全要归功于它在社交媒体上的传播，</p>
+    </article>
+    
+    <article class="sentence-card" id="s10">
+      <div class="sentence-topline">
+        <span class="sentence-no">10</span>
+        <button class="speak-btn" data-text="which has naturally elicited a delighted response due to the fact that it&#x27;s so clearly handcrafted." aria-label="朗读第10句">▶ 朗读本句</button>
+      </div>
+      <p class="english">which has naturally <mark class="chunk vocab" title="引起；激起；引发">elicit</mark>ed a delighted response due to the fact that it&#x27;s so clearly <mark class="chunk vocab" title="手工制作的；亲手制作的">handcrafted</mark>.</p>
+      <p class="chinese">而网友们之所以如此喜欢它，很大程度上正是因为大家一眼就能看出：这东西确实是人一点一点亲手做出来的。</p>
+    </article>
+    
+    <article class="sentence-card" id="s11">
+      <div class="sentence-topline">
+        <span class="sentence-no">11</span>
+        <button class="speak-btn" data-text="In an age of AI slop," aria-label="朗读第11句">▶ 朗读本句</button>
+      </div>
+      <p class="english">In an age of <mark class="chunk vocab" title="低质量、粗制滥造的 AI 批量内容">AI slop</mark>,</p>
+      <p class="chinese">在这个充斥着“AI 垃圾内容（AI slop）”的时代，</p>
+    </article>
+    
+    <article class="sentence-card" id="s12">
+      <div class="sentence-topline">
+        <span class="sentence-no">12</span>
+        <button class="speak-btn" data-text="even films like this one," aria-label="朗读第12句">▶ 朗读本句</button>
+      </div>
+      <p class="english">even films like this one,</p>
+      <p class="chinese">即便是像这样的一部电影，</p>
+    </article>
+    
+    <article class="sentence-card" id="s13">
+      <div class="sentence-topline">
+        <span class="sentence-no">13</span>
+        <button class="speak-btn" data-text="which took a ton of time and effort to create despite its shortcomings, feel authentic." aria-label="朗读第13句">▶ 朗读本句</button>
+      </div>
+      <p class="english">which took a ton of time and effort to create despite its <mark class="chunk vocab" title="缺点；不足">shortcomings</mark>, feel <mark class="chunk vocab" title="真实的；真诚的；有真实感的">authentic</mark>.</p>
+      <p class="chinese">哪怕它存在许多缺点，但由于制作它确实花费了大量时间和精力，反而会让人觉得很真实。</p>
+    </article>
+    
+    <article class="sentence-card" id="s14">
+      <div class="sentence-topline">
+        <span class="sentence-no">14</span>
+        <button class="speak-btn" data-text="And because there&#x27;s almost zero marketing material for the film as a result of its low budget," aria-label="朗读第14句">▶ 朗读本句</button>
+      </div>
+      <p class="english">And because there&#x27;s almost zero <mark class="chunk vocab" title="宣传材料；营销物料">marketing material</mark> for the film as a result of its low budget,</p>
+      <p class="chinese">而且，由于预算实在太低，这部电影几乎没有什么正规的宣传物料，</p>
+    </article>
+    
+    <article class="sentence-card" id="s15">
+      <div class="sentence-topline">
+        <span class="sentence-no">15</span>
+        <button class="speak-btn" data-text="staff members of various Chinese cinemas have been seen creating their own versions," aria-label="朗读第15句">▶ 朗读本句</button>
+      </div>
+      <p class="english">staff members of various Chinese cinemas have been seen creating their own versions,</p>
+      <p class="chinese">于是中国各地一些电影院的工作人员甚至开始自己动手制作宣传内容，</p>
+    </article>
+    
+    <article class="sentence-card" id="s16">
+      <div class="sentence-topline">
+        <span class="sentence-no">16</span>
+        <button class="speak-btn" data-text="ultimately lending to that authentic feel." aria-label="朗读第16句">▶ 朗读本句</button>
+      </div>
+      <p class="english"><mark class="chunk vocab" title="最终；结果是">ultimately</mark> lending to that <mark class="chunk vocab" title="真实的；真诚的；有真实感的">authentic</mark> feel.</p>
+      <p class="chinese">结果反而进一步强化了这种真实、手工制作的感觉。</p>
+    </article>
+    
+    <article class="sentence-card" id="s17">
+      <div class="sentence-topline">
+        <span class="sentence-no">17</span>
+        <button class="speak-btn" data-text="After all, it was made by a mother and son over the course of 5 years," aria-label="朗读第17句">▶ 朗读本句</button>
+      </div>
+      <p class="english">After all, it was made by a mother and son over the course of 5 years,</p>
+      <p class="chinese">毕竟，这部电影是一对母子花了五年时间制作出来的，</p>
+    </article>
+    
+    <article class="sentence-card" id="s18">
+      <div class="sentence-topline">
+        <span class="sentence-no">18</span>
+        <button class="speak-btn" data-text="and that makes it special art despite how unintentionally funny it is." aria-label="朗读第18句">▶ 朗读本句</button>
+      </div>
+      <p class="english">and that makes it special art despite how <mark class="chunk vocab" title="无意间；并非刻意地"><mark class="chunk vocab" title="无意的；非刻意的">unintentional</mark>ly</mark> funny it is.</p>
+      <p class="chinese">也正因为如此，即使它的搞笑效果很多时候完全不是创作者有意设计的，它依然是一件很特别的艺术作品。</p>
+    </article>
+    
+    <article class="sentence-card" id="s19">
+      <div class="sentence-topline">
+        <span class="sentence-no">19</span>
+        <button class="speak-btn" data-text="There&#x27;s definitely a fondness for janky animated films as the likes of 2005&#x27;s Hoodwinked constantly gets praised for its amazing writing and" aria-label="朗读第19句">▶ 朗读本句</button>
+      </div>
+      <p class="english">There&#x27;s definitely a <mark class="chunk vocab" title="喜爱；偏爱">fondness</mark> for <mark class="chunk vocab" title="粗糙的；廉价感强但可能有独特魅力的">janky</mark> animated films as the likes of 2005&#x27;s Hoodwinked <mark class="chunk vocab" title="经常；不断地">constantly</mark> gets praised for its amazing writing and</p>
+      <p class="chinese">事实上，人们确实一直对这种制作粗糙、甚至有点“破破烂烂”的动画电影抱有某种特殊的喜爱，比如 2005 年的《小红帽》（Hoodwinked）就经常因为优秀的剧本而受到称赞，</p>
+    </article>
+    
+    <article class="sentence-card" id="s20">
+      <div class="sentence-topline">
+        <span class="sentence-no">20</span>
+        <button class="speak-btn" data-text="stacked cast despite its visuals looking like a first-year student created it." aria-label="朗读第20句">▶ 朗读本句</button>
+      </div>
+      <p class="english"><mark class="chunk vocab" title="豪华演员 / 配音阵容">stacked cast</mark> despite its visuals looking like a first-year student created it.</p>
+      <p class="chinese">而且它的配音阵容也非常豪华，尽管它的画面看起来简直像是动画专业一年级学生做出来的。</p>
+    </article>
+    
+    <article class="sentence-card" id="s21">
+      <div class="sentence-topline">
+        <span class="sentence-no">21</span>
+        <button class="speak-btn" data-text="Unfortunately, New Life doesn&#x27;t stack up with celebrity casting," aria-label="朗读第21句">▶ 朗读本句</button>
+      </div>
+      <p class="english">Unfortunately, New Life doesn&#x27;t stack up with <mark class="chunk vocab" title="明星演员 / 明星配音阵容">celebrity casting</mark>,</p>
+      <p class="chinese">可惜，《牛来》并没有什么明星配音阵容，</p>
+    </article>
+    
+    <article class="sentence-card" id="s22">
+      <div class="sentence-topline">
+        <span class="sentence-no">22</span>
+        <button class="speak-btn" data-text="nor does it have brilliant writing." aria-label="朗读第22句">▶ 朗读本句</button>
+      </div>
+      <p class="english">nor does it have brilliant writing.</p>
+      <p class="chinese">它的剧本也谈不上特别出色。</p>
+    </article>
+    
+    <article class="sentence-card" id="s23">
+      <div class="sentence-topline">
+        <span class="sentence-no">23</span>
+        <button class="speak-btn" data-text="However, the fact is that it&#x27;s genuinely difficult to make something so bad it&#x27;s good," aria-label="朗读第23句">▶ 朗读本句</button>
+      </div>
+      <p class="english">However, the fact is that it&#x27;s genuinely difficult to make something <mark class="chunk" title="词块">so bad it&#x27;s good</mark>,</p>
+      <p class="chinese">不过，事实上，想要真正做出一部“烂到反而好看”的作品，其实非常困难，</p>
+    </article>
+    
+    <article class="sentence-card" id="s24">
+      <div class="sentence-topline">
+        <span class="sentence-no">24</span>
+        <button class="speak-btn" data-text="and this cinematic experience achieves that goal." aria-label="朗读第24句">▶ 朗读本句</button>
+      </div>
+      <p class="english">and this cinematic experience achieves that goal.</p>
+      <p class="chinese">而这部电影偏偏就做到了这一点。</p>
+    </article>
+    
+    <article class="sentence-card" id="s25">
+      <div class="sentence-topline">
+        <span class="sentence-no">25</span>
+        <button class="speak-btn" data-text="It just goes to show that there&#x27;s an appetite for the new and outrageous," aria-label="朗读第25句">▶ 朗读本句</button>
+      </div>
+      <p class="english">It just goes to show that there&#x27;s an <mark class="chunk vocab" title="需求；兴趣；强烈欲望">appetite</mark> for the new and <mark class="chunk vocab" title="离谱的；出格的；大胆夸张的">outrageous</mark>,</p>
+      <p class="chinese">这也说明，观众其实一直都对那些新鲜、离谱、出人意料的东西有需求，</p>
+    </article>
+    
+    <article class="sentence-card" id="s26">
+      <div class="sentence-topline">
+        <span class="sentence-no">26</span>
+        <button class="speak-btn" data-text="as sometimes it feels like blockbuster cinema is the only option," aria-label="朗读第26句">▶ 朗读本句</button>
+      </div>
+      <p class="english">as sometimes it feels like <mark class="chunk vocab" title="商业大片；大制作电影">blockbuster</mark> cinema is the only option,</p>
+      <p class="chinese">因为有时候，大制作商业电影似乎已经成了电影院里唯一的选择，</p>
+    </article>
+    
+    <article class="sentence-card" id="s27">
+      <div class="sentence-topline">
+        <span class="sentence-no">27</span>
+        <button class="speak-btn" data-text="and it&#x27;s refreshing when something bold and daring as amateur animation slips through the cracks and onto our screens." aria-label="朗读第27句">▶ 朗读本句</button>
+      </div>
+      <p class="english">and it&#x27;s <mark class="chunk vocab" title="令人耳目一新的">refreshing</mark> when something bold and daring as <mark class="chunk vocab" title="业余的；非专业制作的">amateur</mark> animation slips through the <mark class="chunk vocab" title="裂缝；本文出现在习语 slip through the cracks">cracks</mark> and onto our <mark class="chunk vocab" title="银幕；屏幕">screen</mark>s.</p>
+      <p class="chinese">所以，当这样一部大胆、奇怪、明显带着业余感的动画作品，居然从电影工业的缝隙里钻出来，真正登上大银幕时，反而让人觉得耳目一新。</p>
+    </article>
+    
+    <article class="sentence-card" id="s28">
+      <div class="sentence-topline">
+        <span class="sentence-no">28</span>
+        <button class="speak-btn" data-text="New Life feels like it shouldn&#x27;t exist." aria-label="朗读第28句">▶ 朗读本句</button>
+      </div>
+      <p class="english">New Life feels like it shouldn&#x27;t exist.</p>
+      <p class="chinese">《牛来》给人的感觉就是：它本来根本不应该存在。</p>
+    </article>
+    
+    <article class="sentence-card" id="s29">
+      <div class="sentence-topline">
+        <span class="sentence-no">29</span>
+        <button class="speak-btn" data-text="It shouldn&#x27;t be getting the attention it&#x27;s receiving," aria-label="朗读第29句">▶ 朗读本句</button>
+      </div>
+      <p class="english">It shouldn&#x27;t be getting the attention it&#x27;s receiving,</p>
+      <p class="chinese">它似乎也不应该获得现在这么多关注，</p>
+    </article>
+    
+    <article class="sentence-card" id="s30">
+      <div class="sentence-topline">
+        <span class="sentence-no">30</span>
+        <button class="speak-btn" data-text="and that&#x27;s what makes it so great." aria-label="朗读第30句">▶ 朗读本句</button>
+      </div>
+      <p class="english">and that&#x27;s what makes it so great.</p>
+      <p class="chinese">但恰恰正是这一点，让它变得如此有魅力。</p>
+    </article>
+    
+    <article class="sentence-card" id="s31">
+      <div class="sentence-topline">
+        <span class="sentence-no">31</span>
+        <button class="speak-btn" data-text="People can go to their local theaters and watch it for a laugh," aria-label="朗读第31句">▶ 朗读本句</button>
+      </div>
+      <p class="english">People can go to their local theaters and watch it <mark class="chunk" title="词块">for a laugh</mark>,</p>
+      <p class="chinese">人们当然可以去当地电影院买张票，把它当成一部搞笑片来看，图个乐，</p>
+    </article>
+    
+    <article class="sentence-card" id="s32">
+      <div class="sentence-topline">
+        <span class="sentence-no">32</span>
+        <button class="speak-btn" data-text="sure, but the fact of the matter is that every viewing and" aria-label="朗读第32句">▶ 朗读本句</button>
+      </div>
+      <p class="english">sure, but the fact of the matter is that every viewing and</p>
+      <p class="chinese">没错，但真正重要的是，每一次观影，</p>
+    </article>
+    
+    <article class="sentence-card" id="s33">
+      <div class="sentence-topline">
+        <span class="sentence-no">33</span>
+        <button class="speak-btn" data-text="showing is supporting the mother and son who made this story with their own two hands." aria-label="朗读第33句">▶ 朗读本句</button>
+      </div>
+      <p class="english">showing is supporting the mother and son who made this story with their own two hands.</p>
+      <p class="chinese">每一次电影院安排它放映，其实都在支持那对亲手制作了这个故事的母子。</p>
+    </article>
+    
+    <article class="sentence-card" id="s34">
+      <div class="sentence-topline">
+        <span class="sentence-no">34</span>
+        <button class="speak-btn" data-text="And I sincerely hope this campaign brings them happiness." aria-label="朗读第34句">▶ 朗读本句</button>
+      </div>
+      <p class="english">And I sincerely hope this campaign brings them happiness.</p>
+      <p class="chinese">而我真心希望，这场突如其来的爆红能够给他们带来快乐。</p>
+    </article>
+    
+    <article class="sentence-card" id="s35">
+      <div class="sentence-topline">
+        <span class="sentence-no">35</span>
+        <button class="speak-btn" data-text="One can only hope that it gets a full English dub or" aria-label="朗读第35句">▶ 朗读本句</button>
+      </div>
+      <p class="english">One can only hope that it gets a full English <mark class="chunk vocab" title="配音；配音版">dub</mark> or</p>
+      <p class="chinese">现在唯一能期待的就是，希望它以后能够推出完整的英文配音版，</p>
+    </article>
+    
+    <article class="sentence-card" id="s36">
+      <div class="sentence-topline">
+        <span class="sentence-no">36</span>
+        <button class="speak-btn" data-text="at the very least translated subs in every language so" aria-label="朗读第36句">▶ 朗读本句</button>
+      </div>
+      <p class="english"><mark class="chunk" title="词块">at the very least</mark> translated <mark class="chunk vocab" title="字幕；subtitles 的口语缩写">subs</mark> in every language so</p>
+      <p class="chinese">或者至少能配上各种语言的翻译字幕，</p>
+    </article>
+    
+    <article class="sentence-card" id="s37">
+      <div class="sentence-topline">
+        <span class="sentence-no">37</span>
+        <button class="speak-btn" data-text="that the rest of the world can enjoy the full New Li experience." aria-label="朗读第37句">▶ 朗读本句</button>
+      </div>
+      <p class="english">that <mark class="chunk" title="词块">the rest of the world</mark> can enjoy the full New Li experience.</p>
+      <p class="chinese">这样世界其他地方的观众也能够体验一次完整的《牛来》观影体验。</p>
+    </article>
+    
+    <article class="sentence-card" id="s38">
+      <div class="sentence-topline">
+        <span class="sentence-no">38</span>
+        <button class="speak-btn" data-text="Essentially, New Li has made a name for itself as the jankiest," aria-label="朗读第38句">▶ 朗读本句</button>
+      </div>
+      <p class="english">Essentially, New Li has made a name for itself as the <mark class="chunk vocab" title="最粗糙的；最不精致的">jankiest</mark>,</p>
+      <p class="chinese">简单来说，《牛来》已经靠着自己那种极其粗糙的风格打出了名气，</p>
+    </article>
+    
+    <article class="sentence-card" id="s39">
+      <div class="sentence-topline">
+        <span class="sentence-no">39</span>
+        <button class="speak-btn" data-text="goofiest, and worst animated film seen in cinema for a very long time." aria-label="朗读第39句">▶ 朗读本句</button>
+      </div>
+      <p class="english"><mark class="chunk vocab" title="最傻气、最滑稽的">goofiest</mark>, and worst animated film seen in cinema for a very long time.</p>
+      <p class="chinese">它可能是很长一段时间以来，电影院里出现过的最傻气、最滑稽、也最烂的动画电影之一。</p>
+    </article>
+    
+    <article class="sentence-card" id="s40">
+      <div class="sentence-topline">
+        <span class="sentence-no">40</span>
+        <button class="speak-btn" data-text="However, it is that janky reputation that audiences have come to appreciate" aria-label="朗读第40句">▶ 朗读本句</button>
+      </div>
+      <p class="english">However, it is that <mark class="chunk vocab" title="粗糙的；廉价感强但可能有独特魅力的">janky</mark> reputation that audiences have come to appreciate</p>
+      <p class="chinese">然而，恰恰就是这种粗糙得近乎离谱的名声，让观众逐渐开始喜欢上了它，</p>
+    </article>
+    
+    <article class="sentence-card" id="s41">
+      <div class="sentence-topline">
+        <span class="sentence-no">41</span>
+        <button class="speak-btn" data-text="as Chinese cinema demonstrates a handcrafted touch beats modern AI every time." aria-label="朗读第41句">▶ 朗读本句</button>
+      </div>
+      <p class="english">as Chinese cinema <mark class="chunk vocab" title="表明；证明；体现">demonstrates</mark> a <mark class="chunk vocab" title="手工制作的；亲手制作的">handcrafted</mark> touch beats modern AI every time.</p>
+      <p class="chinese">而中国电影这一次似乎也证明了：真正由人亲手制作出来的东西，哪怕不完美，也往往比现代 AI 批量生成的内容更能打动人。</p>
+    </article>
+    
+  </section>
+
+  <section id="vocab" class="section">
+    <div class="section-heading-row">
+      <h2>生词：按本文语义记忆</h2>
+      <button class="primary" id="playAllVocab">▶ 生词一次性朗读</button>
+    </div>
+    <div class="grid"><div class="vocab-card"><div class="vocab-head"><strong>realm</strong>
+    <button class="mini-speak" data-text="realm">🔊</button></div>
+    <div>领域；范畴</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>cult favorite</strong>
+    <button class="mini-speak" data-text="cult favorite">🔊</button></div>
+    <div>小众但拥有忠实拥趸的作品；邪典式热门作品</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>description</strong>
+    <button class="mini-speak" data-text="description">🔊</button></div>
+    <div>描述；说法</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>abomination</strong>
+    <button class="mini-speak" data-text="abomination">🔊</button></div>
+    <div>极其糟糕、令人难以接受的东西（本文为夸张吐槽）</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>hilarious</strong>
+    <button class="mini-speak" data-text="hilarious">🔊</button></div>
+    <div>非常搞笑的；令人爆笑的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>unintentional</strong>
+    <button class="mini-speak" data-text="unintentional">🔊</button></div>
+    <div>无意的；非刻意的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>uncanny</strong>
+    <button class="mini-speak" data-text="uncanny">🔊</button></div>
+    <div>诡异的；怪异得令人不舒服的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>humanish</strong>
+    <button class="mini-speak" data-text="humanish">🔊</button></div>
+    <div>有点像人的；似人类的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>stilted</strong>
+    <button class="mini-speak" data-text="stilted">🔊</button></div>
+    <div>生硬的；不自然的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>debuted</strong>
+    <button class="mini-speak" data-text="debuted">🔊</button></div>
+    <div>首次上映；首次亮相</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>fame</strong>
+    <button class="mini-speak" data-text="fame">🔊</button></div>
+    <div>名气；知名度</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>elicit</strong>
+    <button class="mini-speak" data-text="elicit">🔊</button></div>
+    <div>引起；激起；引发</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>AI slop</strong>
+    <button class="mini-speak" data-text="AI slop">🔊</button></div>
+    <div>低质量、粗制滥造的 AI 批量内容</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>authentic</strong>
+    <button class="mini-speak" data-text="authentic">🔊</button></div>
+    <div>真实的；真诚的；有真实感的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>shortcomings</strong>
+    <button class="mini-speak" data-text="shortcomings">🔊</button></div>
+    <div>缺点；不足</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>marketing material</strong>
+    <button class="mini-speak" data-text="marketing material">🔊</button></div>
+    <div>宣传材料；营销物料</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>ultimately</strong>
+    <button class="mini-speak" data-text="ultimately">🔊</button></div>
+    <div>最终；结果是</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>unintentionally</strong>
+    <button class="mini-speak" data-text="unintentionally">🔊</button></div>
+    <div>无意间；并非刻意地</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>fondness</strong>
+    <button class="mini-speak" data-text="fondness">🔊</button></div>
+    <div>喜爱；偏爱</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>janky</strong>
+    <button class="mini-speak" data-text="janky">🔊</button></div>
+    <div>粗糙的；廉价感强但可能有独特魅力的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>constantly</strong>
+    <button class="mini-speak" data-text="constantly">🔊</button></div>
+    <div>经常；不断地</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>stacked cast</strong>
+    <button class="mini-speak" data-text="stacked cast">🔊</button></div>
+    <div>豪华演员 / 配音阵容</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>celebrity casting</strong>
+    <button class="mini-speak" data-text="celebrity casting">🔊</button></div>
+    <div>明星演员 / 明星配音阵容</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>appetite</strong>
+    <button class="mini-speak" data-text="appetite">🔊</button></div>
+    <div>需求；兴趣；强烈欲望</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>outrageous</strong>
+    <button class="mini-speak" data-text="outrageous">🔊</button></div>
+    <div>离谱的；出格的；大胆夸张的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>blockbuster</strong>
+    <button class="mini-speak" data-text="blockbuster">🔊</button></div>
+    <div>商业大片；大制作电影</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>refreshing</strong>
+    <button class="mini-speak" data-text="refreshing">🔊</button></div>
+    <div>令人耳目一新的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>amateur</strong>
+    <button class="mini-speak" data-text="amateur">🔊</button></div>
+    <div>业余的；非专业制作的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>cracks</strong>
+    <button class="mini-speak" data-text="cracks">🔊</button></div>
+    <div>裂缝；本文出现在习语 slip through the cracks</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>screen</strong>
+    <button class="mini-speak" data-text="screen">🔊</button></div>
+    <div>银幕；屏幕</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>dub</strong>
+    <button class="mini-speak" data-text="dub">🔊</button></div>
+    <div>配音；配音版</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>subs</strong>
+    <button class="mini-speak" data-text="subs">🔊</button></div>
+    <div>字幕；subtitles 的口语缩写</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>jankiest</strong>
+    <button class="mini-speak" data-text="jankiest">🔊</button></div>
+    <div>最粗糙的；最不精致的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>goofiest</strong>
+    <button class="mini-speak" data-text="goofiest">🔊</button></div>
+    <div>最傻气、最滑稽的</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>demonstrates</strong>
+    <button class="mini-speak" data-text="demonstrates">🔊</button></div>
+    <div>表明；证明；体现</div></div>
+<div class="vocab-card"><div class="vocab-head"><strong>handcrafted</strong>
+    <button class="mini-speak" data-text="handcrafted">🔊</button></div>
+    <div>手工制作的；亲手制作的</div></div></div>
+  </section>
+
+  <section id="chunks" class="section">
+    <div class="section-heading-row">
+      <h2>词块 / 固定搭配：整体记忆，不逐词翻译</h2>
+      <button class="primary" id="playAllChunks">▶ 词块一次性朗读</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>词块</th><th>本文意思</th><th>使用规则</th><th>例句</th></tr></thead>
+        <tbody><tr>
+    <td><div class="chunk-term">so bad it&#x27;s good <button class="mini-speak" data-text="so bad it&#x27;s good">🔊</button></div></td>
+    <td>烂到反而好看</td>
+    <td>固定评价结构：be so + adj. + it&#x27;s + positive adjective；常用于电影、游戏、节目。</td>
+    <td><span class="example">The movie is so bad it&#x27;s good.</span><button class="mini-speak" data-text="The movie is so bad it&#x27;s good.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">fit that description <button class="mini-speak" data-text="fit that description">🔊</button></div></td>
+    <td>符合这种描述 / 说法</td>
+    <td>fit + description/category/profile；主语通常是人或事物。</td>
+    <td><span class="example">This movie certainly fits that description.</span><button class="mini-speak" data-text="This movie certainly fits that description.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">make a name for oneself <button class="mini-speak" data-text="make a name for oneself">🔊</button></div></td>
+    <td>成名；打出名气</td>
+    <td>make a name for + 反身代词；可接 as / in / by。</td>
+    <td><span class="example">She made a name for herself as a researcher.</span><button class="mini-speak" data-text="She made a name for herself as a researcher.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">seek something out <button class="mini-speak" data-text="seek something out">🔊</button></div></td>
+    <td>特意寻找某物</td>
+    <td>seek out 比 look for 更强调“主动、特意去找”。</td>
+    <td><span class="example">Tourists seek out authentic local food.</span><button class="mini-speak" data-text="Tourists seek out authentic local food.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">be all thanks to <button class="mini-speak" data-text="be all thanks to">🔊</button></div></td>
+    <td>全都归功于……</td>
+    <td>be + all/largely/partly + thanks to + 名词。</td>
+    <td><span class="example">The success was all thanks to the team.</span><button class="mini-speak" data-text="The success was all thanks to the team.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">social media presence <button class="mini-speak" data-text="social media presence">🔊</button></div></td>
+    <td>社交媒体影响力 / 曝光度</td>
+    <td>常见：strong online presence / digital presence。</td>
+    <td><span class="example">The brand has a strong social media presence.</span><button class="mini-speak" data-text="The brand has a strong social media presence.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">elicit a response / reaction <button class="mini-speak" data-text="elicit a response / reaction">🔊</button></div></td>
+    <td>引起反应；引发回应</td>
+    <td>elicit + response/reaction/information；正式和学术英语常见。</td>
+    <td><span class="example">The question elicited a strong reaction.</span><button class="mini-speak" data-text="The question elicited a strong reaction.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">in an age of ... <button class="mini-speak" data-text="in an age of ...">🔊</button></div></td>
+    <td>在……的时代</td>
+    <td>In an age of + 名词；适合议论文、评论文开头。</td>
+    <td><span class="example">In an age of AI, originality matters more than ever.</span><button class="mini-speak" data-text="In an age of AI, originality matters more than ever.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">take time and effort <button class="mini-speak" data-text="take time and effort">🔊</button></div></td>
+    <td>花费时间和精力</td>
+    <td>take + time/effort/resources + to do。</td>
+    <td><span class="example">Learning a language takes time and effort.</span><button class="mini-speak" data-text="Learning a language takes time and effort.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">despite one&#x27;s shortcomings <button class="mini-speak" data-text="despite one&#x27;s shortcomings">🔊</button></div></td>
+    <td>尽管存在不足</td>
+    <td>despite + 名词/名词短语；不能直接接完整句。</td>
+    <td><span class="example">Despite its shortcomings, the film feels sincere.</span><button class="mini-speak" data-text="Despite its shortcomings, the film feels sincere.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">as a result of ... <button class="mini-speak" data-text="as a result of ...">🔊</button></div></td>
+    <td>由于……；作为……的结果</td>
+    <td>as a result of + 名词；as a result, + 完整句。</td>
+    <td><span class="example">The launch was delayed as a result of technical problems.</span><button class="mini-speak" data-text="The launch was delayed as a result of technical problems.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">over the course of ... <button class="mini-speak" data-text="over the course of ...">🔊</button></div></td>
+    <td>在……期间；历经……</td>
+    <td>over the course of + 时间段 / career / project。</td>
+    <td><span class="example">The project evolved over the course of five years.</span><button class="mini-speak" data-text="The project evolved over the course of five years.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">have a fondness for ... <button class="mini-speak" data-text="have a fondness for ...">🔊</button></div></td>
+    <td>喜欢；偏爱……</td>
+    <td>have a fondness for + 名词 / doing。</td>
+    <td><span class="example">She has a fondness for old animated films.</span><button class="mini-speak" data-text="She has a fondness for old animated films.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">be praised for ... <button class="mini-speak" data-text="be praised for ...">🔊</button></div></td>
+    <td>因……受到称赞</td>
+    <td>be/get praised for + 名词 / doing。</td>
+    <td><span class="example">The film was praised for its originality.</span><button class="mini-speak" data-text="The film was praised for its originality.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">stack up against ... <button class="mini-speak" data-text="stack up against ...">🔊</button></div></td>
+    <td>和……相比表现如何；比得上……</td>
+    <td>A stacks up against B；常用于比较产品、作品、模型。</td>
+    <td><span class="example">How does the sequel stack up against the original?</span><button class="mini-speak" data-text="How does the sequel stack up against the original?">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">the fact is that ... <button class="mini-speak" data-text="the fact is that ...">🔊</button></div></td>
+    <td>事实是……</td>
+    <td>the fact/truth/reality is that + 完整句；用于强调。</td>
+    <td><span class="example">The fact is that we need more evidence.</span><button class="mini-speak" data-text="The fact is that we need more evidence.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">achieve a goal <button class="mini-speak" data-text="achieve a goal">🔊</button></div></td>
+    <td>实现目标</td>
+    <td>achieve + goal/objective/success；典型强搭配。</td>
+    <td><span class="example">The project achieved its original goal.</span><button class="mini-speak" data-text="The project achieved its original goal.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">It just goes to show that ... <button class="mini-speak" data-text="It just goes to show that ...">🔊</button></div></td>
+    <td>这恰恰说明……</td>
+    <td>固定口语框架，用于从例子推出结论。</td>
+    <td><span class="example">It just goes to show that originality still matters.</span><button class="mini-speak" data-text="It just goes to show that originality still matters.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">have an appetite for ... <button class="mini-speak" data-text="have an appetite for ...">🔊</button></div></td>
+    <td>对……有需求 / 兴趣 / 偏好</td>
+    <td>常见：appetite for risk/change/investment/new ideas。</td>
+    <td><span class="example">Investors have a strong appetite for risk.</span><button class="mini-speak" data-text="Investors have a strong appetite for risk.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">feel like + clause <button class="mini-speak" data-text="feel like + clause">🔊</button></div></td>
+    <td>感觉好像……</td>
+    <td>feel like + 完整句；注意与 feel like doing 区分。</td>
+    <td><span class="example">It feels like everyone is talking about the film.</span><button class="mini-speak" data-text="It feels like everyone is talking about the film.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">slip through the cracks <button class="mini-speak" data-text="slip through the cracks">🔊</button></div></td>
+    <td>从体系缝隙中漏过；被忽视</td>
+    <td>固定习语；可指人、问题、作品没有被正常机制注意/筛掉。</td>
+    <td><span class="example">Some important details slipped through the cracks.</span><button class="mini-speak" data-text="Some important details slipped through the cracks.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">make it onto the big screen <button class="mini-speak" data-text="make it onto the big screen">🔊</button></div></td>
+    <td>成功登上大银幕</td>
+    <td>make it onto + 平台/名单/舞台；强调成功进入。</td>
+    <td><span class="example">The indie film somehow made it onto the big screen.</span><button class="mini-speak" data-text="The indie film somehow made it onto the big screen.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">receive / attract attention <button class="mini-speak" data-text="receive / attract attention">🔊</button></div></td>
+    <td>获得 / 吸引关注</td>
+    <td>receive attention = 获得关注；attract/draw attention = 吸引注意。</td>
+    <td><span class="example">The film quickly attracted international attention.</span><button class="mini-speak" data-text="The film quickly attracted international attention.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">for a laugh <button class="mini-speak" data-text="for a laugh">🔊</button></div></td>
+    <td>为了图一乐</td>
+    <td>do/watch/say something for a laugh；偏口语。</td>
+    <td><span class="example">We watched it for a laugh.</span><button class="mini-speak" data-text="We watched it for a laugh.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">the fact of the matter is that ... <button class="mini-speak" data-text="the fact of the matter is that ...">🔊</button></div></td>
+    <td>实际情况是……</td>
+    <td>比 the fact is that 更强调；多用于口语或评论。</td>
+    <td><span class="example">The fact of the matter is that people enjoyed it.</span><button class="mini-speak" data-text="The fact of the matter is that people enjoyed it.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">with one&#x27;s own two hands <button class="mini-speak" data-text="with one&#x27;s own two hands">🔊</button></div></td>
+    <td>亲手；完全靠自己动手</td>
+    <td>强调 personally made / built / created。</td>
+    <td><span class="example">They built the set with their own two hands.</span><button class="mini-speak" data-text="They built the set with their own two hands.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">One can only hope that ... <button class="mini-speak" data-text="One can only hope that ...">🔊</button></div></td>
+    <td>只能希望……</td>
+    <td>one/we can only hope that + 完整句。</td>
+    <td><span class="example">One can only hope that it gets an English dub.</span><button class="mini-speak" data-text="One can only hope that it gets an English dub.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">at the very least <button class="mini-speak" data-text="at the very least">🔊</button></div></td>
+    <td>至少；退一步说至少……</td>
+    <td>句首、句中都常见；强调最低要求。</td>
+    <td><span class="example">At the very least, the film deserves subtitles.</span><button class="mini-speak" data-text="At the very least, the film deserves subtitles.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">the rest of the world <button class="mini-speak" data-text="the rest of the world">🔊</button></div></td>
+    <td>世界其他地方 / 其他人</td>
+    <td>the rest of + 名词；注意谓语随核心名词语义。</td>
+    <td><span class="example">The rest of the world can finally watch it.</span><button class="mini-speak" data-text="The rest of the world can finally watch it.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">come to appreciate ... <button class="mini-speak" data-text="come to appreciate ...">🔊</button></div></td>
+    <td>逐渐开始欣赏 / 体会</td>
+    <td>come to + understand/realize/accept/appreciate 表示逐渐变化。</td>
+    <td><span class="example">I&#x27;ve come to appreciate low-budget films.</span><button class="mini-speak" data-text="I&#x27;ve come to appreciate low-budget films.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">a personal / human / handcrafted touch <button class="mini-speak" data-text="a personal / human / handcrafted touch">🔊</button></div></td>
+    <td>个人化 / 人味 / 手工质感</td>
+    <td>a + adj. + touch 表示“某种风格或感觉”。</td>
+    <td><span class="example">The handmade posters add a personal touch.</span><button class="mini-speak" data-text="The handmade posters add a personal touch.">🔊</button></td>
+    </tr>
+<tr>
+    <td><div class="chunk-term">X beats Y every time <button class="mini-speak" data-text="X beats Y every time">🔊</button></div></td>
+    <td>X 总是胜过 Y</td>
+    <td>口语化比较：A beats B every time = A 毫无例外更好。</td>
+    <td><span class="example">Homemade food beats fast food every time.</span><button class="mini-speak" data-text="Homemade food beats fast food every time.">🔊</button></td>
+    </tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+
+<script>
+const synth = window.speechSynthesis;
+const voiceSelect = document.getElementById('voiceSelect');
+const rate = document.getElementById('rate');
+const rateVal = document.getElementById('rateVal');
+const statusEl = document.getElementById('status');
+
+const vocabTerms = ["realm", "cult favorite", "description", "abomination", "hilarious", "unintentional", "uncanny", "humanish", "stilted", "debuted", "fame", "elicit", "AI slop", "authentic", "shortcomings", "marketing material", "ultimately", "unintentionally", "fondness", "janky", "constantly", "stacked cast", "celebrity casting", "appetite", "outrageous", "blockbuster", "refreshing", "amateur", "cracks", "screen", "dub", "subs", "jankiest", "goofiest", "demonstrates", "handcrafted"];
+const chunkTerms = ["so bad it's good", "fit that description", "make a name for oneself", "seek something out", "be all thanks to", "social media presence", "elicit a response / reaction", "in an age of ...", "take time and effort", "despite one's shortcomings", "as a result of ...", "over the course of ...", "have a fondness for ...", "be praised for ...", "stack up against ...", "the fact is that ...", "achieve a goal", "It just goes to show that ...", "have an appetite for ...", "feel like + clause", "slip through the cracks", "make it onto the big screen", "receive / attract attention", "for a laugh", "the fact of the matter is that ...", "with one's own two hands", "One can only hope that ...", "at the very least", "the rest of the world", "come to appreciate ...", "a personal / human / handcrafted touch", "X beats Y every time"];
+const sentences = ["When a film is so bad it's good, it hits the realm of cult favorite.", "And it seems Chinese CGI animation New Li is fitting that description.", "Throngs of fans are buying cinema tickets to watch this unholy abomination of low polygon animation,", "and it's made a name for itself for its hilarious, unintentional entertainment.", "The animals have uncanny humanish faces.", "The dialogue is stilted.", "And it's become a real rags to riches story in regards to the fact that when it debuted,", "it earned maybe a few thousand yen and then exploded into millions as audiences began seeking it out.", "Its fame is all thanks to its social media presence,", "which has naturally elicited a delighted response due to the fact that it's so clearly handcrafted.", "In an age of AI slop,", "even films like this one,", "which took a ton of time and effort to create despite its shortcomings, feel authentic.", "And because there's almost zero marketing material for the film as a result of its low budget,", "staff members of various Chinese cinemas have been seen creating their own versions,", "ultimately lending to that authentic feel.", "After all, it was made by a mother and son over the course of 5 years,", "and that makes it special art despite how unintentionally funny it is.", "There's definitely a fondness for janky animated films as the likes of 2005's Hoodwinked constantly gets praised for its amazing writing and", "stacked cast despite its visuals looking like a first-year student created it.", "Unfortunately, New Life doesn't stack up with celebrity casting,", "nor does it have brilliant writing.", "However, the fact is that it's genuinely difficult to make something so bad it's good,", "and this cinematic experience achieves that goal.", "It just goes to show that there's an appetite for the new and outrageous,", "as sometimes it feels like blockbuster cinema is the only option,", "and it's refreshing when something bold and daring as amateur animation slips through the cracks and onto our screens.", "New Life feels like it shouldn't exist.", "It shouldn't be getting the attention it's receiving,", "and that's what makes it so great.", "People can go to their local theaters and watch it for a laugh,", "sure, but the fact of the matter is that every viewing and", "showing is supporting the mother and son who made this story with their own two hands.", "And I sincerely hope this campaign brings them happiness.", "One can only hope that it gets a full English dub or", "at the very least translated subs in every language so", "that the rest of the world can enjoy the full New Li experience.", "Essentially, New Li has made a name for itself as the jankiest,", "goofiest, and worst animated film seen in cinema for a very long time.", "However, it is that janky reputation that audiences have come to appreciate", "as Chinese cinema demonstrates a handcrafted touch beats modern AI every time."];
+let allVoices = [];
+let englishVoices = [];
+let playToken = 0;
+let currentCard = null;
+let warmedVoiceKey = null;
+
+function voiceKey(v) {
+  return v ? `${v.name}|${v.lang}|${v.localService}` : '';
+}
+
+function loadVoices() {
+  allVoices = synth.getVoices();
+  englishVoices = allVoices.filter(v => /^en(-|_)/i.test(v.lang) || /English/i.test(v.name));
+  const pool = englishVoices.length ? englishVoices : allVoices;
+
+  voiceSelect.innerHTML = '';
+  pool.forEach((v, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${v.name} — ${v.lang} · ${v.localService ? '本地' : '在线'}${v.default ? ' · default' : ''}`;
+    voiceSelect.appendChild(opt);
+  });
+
+  if (!pool.length) {
+    voiceSelect.innerHTML = '<option>未检测到系统语音</option>';
+    statusEl.textContent = '未检测到 TTS 语音';
+    return;
+  }
+
+  // Prefer a local English voice. Online/Natural voices are more likely to
+  // buffer again for every new utterance.
+  let preferred = pool.findIndex(v =>
+    v.localService &&
+    /^en(-|_)/i.test(v.lang) &&
+    !/Natural|Online/i.test(v.name)
+  );
+  if (preferred < 0) preferred = pool.findIndex(v => v.localService && /^en(-|_)/i.test(v.lang));
+  if (preferred < 0) preferred = pool.findIndex(v => /^en(-|_)/i.test(v.lang));
+  voiceSelect.selectedIndex = preferred >= 0 ? preferred : 0;
+}
+
+loadVoices();
+if ('onvoiceschanged' in speechSynthesis) speechSynthesis.onvoiceschanged = loadVoices;
+setTimeout(loadVoices, 250);
+setTimeout(loadVoices, 900);
+
+function chosenVoice() {
+  const pool = englishVoices.length ? englishVoices : synth.getVoices();
+  return pool[voiceSelect.selectedIndex] || pool[0] || null;
+}
+
+function clearSpeaking() {
+  document.querySelectorAll('.sentence-card.speaking').forEach(x => x.classList.remove('speaking'));
+  currentCard = null;
+}
+
+function highlightCard(index) {
+  clearSpeaking();
+  const card = document.getElementById('s' + (index + 1));
+  if (!card) return;
+  card.classList.add('speaking');
+  currentCard = card;
+  card.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/*
+  Voice pre-warming:
+  initialize the browser/OS voice silently BEFORE the requested sentence.
+  If a cold-start delay is unavoidable, it happens before speech begins,
+  rather than after the first spoken word.
+*/
+function ensureVoiceWarm(callback) {
+  const v = chosenVoice();
+  const key = voiceKey(v);
+
+  if (!v || warmedVoiceKey === key) {
+    callback();
+    return;
+  }
+
+  synth.cancel();
+  const warm = new SpeechSynthesisUtterance('ready');
+  warm.voice = v;
+  warm.lang = v.lang || 'en-US';
+  warm.rate = 2.0;
+  warm.volume = 0.0;
+  warm.pitch = 1;
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    warmedVoiceKey = key;
+    setTimeout(callback, 40);
+  };
+  warm.onend = finish;
+  warm.onerror = finish;
+  synth.speak(warm);
+
+  // Fallback for Chromium builds that occasionally fail to emit onend
+  // for a muted utterance.
+  setTimeout(finish, 300);
+}
+
+function speakSentence(text, card=null) {
+  if (!('speechSynthesis' in window)) {
+    alert('此浏览器不支持 Web Speech API。建议使用最新版 Chrome 或 Edge。');
+    return;
+  }
+
+  playToken++;
+  const token = playToken;
+  synth.cancel();
+  clearSpeaking();
+
+  ensureVoiceWarm(() => {
+    if (token !== playToken) return;
+
+    const utter = new SpeechSynthesisUtterance(text);
+    const v = chosenVoice();
+    if (v) utter.voice = v;
+    utter.lang = v?.lang || 'en-US';
+    utter.rate = parseFloat(rate.value);
+    utter.pitch = 1;
+    utter.volume = 1;
+
+    if (card) {
+      card.classList.add('speaking');
+      currentCard = card;
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    utter.onstart = () => statusEl.textContent = '正在朗读本句';
+    utter.onend = () => {
+      if (card) card.classList.remove('speaking');
+      statusEl.textContent = '就绪';
+    };
+    utter.onerror = (e) => {
+      if (card) card.classList.remove('speaking');
+      statusEl.textContent = '朗读失败：' + (e.error || 'unknown');
+    };
+
+    synth.speak(utter);
+  });
+}
+
+/*
+  Whole article:
+  ONE SpeechSynthesisUtterance for the complete article.
+  This is the key fix: sentence boundaries no longer start a new TTS request.
+*/
+const separator = ' ';
+const fullText = sentences.join(separator);
+const sentenceStarts = [];
+{
+  let pos = 0;
+  sentences.forEach((s, i) => {
+    sentenceStarts.push(pos);
+    pos += s.length + (i < sentences.length - 1 ? separator.length : 0);
+  });
+}
+
+function sentenceIndexForChar(charIndex) {
+  let lo = 0, hi = sentenceStarts.length - 1, ans = 0;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    if (sentenceStarts[mid] <= charIndex) {
+      ans = mid;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  return ans;
+}
+
+function speakWholeArticle() {
+  if (!('speechSynthesis' in window)) {
+    alert('此浏览器不支持 Web Speech API。建议使用最新版 Chrome 或 Edge。');
+    return;
+  }
+
+  playToken++;
+  const token = playToken;
+  synth.cancel();
+  clearSpeaking();
+
+  ensureVoiceWarm(() => {
+    if (token !== playToken) return;
+
+    const utter = new SpeechSynthesisUtterance(fullText);
+    const v = chosenVoice();
+    if (v) utter.voice = v;
+    utter.lang = v?.lang || 'en-US';
+    utter.rate = parseFloat(rate.value);
+    utter.pitch = 1;
+    utter.volume = 1;
+
+    let lastSentenceIndex = -1;
+
+    utter.onstart = () => {
+      statusEl.textContent = '整篇连续朗读';
+      highlightCard(0);
+      lastSentenceIndex = 0;
+    };
+
+    // Keep sentence highlighting without splitting the audio into sentences.
+    utter.onboundary = (e) => {
+      if (token !== playToken || typeof e.charIndex !== 'number') return;
+      const idx = sentenceIndexForChar(e.charIndex);
+      if (idx !== lastSentenceIndex) {
+        lastSentenceIndex = idx;
+        highlightCard(idx);
+        statusEl.textContent = `整篇连续朗读 ${idx + 1}/${sentences.length}`;
+      }
+    };
+
+    utter.onend = () => {
+      if (token !== playToken) return;
+      clearSpeaking();
+      statusEl.textContent = '整篇朗读完成';
+    };
+
+    utter.onerror = (e) => {
+      if (token !== playToken) return;
+      clearSpeaking();
+      statusEl.textContent = '朗读失败：' + (e.error || 'unknown');
+    };
+
+    synth.speak(utter);
+  });
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-text]');
+  if (!btn) return;
+  const card = btn.closest('.sentence-card');
+  speakSentence(btn.dataset.text, card);
+});
+
+document.getElementById('playAll').addEventListener('click', speakWholeArticle);
+
+document.getElementById('pauseBtn').addEventListener('click', () => {
+  if (synth.speaking && !synth.paused) {
+    synth.pause();
+    statusEl.textContent = '已暂停';
+  }
+});
+
+document.getElementById('resumeBtn').addEventListener('click', () => {
+  if (synth.paused) {
+    synth.resume();
+    statusEl.textContent = '继续朗读';
+  }
+});
+
+document.getElementById('stopBtn').addEventListener('click', () => {
+  playToken++;
+  synth.cancel();
+  clearSpeaking();
+  clearListHighlight();
+  statusEl.textContent = '已停止';
+});
+
+rate.addEventListener('input', () => {
+  rateVal.textContent = Number(rate.value).toFixed(2) + '×';
+});
+
+voiceSelect.addEventListener('change', () => {
+  warmedVoiceKey = null;
+  synth.cancel();
+  clearSpeaking();
+  const v = chosenVoice();
+  statusEl.textContent = v?.localService
+    ? '已选择本地语音（推荐）'
+    : '当前为在线语音；若有开头停顿，建议切换到“本地”音色';
+});
+
+
+function clearListHighlight() {
+  document.querySelectorAll('.speaking-item').forEach(el => el.classList.remove('speaking-item'));
+}
+
+function highlightListItem(kind, index) {
+  clearListHighlight();
+  if (kind === 'vocab') {
+    const items = document.querySelectorAll('#vocab .vocab-card');
+    const el = items[index];
+    if (el) {
+      el.classList.add('speaking-item');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  } else if (kind === 'chunk') {
+    const rows = document.querySelectorAll('#chunks tbody tr');
+    const el = rows[index];
+    if (el) {
+      el.classList.add('speaking-item');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+}
+
+function buildContinuousListText(items) {
+  // Periods create a short natural separation without creating new utterances.
+  return items.map(x => x.trim()).filter(Boolean).join('. ') + '.';
+}
+
+function buildItemStarts(items) {
+  const starts = [];
+  let pos = 0;
+  items.forEach((item, i) => {
+    starts.push(pos);
+    pos += item.trim().length;
+    if (i < items.length - 1) pos += 2; // ". "
+    else pos += 1; // final "."
+  });
+  return starts;
+}
+
+function indexForChar(starts, charIndex) {
+  let lo = 0, hi = starts.length - 1, ans = 0;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    if (starts[mid] <= charIndex) {
+      ans = mid;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  return ans;
+}
+
+function speakContinuousList(items, kind, label) {
+  if (!('speechSynthesis' in window) || !items.length) return;
+
+  playToken++;
+  const token = playToken;
+  synth.cancel();
+  clearSpeaking();
+  clearListHighlight();
+
+  ensureVoiceWarm(() => {
+    if (token !== playToken) return;
+
+    const continuousText = buildContinuousListText(items);
+    const starts = buildItemStarts(items);
+    const utter = new SpeechSynthesisUtterance(continuousText);
+    const v = chosenVoice();
+    if (v) utter.voice = v;
+    utter.lang = v?.lang || 'en-US';
+    utter.rate = parseFloat(rate.value);
+    utter.pitch = 1;
+    utter.volume = 1;
+
+    let lastIndex = -1;
+
+    utter.onstart = () => {
+      highlightListItem(kind, 0);
+      lastIndex = 0;
+      statusEl.textContent = `${label} 1/${items.length}`;
+    };
+
+    utter.onboundary = (e) => {
+      if (token !== playToken || typeof e.charIndex !== 'number') return;
+      const idx = indexForChar(starts, e.charIndex);
+      if (idx !== lastIndex && idx >= 0 && idx < items.length) {
+        lastIndex = idx;
+        highlightListItem(kind, idx);
+        statusEl.textContent = `${label} ${idx + 1}/${items.length}`;
+      }
+    };
+
+    utter.onend = () => {
+      if (token !== playToken) return;
+      clearListHighlight();
+      statusEl.textContent = `${label}完成`;
+    };
+
+    utter.onerror = (e) => {
+      if (token !== playToken) return;
+      clearListHighlight();
+      statusEl.textContent = `${label}失败：` + (e.error || 'unknown');
+    };
+
+    synth.speak(utter);
+  });
+}
+
+document.getElementById('playAllVocab')?.addEventListener('click', () => {
+  speakContinuousList(vocabTerms, 'vocab', '生词连续朗读');
+});
+
+document.getElementById('playAllChunks')?.addEventListener('click', () => {
+  speakContinuousList(chunkTerms, 'chunk', '词块连续朗读');
+});
+
+
+document.querySelectorAll('.tabbtn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+
+// Helps some Chromium builds keep very long utterances active without restarting them.
+setInterval(() => {
+  if (synth.speaking && !synth.paused) synth.resume();
+}, 10000);
+</script>
+
+</body>
+</html>

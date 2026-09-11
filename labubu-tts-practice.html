@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Labubu：从爆红到降温｜英语精读与 TTS 跟练</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e4e8f0;
+      --brand: #3157d5;
+      --brand-soft: #edf1ff;
+      --word: #fff0a8;
+      --chunk: #dff1ff;
+      --active: #eef4ff;
+      --danger: #b42318;
+      --shadow: 0 10px 30px rgba(25, 39, 70, .07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+    button, select, input { font: inherit; }
+    button { cursor: pointer; }
+    .hero {
+      padding: 52px 20px 38px;
+      color: white;
+      background: linear-gradient(125deg, #172554, #3157d5 60%, #6d5bd0);
+    }
+    .hero-inner, main { width: min(1120px, calc(100% - 32px)); margin: auto; }
+    .eyebrow { margin: 0 0 10px; opacity: .78; letter-spacing: .08em; font-size: 13px; }
+    h1 { margin: 0; font-size: clamp(30px, 5vw, 54px); line-height: 1.12; }
+    .subtitle { max-width: 760px; margin: 16px 0 0; color: #e2e8ff; font-size: 17px; }
+    .source-note { margin-top: 18px; font-size: 13px; color: #cbd5ff; }
+    .sticky {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .toolbar {
+      width: min(1120px, calc(100% - 32px));
+      margin: auto;
+      padding: 10px 0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar button, .speak, .favorite, .tab {
+      border: 1px solid #d5dae5;
+      border-radius: 10px;
+      background: white;
+      color: var(--ink);
+      padding: 8px 12px;
+    }
+    .toolbar .primary, .tab.active { background: var(--brand); color: white; border-color: var(--brand); }
+    .toolbar .stop { color: var(--danger); }
+    .toolbar select { max-width: 245px; border: 1px solid #d5dae5; border-radius: 10px; padding: 7px 9px; background: white; }
+    .voice-status { width: 100%; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .rate { display: flex; gap: 7px; align-items: center; color: var(--muted); font-size: 14px; }
+    .rate input { width: 110px; }
+    .tabs { display: flex; gap: 8px; margin: 26px 0 18px; overflow-x: auto; padding-bottom: 3px; }
+    .tab { white-space: nowrap; }
+    .panel { display: none; padding-bottom: 60px; }
+    .panel.active { display: block; }
+    .section-intro, .summary-card, .sentence, .table-wrap, .empty {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .section-intro, .summary-card { padding: 22px; margin-bottom: 16px; }
+    .section-intro h2, .summary-card h2 { margin: 0 0 8px; }
+    .section-intro p, .summary-card p { margin: 0; color: var(--muted); }
+    .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; font-size: 14px; color: var(--muted); }
+    .legend i { display: inline-block; width: 20px; height: 11px; border-radius: 3px; margin-right: 5px; }
+    .group-title { margin: 34px 0 12px; font-size: 20px; }
+    .sentence { padding: 20px; margin: 12px 0; transition: .2s ease; }
+    .sentence.active { background: var(--active); border-color: #9cb2ff; box-shadow: 0 0 0 3px rgba(49,87,213,.1); }
+    .sentence-head { display: flex; gap: 12px; align-items: flex-start; }
+    .number { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 32px; padding-top: 3px; }
+    .english { margin: 0; font: 600 18px/1.6 Georgia, "Times New Roman", serif; flex: 1; }
+    .chinese { margin: 9px 0 0 44px; color: #475467; }
+    .actions { margin: 15px 0 0 44px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .speak, .favorite { padding: 6px 10px; font-size: 14px; }
+    .favorite.saved { color: #9a6700; background: #fff8dc; border-color: #f2cf66; }
+    mark.word { background: var(--word); border-radius: 3px; padding: 1px 2px; }
+    mark.chunk { background: var(--chunk); border-bottom: 2px solid #60a5fa; border-radius: 3px; padding: 1px 2px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: #344054; background: #f9fafb; font-size: 13px; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { font-weight: 700; }
+    .mini { border: 0; background: var(--brand-soft); color: var(--brand); border-radius: 8px; padding: 4px 8px; margin-left: 6px; }
+    .empty { padding: 44px 20px; text-align: center; color: var(--muted); }
+    .correction-list { margin: 12px 0 0; padding-left: 22px; color: #475467; }
+    footer { text-align: center; color: var(--muted); font-size: 13px; padding: 10px 20px 36px; }
+    @media (max-width: 640px) {
+      .hero { padding-top: 36px; }
+      .toolbar { gap: 6px; }
+      .toolbar button { padding: 7px 9px; }
+      .toolbar select { max-width: 180px; }
+      .sentence { padding: 16px; }
+      .english { font-size: 17px; }
+      .chinese, .actions { margin-left: 0; }
+      .number { min-width: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">ENGLISH CLOSE READING · OFFLINE TTS</p>
+      <h1>Labubu：从爆红到降温</h1>
+      <p class="subtitle">将 262 条碎片化自动字幕重组为自然英文句子，按“崛起—机制—稀缺性破裂—全球意义”的逻辑精读。</p>
+      <p class="source-note">整理自用户提供的 PDF。文中商业数据、时间点与判断均保留原稿口径，未作外部事实核验。</p>
+    </div>
+  </header>
+
+  <div class="sticky">
+    <div class="toolbar">
+      <button class="primary" id="playAll">▶ 整篇朗读</button>
+      <button id="pause">Ⅱ 暂停</button>
+      <button id="resume">▷ 继续</button>
+      <button class="stop" id="stop">■ 停止</button>
+      <select id="voiceSource" aria-label="TTS 语音来源">
+        <option value="all">全部语音</option>
+        <option value="online">在线语音</option>
+        <option value="local">本地语音</option>
+      </select>
+      <select id="voice" aria-label="英语声音"><option>正在加载英语声音…</option></select>
+      <label class="rate">语速 <input id="rate" type="range" min="0.65" max="1.35" step="0.05" value="0.9"><span id="rateValue">0.90×</span></label>
+      <span class="voice-status" id="voiceStatus">在线语音由 Chrome / Edge 和操作系统提供，使用时需要网络。</span>
+    </div>
+  </div>
+
+  <main>
+    <nav class="tabs" aria-label="学习板块">
+      <button class="tab active" data-panel="reading">原文精读</button>
+      <button class="tab" data-panel="vocabulary">生词表</button>
+      <button class="tab" data-panel="chunks">词块与固定搭配</button>
+      <button class="tab" data-panel="favorites">难句收藏 <span id="favoriteCount">0</span></button>
+      <button class="tab" data-panel="notes">整理说明</button>
+    </nav>
+
+    <section class="panel active" id="reading">
+      <div class="section-intro">
+        <h2>原文精读</h2>
+        <p>点击任一句独立朗读；整篇朗读会逐句高亮并自动滚动。</p>
+        <div class="legend"><span><i style="background:var(--word)"></i>重点生词</span><span><i style="background:var(--chunk);border-bottom:2px solid #60a5fa"></i>高价值词块</span></div>
+      </div>
+      <div id="sentenceList"></div>
+    </section>
+
+    <section class="panel" id="vocabulary">
+      <div class="section-intro"><h2>生词：按本文语义记忆</h2><p>已删除与语境无关的词典义，并修正错误词性与误译。</p></div>
+      <div class="table-wrap"><table><thead><tr><th>单词 / 表达</th><th>词性</th><th>本文义</th><th>语境提示</th><th>发音</th></tr></thead><tbody id="vocabBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="chunks">
+      <div class="section-intro"><h2>词块与固定搭配</h2><p>优先收录能迁移到 IELTS 口语、写作和商业类阅读中的表达。</p></div>
+      <div class="table-wrap"><table><thead><tr><th>词块</th><th>本文意思</th><th>使用规则</th><th>自然例句</th><th>发音</th></tr></thead><tbody id="chunkBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="favorites">
+      <div class="section-intro"><h2>我的难句</h2><p>收藏保存在当前浏览器的 localStorage 中，重新打开页面后仍可恢复。</p></div>
+      <div id="favoriteList"></div>
+    </section>
+
+    <section class="panel" id="notes">
+      <div class="summary-card">
+        <h2>本次整理重点</h2>
+        <ul class="correction-list">
+          <li>把跨页、跨行的 262 条字幕合并为 128 个完整语义单元，并按论证阶段分组。</li>
+          <li><b>clips a Labubu to her bag</b> 改译为“把 Labubu 挂在包上”，不是“剪下一张”。</li>
+          <li><b>online drops</b> 是“限量线上发售”，不是“在线降价”。</li>
+          <li><b>make more prints money</b> 按语境理解为“多生产就等于印钞”，不是“赚取更多印刷货币”。</li>
+          <li><b>capture money that should go to fans</b> 结合上下文改为“截走本可让消费者受益的价值”。</li>
+          <li><b>crack the West</b> 是“打开西方市场”，不是物理意义的“打碎”。</li>
+          <li><b>addresses</b> 在 Fifth Avenue / Oxford Street 语境中指“地段/门面”，不是普通通信地址。</li>
+          <li>原稿中的金额、增长率和 2026 年事件按来源保留；页面不对这些说法作独立背书。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>单文件离线页面 · 推荐使用最新版 Chrome 或 Edge · TTS 声音取决于系统已安装语音</footer>
+
+  <script>
+    const sections = [
+      { title: "一、从一张照片开始", items: [
+        ["Two years ago, nobody outside Asia could even pronounce the name of this thing: Labubu.", "两年前，亚洲以外几乎没人会念这个东西的名字：Labubu。"],
+        ["It all started with one photo in April 2024: Lisa from Blackpink clipped a Labubu to her bag and posted it.", "一切始于 2024 年 4 月的一张照片：BLACKPINK 的 Lisa 把一只 Labubu 挂在包上并晒了出来。"],
+        ["Within a week, Pop Mart's sales across Southeast Asia went up 30%, with people queuing outside stores at six in the morning.", "一周之内，泡泡玛特在东南亚的销售额增长了 30%，人们早上六点就在店外排队。"],
+        ["One of them sold at auction for $170,000. Can you imagine?", "其中一只在拍卖会上卖到 17 万美元。你能想象吗？"],
+        ["By the time Rihanna and Beckham showed up with one a year later, the fire was already burning across Asia. The West had just noticed.", "一年后，当蕾哈娜和贝克汉姆也带着 Labubu 亮相时，这股热潮早已席卷亚洲；西方只是刚刚注意到。"],
+        ["The company behind it, Pop Mart, reached $5.5 billion in revenue in a single year - on paper, one of the best businesses of the decade.", "背后的公司泡泡玛特一年营收达到 55 亿美元；从账面看，它是这十年最出色的企业之一。"],
+        ["Everyone tells that story the same way: celebrities and hype. But that's just the tip of the iceberg.", "大家都用同一种方式讲这个故事：明星与炒作。但那只是冰山一角。"],
+        ["A plush toy doesn't sell 100 million units off one celebrity photo. Something much bigger was built underneath that.", "一款毛绒玩具不可能只靠一张明星照片卖出一亿件；其下还有一个更庞大的体系。"],
+        ["It's the smartest piece of product design I've seen in years.", "这是我多年来见过最聪明的产品设计之一。"],
+        ["In this video, I'll show you why Labubu actually worked, and how, in a matter of months, it went from the most wanted object on the planet to a textbook example of a company killing its golden goose.", "本视频会解释 Labubu 为何奏效，以及它如何在短短几个月内，从全球最抢手的物品变成一家公司杀鸡取卵的教科书案例。"],
+        ["My name is Béa, and you don't know me yet. I've been doing business in Asia for 20 years.", "我叫 Béa，你可能还不认识我。我在亚洲经商已有 20 年。"],
+        ["While Bertrand tracks where the money goes across Asia, I track why people open their wallets in the first place.", "Bertrand 追踪资金在亚洲的流向，而我研究的是人们最初为什么愿意掏钱。"],
+        ["If that sounds useful to you, hit subscribe.", "如果你觉得这类内容有用，欢迎订阅。"]
+      ]},
+      { title: "二、一个极不可能的崛起", items: [
+        ["To understand the fall, you need to see how unlikely the rise was.", "要理解它为何衰落，先要看到它的崛起有多么不可思议。"],
+        ["Labubu didn't come out of a corporate design lab. It came out of a children's picture book.", "Labubu 并非诞生于企业设计实验室，而是出自一本儿童绘本。"],
+        ["Kasing Lung, an illustrator born in Hong Kong and raised in the Netherlands, drew this little forest creature back in 2015 for a story series called The Monsters.", "出生于香港、成长于荷兰的插画家龙家升，早在 2015 年就为故事系列《The Monsters》画出了这个森林小生物。"],
+        ["Pointy ears, nine teeth, and a grin somewhere between adorable and slightly evil.", "尖耳朵、九颗牙，以及一抹介于可爱与微微邪恶之间的咧嘴笑。"],
+        ["For years, almost nobody cared. The company that changed that was Pop Mart.", "多年来几乎无人问津；改变这一切的是泡泡玛特。"],
+        ["Founded in Beijing in 2010 by Wang Ning, it started out basically as a variety store.", "泡泡玛特由王宁于 2010 年在北京创立，最初基本上是一家杂货店。"],
+        ["It mostly sold phone cases, cosmetics and random gadgets - nothing really worth the hype we know today.", "店里主要卖手机壳、化妆品和各种小玩意，与今天的热度完全不相称。"],
+        ["The business was going nowhere until he noticed that one shelf kept selling out: collectible figurines.", "生意一直没有起色，直到他发现有一排货架总是售罄：上面卖的是收藏公仔。"],
+        ["So he dropped everything else and bet the company on toys, sold in a very particular way: the blind box.", "于是他砍掉其他业务，把公司押在玩具上，并采用一种特别的销售方式：盲盒。"],
+        ["You pay $10 to $30 for a sealed box, and you don't know which figure is inside until you open it.", "你花 10 到 30 美元买一个密封盒，打开之前不知道里面是哪一款。"],
+        ["Each series has a rare secret edition, with a one-in-72 chance of getting one. Remember that detail, because the entire story turns on it.", "每个系列都有隐藏稀有款，抽中的概率约为 72 分之一。请记住这一点，因为整个故事都以它为关键。"],
+        ["In 2019, Lung licensed his monsters to Pop Mart. For four years, Labubu sat in the catalog as one character among many.", "2019 年，龙家升将 The Monsters 授权给泡泡玛特。此后四年，Labubu 只是产品目录里众多角色之一。"],
+        ["It was doing fine - nothing special.", "它表现尚可，但并不特别。"],
+        ["Then, in October 2023, Pop Mart put Labubu on a plush keychain. Six months later, Lisa posted the picture.", "随后在 2023 年 10 月，泡泡玛特把 Labubu 做成毛绒挂件。六个月后，Lisa 发布了那张照片。"],
+        ["The numbers after that point barely sound real.", "从那之后的数字，听起来几乎不像真的。"],
+        ["In 2024, the Labubu franchise pulled in around $430 million, up more than 700% in a year. In 2025, it reached $1.95 billion.", "2024 年，Labubu 这一 IP 带来约 4.3 亿美元收入，同比增长逾 700%；2025 年则达到 19.5 亿美元。"],
+        ["One character generated 38% of everything the company sold, while US sales multiplied twelvefold in a single year.", "单一角色贡献了公司总销售额的 38%，美国销售额则在一年内增至原来的 12 倍。"],
+        ["At the peak in the summer of 2025, Pop Mart was worth more on the stock market than Hasbro, Mattel and Sanrio combined.", "在 2025 年夏季的巅峰期，泡泡玛特的市值超过孩之宝、美泰和三丽鸥之和。"],
+        ["All three together were beaten by a plush monster on a keychain, made by a company most people in the West still couldn't name.", "三家公司加起来，竟被一只毛绒挂件怪物击败，而西方大多数人甚至还说不出这家公司的名字。"],
+        ["So that's the ascension. The question is why it reached that scale.", "这就是它的崛起。问题是：它为什么能达到如此规模？"]
+      ]},
+      { title: "三、真正推动增长的机器", items: [
+        ["Celebrity posts create spikes, and spikes usually fade within weeks. This one ran for two years and rebuilt an entire company around it.", "明星发帖会带来流量尖峰，而尖峰通常几周内就消退；这一次却持续了两年，还重塑了整家公司。"],
+        ["Something else was doing the heavy lifting.", "真正承担主要推动作用的，是别的东西。"],
+        ["Get rid of the fur and the teeth and look at what Pop Mart actually built: a slot machine you can carry in your pocket.", "抛开毛绒和牙齿，看看泡泡玛特真正造出了什么：一台可以装进口袋的老虎机。"],
+        ["The blind box works on something psychologists call variable reward.", "盲盒利用的是心理学家所说的“可变奖励”。"],
+        ["You don't know what you're going to get, and that uncertainty is the product.", "你不知道自己会得到什么，而这种不确定性本身就是产品。"],
+        ["It's the same mechanism behind slot machines, loot boxes in video games and refreshing your Instagram feed.", "老虎机、电子游戏抽箱以及反复刷新 Instagram 动态，背后都是同一种机制。"],
+        ["Your brain releases more dopamine while anticipating an uncertain reward than while receiving a guaranteed one. Casinos have known this for a century.", "与得到确定奖励相比，大脑在期待不确定奖励时会释放更多多巴胺；赌场一个世纪前就懂得这一点。"],
+        ["Pop Mart wrapped it in plush and sold it to 25-year-old women. And the design goes deeper than that.", "泡泡玛特给这套机制包上毛绒外壳，卖给二十五岁左右的女性，而设计还不止于此。"],
+        ["Every series has around twelve regular figures plus one secret edition, with odds of roughly one in 72.", "每个系列约有十二个普通款和一个隐藏款，抽中隐藏款的概率约为 72 分之一。"],
+        ["So when you open a box and get a duplicate, you haven't lost; you're one box closer - at least that's what your brain tells you.", "所以，当你拆出重复款时，你不觉得自己输了，反而觉得离目标又近了一盒——至少你的大脑会这样告诉你。"],
+        ["People filmed themselves opening ten, twenty or fifty boxes while chasing a secret.", "人们拍下自己为了隐藏款一次拆十盒、二十盒甚至五十盒的过程。"],
+        ["Those unboxing videos became free advertising watched by millions, and every video recruited new players into the same loop.", "这些开箱视频成了有数百万人观看的免费广告，每条视频又把新玩家拉进同一个循环。"],
+        ["Pop Mart also did something smart: it deliberately kept supply below demand.", "泡泡玛特还做了一件聪明的事：刻意让供给低于需求。"],
+        ["Stores had limited stock, and online drops sold out in minutes.", "门店库存有限，线上限量发售几分钟便售罄。"],
+        ["That scarcity created a resale market where a $30 Labubu could trade at $300, and rare editions carried premiums of 2,000% over retail.", "稀缺性催生了转售市场：30 美元的 Labubu 可以卖到 300 美元，稀有款相对零售价的溢价可达 2,000%。"],
+        ["It's nothing new; the same thing happens with Pokémon cards and sneakers.", "这并不新鲜；宝可梦卡牌和球鞋市场也有同样的现象。"],
+        ["Pop Mart made no money on those resales - zero. But the resale market was doing something far more useful than generating revenue.", "泡泡玛特没有从转售中赚到钱，一分钱也没有；但转售市场发挥了比创造营收更有价值的作用。"],
+        ["It made the product feel like an asset.", "它让产品给人一种“资产”的感觉。"],
+        ["When your friend tells you the toy she bought for $30 is now worth $300, a plush keychain stops being a purchase. It becomes a smart move.", "当朋友告诉你，她花 30 美元买的玩具如今值 300 美元时，毛绒挂件就不再像一次消费，而像一项聪明决策。"],
+        ["People were buying with the feeling that they couldn't lose money.", "人们购买时怀着一种“怎么都不会亏”的感觉。"],
+        ["By the end of 2025, Pop Mart had 72 million registered members in mainland China alone, with a repurchase rate of 55.7%.", "截至 2025 年底，仅中国大陆就有 7,200 万注册会员，复购率达 55.7%。"],
+        ["More than half of everyone who bought once came back for more. In retail, numbers like that are almost unheard of.", "超过一半的消费者买过一次还会继续购买；在零售业，这样的数字几乎闻所未闻。"],
+        ["The full architecture is genius: uncertainty makes buying feel like a game; secret editions turn one purchase into ten; scarcity turns customers into hunters; and resale prices turn a toy into an investment.", "整套架构堪称精妙：不确定性让购买像游戏；隐藏款把一次购买变成十次；稀缺性把顾客变成猎人；转售价又把玩具变成投资。"],
+        ["Celebrities sit on top as the visible 5% - the part everyone writes articles about.", "明星只处在最上层，是那看得见的 5%，也是所有文章争相报道的部分。"],
+        ["That machine is why a picture-book monster reached $2 billion a year. And that machine is also the reason everything collapsed.", "正是这台机器，让一个绘本怪物做到年收入 20 亿美元；也正是它，导致一切最终崩塌。"]
+      ]},
+      { title: "四、稀缺性被自己打破", items: [
+        ["The entire system rested on one fragile condition, and in 2025 Pop Mart broke it itself.", "整个体系建立在一个脆弱条件之上，而 2025 年泡泡玛特亲手打破了它。"],
+        ["Every layer of the machine depended on scarcity - the idea that there would never be quite enough Labubus.", "这台机器的每一层都依赖稀缺性，也就是“Labubu 永远差一点才够卖”的观念。"],
+        ["Through 2025, that scarcity was creating chaos.", "整个 2025 年，这种稀缺性不断制造混乱。"],
+        ["Fights broke out in UK stores, bad enough that Pop Mart pulled Labubu plush toys from every British shelf and moved sales online.", "英国门店爆发争抢，严重到泡泡玛特把 Labubu 毛绒产品从全英门店撤下，转到线上销售。"],
+        ["In California, robbers hit a warehouse and drove off with $30,000 of inventory.", "在加州，劫匪洗劫了一座仓库，带走价值 3 万美元的库存。"],
+        ["Real customers couldn't buy at retail anymore. Scalpers with bots got there first, and a $30 toy routinely cost $300 on the secondary market.", "真正的消费者已经无法按零售价买到商品；使用机器人的黄牛总能抢先一步，一只 30 美元的玩具在二级市场常常卖到 300 美元。"],
+        ["Inside Pop Mart, this looked like a problem: millions of people wanted the product and couldn't get it.", "在泡泡玛特内部，这看起来是一个问题：数百万人想买，却买不到。"],
+        ["Every business school on the planet teaches you the answer: make more. And I understand why.", "全世界的商学院都会给出同一个答案：增加产量。我也理解原因。"],
+        ["At Statrys, we help entrepreneurs do business across Asia every day, and when demand explodes, the pressure to scale is enormous.", "在 Statrys，我们每天帮助创业者在亚洲开展业务；当需求爆发时，扩大规模的压力极其巨大。"],
+        ["Your factory says yes, your investors say faster, and your competitors are circling. Saying no to money on the table is the hardest call in business.", "工厂说能做，投资者催你更快，竞争对手在四周伺机而动；拒绝眼前的钱，是商业上最难的决定。"],
+        ["So they said yes.", "所以，他们选择了增产。"],
+        ["In early 2024, Pop Mart was producing around 300,000 plush toys a month. By late 2025, it was producing 30 million a month.", "2024 年初，泡泡玛特每月生产约 30 万只毛绒玩具；到 2025 年末，月产量已达 3,000 万只。"],
+        ["It multiplied production by 100 in under two years, spun up factories in Vietnam, Indonesia and Cambodia, and flooded every channel that had been starving.", "不到两年，产量扩大 100 倍；公司在越南、印度尼西亚和柬埔寨迅速开设工厂，并向此前缺货的每条渠道大量铺货。"],
+        ["Its co-COO explained the logic with a comparison to concert tickets: fans overpay scalpers because a stadium can't add seats, but a factory can.", "联席首席运营官用演唱会门票解释这套逻辑：粉丝之所以向黄牛多付钱，是因为体育场不能增加座位，但工厂可以增加产量。"],
+        ["So why let scalpers capture value that should go to fans? It sounds completely reasonable.", "既然如此，为什么要让黄牛截走本可让消费者受益的价值？这听起来完全合理。"],
+        ["For almost any product, it would have been right. If people are lining up for your sneakers or ice cream, making more prints money.", "对于几乎任何产品，这个决定都是对的。如果人们排队买你的球鞋或冰淇淋，多生产就等于印钞。"],
+        ["But nobody was paying $300 for a plush toy. They were paying $300 for something that was hard to get.", "但人们并不是在为一只毛绒玩具支付 300 美元，而是在为一种“很难买到的东西”支付 300 美元。"],
+        ["The difficulty was the product. Pop Mart looked at its golden goose and decided to kill it.", "“难以获得”本身就是产品。泡泡玛特看着自己的金鹅，却决定亲手杀掉它。"],
+        ["Resale prices fell by half on most models, and some editions dropped below retail.", "大多数款式的转售价跌去一半，有些甚至低于零售价。"],
+        ["The moment a Labubu costs less second-hand than in the store, the asset story is dead. Nobody feels smart anymore.", "当二手 Labubu 比门店新货还便宜时，“资产”的故事就结束了，购买者也不再觉得自己做了聪明决定。"],
+        ["Scalpers dumped their inventory, pushing prices down further and triggering more dumping.", "黄牛抛售库存，进一步压低价格，又引发更多抛售。"],
+        ["Without the resale premium, the whole loop ran backwards: no hunt because everything was in stock; no unboxing drama because the secret figure wasn't worth anything; and no new recruits because your friend's $30 toy was now worth $15.", "失去转售溢价后，整个循环开始倒转：到处有货，便无须追逐；隐藏款不值钱，开箱便没有戏剧性；朋友那只 30 美元的玩具如今只值 15 美元，也不会再吸引新人入场。"],
+        ["Surprisingly, sales were still growing while the foundation cracked.", "令人意外的是，地基开裂时，销售仍在增长。"],
+        ["Revenue jumped 250% in the third quarter of 2025 even as resale prices collapsed.", "即使转售价暴跌，2025 年第三季度营收仍增长了 250%。"],
+        ["The machine was shipping to shelves faster than desire was dying.", "这台机器把商品送上货架的速度，比欲望消退的速度还快。"]
+      ]},
+      { title: "五、漂亮数据背后的降温", items: [
+        ["From inside the company, the numbers said everything was fine. But the numbers were measuring the past.", "从公司内部看，数字显示一切良好；但这些数字衡量的是过去。"],
+        ["Here is what the present looked like in the middle of 2026: search interest for Labubu was down 90% from its peak the previous August.", "到了 2026 年中，现实是：Labubu 的搜索热度较前一年 8 月的峰值下降了 90%。"],
+        ["The stock had lost more than half its value since the summer, wiping out $33 billion in market capitalization.", "公司股价自夏季以来已跌去一半以上，330 亿美元市值蒸发。"],
+        ["In March, Pop Mart published its best results ever - revenue up 185% and profit up more than 300% - yet the stock dropped 22% that same day.", "3 月，泡泡玛特公布史上最佳业绩：营收增长 185%，利润增长逾 300%；然而股价当天却下跌 22%。"],
+        ["Record numbers, and yet investors ran for the exit. Everyone could see that the engine behind those numbers was slowing.", "数字创下纪录，投资者却争相离场，因为大家都看得出，推动这些数字的引擎正在减速。"],
+        ["Counterfeits made it worse. Fakes nicknamed 'Lafufus' flooded every marketplace, at one point accounting for 40% of listings on some platforms.", "假货使情况更糟。绰号“Lafufu”的仿品涌入各大市场，一度占某些平台商品列表的 40%。"],
+        ["UK authorities seized £3.5 million worth, many of which failed basic safety tests.", "英国当局查获价值 350 万英镑的仿品，其中许多连基本安全测试都未通过。"],
+        ["When your product's entire value is authenticity and status, an ocean of fakes is poison.", "当产品的全部价值来自真品身份与地位象征时，泛滥的假货无异于毒药。"],
+        ["Analysts adjusted: HSBC cut its growth forecast for Pop Mart that year and trimmed its earnings estimates through 2027.", "分析师随即调整预期：汇丰下调了泡泡玛特当年的增长预测，并削减了截至 2027 年的盈利预估。"],
+        ["On resale platforms, a Labubu that traded at $70 the previous June now went for a fifth of that, and some editions sat below store price.", "在转售平台上，前一年 6 月卖 70 美元的 Labubu 如今只值其五分之一，有些款式甚至低于门店售价。"],
+        ["To be clear, Pop Mart was not dying: $5.4 billion in revenue and $1.8 billion in profit were far from bad.", "需要说明的是，泡泡玛特并未濒临倒闭：54 亿美元营收和 18 亿美元利润绝不算差。"],
+        ["It was simply a very profitable company that had lost its magic.", "它只是一家仍然非常赚钱、却失去了魔力的公司。"],
+        ["The next earnings report would arrive in August, and everyone would read it for one thing: what was left once the fever was gone.", "下一份财报将在 8 月发布，所有人只会关注一件事：热潮退去后还剩下什么。"],
+        ["That's the crash.", "这就是所谓的崩塌。"]
+      ]},
+      { title: "六、比股价更重要的故事", items: [
+        ["But zoom out from the stock chart, because the crash is not the most important thing that happened here.", "但请把视线从股价走势图拉远，因为崩跌并不是这里发生的最重要的事。"],
+        ["For 30 years, China had one job in the global economy: make things cheaper.", "三十年来，中国在全球经济中仿佛只有一个任务：把东西造得更便宜。"],
+        ["The West designs, China manufactures, and the brand on the box is American or European. Labubu broke that deal.", "西方设计、中国制造，盒子上的品牌属于美国或欧洲；Labubu 打破了这套分工。"],
+        ["A Chinese company sold a Chinese-owned character at full price to consumers in New York and Paris, who were fighting in stores to get one.", "一家中国公司把拥有自主产权的中国角色按全价卖给纽约和巴黎的消费者，而后者甚至在店里争抢。"],
+        ["People bought it because they wanted it: desire, at scale, exported from Beijing.", "人们购买，只因为他们想要它：这是从北京输出的、规模化的欲望。"],
+        ["Look at where the growth came from. In 2025, Pop Mart's sales in the Americas multiplied by more than eight in a single year, reaching about $940 million.", "看看增长来自哪里：2025 年，泡泡玛特在美洲的销售额一年增长逾八倍，达到约 9.4 亿美元。"],
+        ["Overseas markets went from a side business to 44% of total revenue, and the company ran 630 stores across 20 countries.", "海外市场从边缘业务增长到占总营收的 44%，公司在 20 个国家运营 630 家门店。"],
+        ["Its flagship locations sat on Fifth Avenue and Oxford Street, among the most expensive retail streets on Earth. Those are luxury-brand addresses, and a Chinese toy company took them.", "旗舰店进驻第五大道和牛津街——全球最昂贵的零售街区之一。那是奢侈品牌的地段，如今一家中国玩具公司也占据了一席之地。"],
+        ["The margins were extraordinary: Pop Mart's gross margin in 2025 hit 72%. For context, that's luxury territory - Louis Vuitton territory.", "利润率惊人：泡泡玛特 2025 年毛利率达到 72%。作为参照，这已经是奢侈品、甚至路易威登所在的区间。"],
+        ["Companies that compete on price live around 30% or 40%. You only reach 72% when customers pay for what a product means, not what it costs to make.", "靠价格竞争的公司毛利率通常在 30% 到 40% 左右；只有当顾客为产品的意义、而非制造成本买单时，才可能达到 72%。"],
+        ["A Labubu costs a few dollars to produce; the other $25 is pure brand.", "一只 Labubu 的生产成本只有几美元，其余约 25 美元都是品牌价值。"],
+        ["For decades, the question in boardrooms was when a Chinese consumer brand would crack the West. Everyone expected it to come from cars or electronics.", "几十年来，董事会一直在问：中国消费品牌何时才能打开西方市场？大家都以为突破口会是汽车或电子产品。"],
+        ["Instead, it came from a monster with nine teeth. Even governments took it seriously.", "结果，突破口却是一只有九颗牙的怪物，甚至各国政府也认真对待它。"],
+        ["When the British prime minister visited China in January 2026, Pop Mart's commitment to a European headquarters in London and seven new UK stores was announced as part of the trade discussions.", "2026 年 1 月英国首相访华时，泡泡玛特承诺在伦敦设立欧洲总部并新增七家英国门店，这被纳入贸易讨论成果。"],
+        ["A toy company was sitting in the middle of trade diplomacy between two major economies. That tells you how much this had stopped being about toys.", "一家玩具公司处在两大经济体贸易外交的中心；这说明事情早已不只是玩具。"],
+        ["I've watched Western brands spend fortunes trying to manufacture this kind of demand: decades of ad budgets, celebrity contracts and brand consultants.", "我见过西方品牌花费巨资，试图制造这种需求：几十年的广告预算、明星合约和品牌顾问。"],
+        ["Pop Mart got there with a blind box and a resale market.", "泡泡玛特靠一个盲盒和一个转售市场就做到了。"],
+        ["It is proof that a Chinese company can engineer global desire, which makes the fall even more frustrating.", "这证明中国公司能够塑造全球欲望，也正因如此，它的降温才更令人惋惜。"],
+        ["Nobody undercut Pop Mart. It took the most valuable thing it had built - that wanting - and killed it with a spreadsheet.", "不是竞争对手靠低价击败了泡泡玛特；是它自己把最有价值的成果——那股“想要”的冲动——用一张电子表格扼杀了。"]
+      ]},
+      { title: "七、Labubu 能否再次制造欲望？", items: [
+        ["Today, Pop Mart's answer is to copy Disney.", "如今，泡泡玛特给出的答案是效仿迪士尼。"],
+        ["Sony Pictures signed on for a Labubu movie, with the director of Paddington attached. A theme park in Beijing is being expanded.", "索尼影业签约开发 Labubu 电影，并邀请《帕丁顿熊》的导演参与；北京的一座主题乐园也在扩建。"],
+        ["The company launched a jewelry line where Labubu gold necklaces sell for more than $2,000.", "公司还推出珠宝系列，其中 Labubu 金项链售价超过 2,000 美元。"],
+        ["It also created a bench of other characters - Molly, Crybaby and Twinkle Twinkle - each already doing hundreds of millions a year.", "它还培养了 Molly、Crybaby 和 Twinkle Twinkle 等其他角色，每个角色的年销售额都已达到数亿美元。"],
+        ["The bet is that a character survives the hype cycle if you keep building worlds around it. It worked for Mickey Mouse.", "公司的赌注是：只要持续围绕角色构建世界，它就能穿越炒作周期；米老鼠曾经做到了。"],
+        ["It's just that nobody has proved it works for a blind-box monster. That's the test worth watching.", "只是还没有人证明，这套方法同样适用于一只盲盒怪物；这才是值得关注的考验。"],
+        ["Creating a global craze from Beijing was supposed to be impossible, and Pop Mart did it.", "从北京掀起全球狂热，原本被认为不可能，但泡泡玛特做到了。"],
+        ["Keeping that craze alive after flooding the market is something nobody has done either.", "而在市场被大量铺货后仍让这股狂热延续，同样是无人完成过的事。"],
+        ["So I'll leave you with the question its own CEO now faces every morning: if desire is something you can manufacture, is it something you can repair?", "最后留给你一个泡泡玛特 CEO 每天早上都要面对的问题：如果欲望可以被制造，它是否也可以被修复？"],
+        ["That's what this channel covers: what's really being built in Asia before it shows up on your side of the world.", "这正是本频道关注的内容：在亚洲真正发生的建设，如何在抵达你所在的世界之前就已成形。"],
+        ["If that's useful to you, subscribe. If you've bought one of these, or sold one at the peak, tell me in the comments - we read them.", "如果这对你有帮助，欢迎订阅。如果你买过 Labubu，或曾在高点卖出，请在评论区告诉我们，我们会阅读留言。"],
+        ["See you in the next video.", "下期视频见。"]
+      ]}
+    ];
+
+    const vocabulary = [
+      ["clip", "v.", "夹上；挂上", "clip A to B：把 A 夹/挂在 B 上"],
+      ["revenue", "n.", "营收", "商业语境中不是“税务署”"],
+      ["hype", "n.", "炒作；过度宣传造成的热度", "常与 craze、cycle 搭配"],
+      ["underneath", "prep./adv.", "在表面之下；背后", "文中是抽象意义：表象背后的系统"],
+      ["plush", "adj./n.", "毛绒的；毛绒玩具", "a plush keychain / plush toy"],
+      ["figurine", "n.", "小雕像；收藏公仔", "collectible figurines"],
+      ["catalog", "n.", "产品目录", "sit in the catalog：只是众多产品之一"],
+      ["franchise", "n.", "角色 IP 及其商业系列", "此处不是“特许经营门店”"],
+      ["ascension", "n.", "快速崛起", "此处不是宗教意义的“升天”"],
+      ["spike", "n.", "短期急剧上升", "a spike in demand/searches"],
+      ["fade", "v.", "逐渐消退", "热度、兴趣、记忆等慢慢减弱"],
+      ["variable reward", "n.", "可变奖励", "奖励出现的时间或内容不可预测"],
+      ["anticipate", "v.", "期待；预期", "anticipate an uncertain reward"],
+      ["duplicate", "n.", "重复款", "盲盒中抽到已有的同款"],
+      ["scarcity", "n.", "稀缺性", "supply stays below demand"],
+      ["resale", "n./adj.", "转售；二手交易", "resale market / resale price"],
+      ["premium", "n.", "溢价", "a premium over retail"],
+      ["repurchase rate", "n.", "复购率", "买过后再次购买的顾客比例"],
+      ["fragile", "adj.", "脆弱的", "a fragile condition/foundation"],
+      ["inventory", "n.", "库存商品", "文中不是抽象的“财产清单”"],
+      ["scalper", "n.", "黄牛；倒卖者", "高价转售稀缺商品的人"],
+      ["scale", "v.", "扩大业务或产能", "scale production / scale a business"],
+      ["spin up", "phr. v.", "迅速启动；快速建起", "spin up factories/servers/teams"],
+      ["dump", "v.", "大量抛售", "dump inventory"],
+      ["counterfeit", "n./adj.", "假货；仿冒的", "counterfeit products"],
+      ["authenticity", "n.", "真品属性；真实性", "与 status 一起构成产品价值"],
+      ["market capitalization", "n.", "市值", "常缩写为 market cap"],
+      ["flagship", "adj./n.", "旗舰店；旗舰的", "flagship location/store"],
+      ["gross margin", "n.", "毛利率", "销售收入扣除直接成本后的比例"],
+      ["undercut", "v.", "以更低价格抢走生意", "文中强调不是对手靠低价击败它"],
+      ["engineer", "v.", "精心设计并促成", "engineer global desire"],
+      ["craze", "n.", "一时风靡；狂热", "a global craze"],
+      ["flood", "v.", "大量涌入；使充斥", "flood the market/channel"],
+      ["territory", "n.", "所属层级；典型区间", "luxury territory：奢侈品级别"],
+      ["crack", "v.", "成功打开；攻克", "crack the West/market"],
+      ["bench", "n.", "后备阵容；储备人才/角色", "a bench of other characters"]
+    ];
+
+    const chunks = [
+      ["the tip of the iceberg", "冰山一角", "指可见部分只是整体很小的一部分", "The complaint was only the tip of the iceberg."],
+      ["off one photo", "仅凭一张照片", "off + 来源/契机，口语中表示“凭借”", "A brand cannot build lasting trust off one viral post."],
+      ["in a matter of months", "短短几个月内", "强调事情发生得很快", "The startup expanded nationwide in a matter of months."],
+      ["a textbook example of", "……的典型案例", "后接名词或动名词", "It is a textbook example of poor risk management."],
+      ["kill the golden goose", "杀鸡取卵；毁掉长期价值来源", "常写作 kill the goose that lays the golden eggs", "Aggressive pricing could kill the golden goose."],
+      ["open one's wallet", "愿意掏钱消费", "比 spend money 更形象", "People open their wallets when they see real value."],
+      ["in the first place", "最初；本来", "追问根本原因时常放句末", "Why did customers leave in the first place?"],
+      ["start out as", "起初是……", "描述事物早期身份", "The company started out as a small bookstore."],
+      ["go nowhere", "毫无进展；没有起色", "主语常为计划、事业、谈判", "The negotiations went nowhere."],
+      ["bet the company on", "把公司前途押在……上", "表示高风险战略投入", "They bet the company on electric vehicles."],
+      ["the story turns on", "整个故事取决于……", "turn on = 以……为关键", "The case turns on one missing document."],
+      ["pull in", "赚得；带来收入", "口语化商业表达，后接金额", "The film pulled in $50 million worldwide."],
+      ["at the peak", "在巅峰时期", "也可说 at its peak", "At its peak, the app had ten million users."],
+      ["do the heavy lifting", "承担主要工作", "表示贡献最大、任务最重", "Word of mouth did most of the heavy lifting."],
+      ["one in 72", "七十二分之一", "表示概率：a one-in-72 chance", "There is a one-in-ten chance of delay."],
+      ["keep supply below demand", "让供给低于需求", "商业供需表达", "The brand kept supply below demand to preserve exclusivity."],
+      ["sell out in minutes", "几分钟内售罄", "sell out 为不及物短语", "The limited edition sold out in minutes."],
+      ["carry a premium over retail", "比零售价有溢价", "premium 常与 over/above 搭配", "Rare models carry a premium over retail."],
+      ["come back for more", "再次购买；还想要更多", "用于复购或反复体验", "Satisfied customers often come back for more."],
+      ["be unheard of", "几乎闻所未闻", "强调极其罕见", "Such margins are almost unheard of in retail."],
+      ["rest on", "建立在；依赖于", "主语常为论点、体系、成功", "The strategy rests on two assumptions."],
+      ["break out", "突然爆发", "常用于冲突、火灾、疾病", "Fights broke out near the entrance."],
+      ["get there first", "抢先到达/下手", "指赶在别人之前", "Automated buyers got there first."],
+      ["money on the table", "眼前可获得的钱/利益", "leave money on the table = 放弃本可赚到的钱", "The firm left money on the table by underpricing the deal."],
+      ["print money", "像印钞一样赚钱", "夸张说法，表示利润来得极容易", "During the boom, every new store seemed to print money."],
+      ["run backwards", "反向运转；形成反向循环", "可用于机制或流程", "Once confidence fell, the feedback loop ran backwards."],
+      ["run for the exit", "争相离场", "常指投资者或参与者迅速退出", "Investors ran for the exit after the warning."],
+      ["account for", "占……比例；构成", "后接数量或比例", "Exports account for 40% of revenue."],
+      ["go for", "卖到某个价格", "口语中指售价或成交价", "The painting went for twice its estimate."],
+      ["zoom out from", "从局部拉远看整体", "也可抽象表示拓宽视角", "Zoom out from the quarterly data and examine the trend."],
+      ["compete on price", "靠价格竞争", "on 表示竞争维度", "Small firms cannot always compete on price."],
+      ["pay for what it means", "为产品代表的意义付费", "强调品牌与象征价值", "Luxury buyers pay for what the product means."],
+      ["take something seriously", "认真对待某事", "take + 宾语 + seriously", "Policymakers are taking the sector seriously."],
+      ["spend a fortune doing", "花巨资做某事", "fortune 可数，常用 a fortune", "Brands spend a fortune building awareness."],
+      ["build a world around", "围绕……构建完整世界观", "常用于 IP、品牌和叙事", "The studio built a rich world around the character."],
+      ["leave someone with a question", "留给某人一个问题", "总结演讲或文章时常用", "Let me leave you with one final question."]
+    ];
+
+    const flatSentences = [];
+    sections.forEach(section => section.items.forEach(item => flatSentences.push({ en: item[0], zh: item[1], section: section.title })));
+    const vocabTerms = vocabulary.map(row => row[0]);
+    const chunkTerms = chunks.map(row => row[0]);
+    let allEnglishVoices = [];
+    let voices = [];
+    let playToken = 0;
+    let currentIndex = -1;
+    const storageKey = "labubu-difficult-sentences-v1";
+    let favorites = new Set(JSON.parse(localStorage.getItem(storageKey) || "[]"));
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[char]));
+    }
+
+    function highlight(text) {
+      let html = escapeHtml(text);
+      const matches = [];
+      [...chunkTerms.map(term => [term, "chunk"]), ...vocabTerms.map(term => [term, "word"])]
+        .sort((a, b) => b[0].length - a[0].length)
+        .forEach(([term, type]) => {
+          const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          const regex = new RegExp(`\\b${escaped.replace(/\\ /g, "\\s+")}\\b`, "gi");
+          html = html.replace(regex, match => {
+            const token = `@@H${matches.length}@@`;
+            matches.push(`<mark class="${type}">${match}</mark>`);
+            return token;
+          });
+        });
+      return html.replace(/@@H(\d+)@@/g, (_, index) => matches[Number(index)]);
+    }
+
+    function renderSentences() {
+      let index = 0;
+      document.getElementById("sentenceList").innerHTML = sections.map(section => {
+        const cards = section.items.map(([en, zh]) => {
+          const cardIndex = index++;
+          return `<article class="sentence" id="sentence-${cardIndex}" data-index="${cardIndex}">
+            <div class="sentence-head"><span class="number">${String(cardIndex + 1).padStart(2, "0")}</span><p class="english">${highlight(en)}</p></div>
+            <p class="chinese">${zh}</p>
+            <div class="actions"><button class="speak" data-speak="${cardIndex}">▶ 朗读本句</button><button class="favorite ${favorites.has(cardIndex) ? "saved" : ""}" data-favorite="${cardIndex}">${favorites.has(cardIndex) ? "★ 已收藏" : "☆ 收藏难句"}</button></div>
+          </article>`;
+        }).join("");
+        return `<h3 class="group-title">${section.title}</h3>${cards}`;
+      }).join("");
+    }
+
+    function renderTables() {
+      document.getElementById("vocabBody").innerHTML = vocabulary.map(row => `<tr>${row.slice(0, 4).map(cell => `<td>${cell}</td>`).join("")}<td><button class="mini" data-text="${escapeHtml(row[0])}">🔊</button></td></tr>`).join("");
+      document.getElementById("chunkBody").innerHTML = chunks.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join("")}<td><button class="mini" data-text="${escapeHtml(row[0] + ". " + row[3])}">🔊</button></td></tr>`).join("");
+    }
+
+    function renderFavorites() {
+      const list = document.getElementById("favoriteList");
+      const saved = [...favorites].filter(index => flatSentences[index]).sort((a, b) => a - b);
+      document.getElementById("favoriteCount").textContent = saved.length;
+      if (!saved.length) {
+        list.innerHTML = '<div class="empty">还没有收藏难句。回到“原文精读”，点击句子下方的 ☆ 即可收藏。</div>';
+        return;
+      }
+      list.innerHTML = saved.map(index => {
+        const item = flatSentences[index];
+        return `<article class="sentence"><p class="english">${escapeHtml(item.en)}</p><p class="chinese">${item.zh}</p><div class="actions"><button class="speak" data-speak="${index}">▶ 朗读</button><button class="favorite saved" data-favorite="${index}">取消收藏</button></div></article>`;
+      }).join("");
+    }
+
+    function loadVoices() {
+      allEnglishVoices = speechSynthesis.getVoices().filter(voice => /^en[-_]/i.test(voice.lang) || /english/i.test(voice.name));
+      const source = document.getElementById("voiceSource").value;
+      voices = allEnglishVoices.filter(voice => source === "all" || (source === "local" ? voice.localService : !voice.localService));
+      const select = document.getElementById("voice");
+      const sourceLabel = source === "online" ? "在线" : source === "local" ? "本地" : "可用";
+      select.innerHTML = voices.length ? voices.map((voice, index) => `<option value="${index}">${voice.localService ? "💻 本地" : "☁ 在线"} · ${voice.name} · ${voice.lang}</option>`).join("") : `<option value="">没有${sourceLabel}英语语音</option>`;
+      const preferred = voices.findIndex(voice => /en-GB/i.test(voice.lang)) >= 0 ? voices.findIndex(voice => /en-GB/i.test(voice.lang)) : voices.findIndex(voice => /en-US/i.test(voice.lang));
+      if (preferred >= 0) select.value = String(preferred);
+      const onlineCount = allEnglishVoices.filter(voice => !voice.localService).length;
+      const localCount = allEnglishVoices.filter(voice => voice.localService).length;
+      document.getElementById("voiceStatus").textContent = `检测到 ${onlineCount} 个在线、${localCount} 个本地英语语音。在线声音由浏览器或系统提供，需要联网；若为 0，请在最新版 Chrome / Edge 中重开页面。`;
+    }
+
+    function selectedVoice() {
+      const value = document.getElementById("voice").value;
+      return value === "" ? null : voices[Number(value)] || null;
+    }
+
+    function clearActive() {
+      document.querySelectorAll(".sentence.active").forEach(card => card.classList.remove("active"));
+      currentIndex = -1;
+    }
+
+    function activateSentence(index, scroll = true) {
+      clearActive();
+      currentIndex = index;
+      const card = document.getElementById(`sentence-${index}`);
+      if (card) {
+        card.classList.add("active");
+        if (scroll) card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    function makeUtterance(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = selectedVoice()?.lang || "en-US";
+      utterance.voice = selectedVoice();
+      utterance.rate = Number(document.getElementById("rate").value);
+      return utterance;
+    }
+
+    function speakText(text, index = null) {
+      playToken++;
+      speechSynthesis.cancel();
+      if (index !== null) activateSentence(index);
+      const utterance = makeUtterance(text);
+      utterance.onend = () => { if (index !== null) clearActive(); };
+      utterance.onerror = () => { if (index !== null) clearActive(); };
+      speechSynthesis.speak(utterance);
+    }
+
+    function playAllFrom(startIndex = 0) {
+      speechSynthesis.cancel();
+      const token = ++playToken;
+      function next(index) {
+        if (token !== playToken || index >= flatSentences.length) {
+          clearActive();
+          return;
+        }
+        activateSentence(index);
+        const utterance = makeUtterance(flatSentences[index].en);
+        utterance.onend = () => next(index + 1);
+        utterance.onerror = event => { if (event.error !== "canceled" && token === playToken) next(index + 1); };
+        speechSynthesis.speak(utterance);
+      }
+      next(startIndex);
+    }
+
+    function toggleFavorite(index) {
+      favorites.has(index) ? favorites.delete(index) : favorites.add(index);
+      localStorage.setItem(storageKey, JSON.stringify([...favorites]));
+      renderSentences();
+      renderFavorites();
+    }
+
+    document.addEventListener("click", event => {
+      const tab = event.target.closest(".tab");
+      if (tab) {
+        document.querySelectorAll(".tab, .panel").forEach(element => element.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.panel).classList.add("active");
+      }
+      const speakButton = event.target.closest("[data-speak]");
+      if (speakButton) {
+        const index = Number(speakButton.dataset.speak);
+        speakText(flatSentences[index].en, index);
+      }
+      const favoriteButton = event.target.closest("[data-favorite]");
+      if (favoriteButton) toggleFavorite(Number(favoriteButton.dataset.favorite));
+      const textButton = event.target.closest("[data-text]");
+      if (textButton) speakText(textButton.dataset.text);
+    });
+
+    document.getElementById("playAll").addEventListener("click", () => playAllFrom(currentIndex >= 0 ? currentIndex : 0));
+    document.getElementById("pause").addEventListener("click", () => speechSynthesis.pause());
+    document.getElementById("resume").addEventListener("click", () => speechSynthesis.resume());
+    document.getElementById("stop").addEventListener("click", () => { playToken++; speechSynthesis.cancel(); clearActive(); });
+    document.getElementById("rate").addEventListener("input", event => { document.getElementById("rateValue").textContent = `${Number(event.target.value).toFixed(2)}×`; });
+    document.getElementById("voiceSource").addEventListener("change", loadVoices);
+    speechSynthesis.onvoiceschanged = loadVoices;
+    renderSentences();
+    renderTables();
+    renderFavorites();
+    loadVoices();
+  </script>
+</body>
+</html>
