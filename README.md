@@ -1,4 +1,4 @@
-# english-learning
+# personal english-learning
 
 个人英语精读与 TTS 跟练网页合集，用于集中整理英文原文、中英逐句对照、生词语境释义和实用词块。
 
