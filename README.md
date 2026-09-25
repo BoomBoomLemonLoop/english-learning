@@ -4,4 +4,6 @@
 
 每篇内容都是可以独立打开的 HTML 学习页面，支持浏览器朗读、语速与语音选择、当前句高亮，以及难句收藏。网站通过 GitHub Pages 发布，可在电脑和手机浏览器中直接使用。
 
-访问网站：<https://boomboomlemonloop.github.io/english-learning/>
+视频精讲网站：<https://boomboomlemonloop.github.io/english-learning/>
+
+基础词汇访问网站：<https://boomboomlemonloop.github.io/english-learning/precision-english/>
