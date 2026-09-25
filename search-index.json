@@ -1,0 +1,3419 @@
+[
+  {
+    "type": "Lexical Element",
+    "title": "a.m..ADV1",
+    "terms": [
+      "a.m..ADV1",
+      "午夜以后、正午以前的时刻标记",
+      "8 a.m. sharp",
+      "between 9 a.m. and noon"
+    ],
+    "url": "lexical/a-m/index.html#a.m..ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "a.m.",
+    "terms": [
+      "a.m."
+    ],
+    "url": "lexical/a-m/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alarm.N1",
+    "terms": [
+      "alarm.N1",
+      "警报装置或警报信号",
+      "fire alarm",
+      "burglar alarm",
+      "alarm clock",
+      "raise the alarm",
+      "sound the alarm",
+      "raise/sound the alarm"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "raise the alarm",
+    "terms": [
+      "raise the alarm",
+      "alarm.N1",
+      "警报装置或警报信号"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "sound the alarm",
+    "terms": [
+      "sound the alarm",
+      "alarm.N1",
+      "警报装置或警报信号"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "raise/sound the alarm",
+    "terms": [
+      "raise/sound the alarm",
+      "alarm.N1",
+      "警报装置或警报信号"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alarm.N2",
+    "terms": [
+      "alarm.N2",
+      "因察觉危险而产生的惊恐或担忧",
+      "cause alarm",
+      "growing alarm",
+      "a cause for alarm"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "a cause for alarm",
+    "terms": [
+      "a cause for alarm",
+      "alarm.N2",
+      "因察觉危险而产生的惊恐或担忧"
+    ],
+    "url": "lexical/alarm/index.html#alarm.N2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alarm.V1",
+    "terms": [
+      "alarm.V1",
+      "使某人因危险或严重问题而惊恐或担忧",
+      "deeply alarmed",
+      "needlessly alarm"
+    ],
+    "url": "lexical/alarm/index.html#alarm.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "alarm",
+    "terms": [
+      "alarm"
+    ],
+    "url": "lexical/alarm/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alcohol.N1",
+    "terms": [
+      "alcohol.N1",
+      "酒精这种物质，或统称含酒精饮料",
+      "alcohol consumption",
+      "excessive alcohol consumption",
+      "alcohol abuse",
+      "blood alcohol level",
+      "under the influence of alcohol",
+      "alcohol-free",
+      "under the influence of alcohol"
+    ],
+    "url": "lexical/alcohol/index.html#alcohol.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "under the influence of alcohol",
+    "terms": [
+      "under the influence of alcohol",
+      "alcohol.N1",
+      "酒精这种物质，或统称含酒精饮料"
+    ],
+    "url": "lexical/alcohol/index.html#alcohol.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "alcohol-free",
+    "terms": [
+      "alcohol-free",
+      "alcohol.N1",
+      "酒精这种物质，或统称含酒精饮料"
+    ],
+    "url": "lexical/alcohol/index.html#alcohol.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "under the influence of alcohol",
+    "terms": [
+      "under the influence of alcohol",
+      "alcohol.N1",
+      "酒精这种物质，或统称含酒精饮料"
+    ],
+    "url": "lexical/alcohol/index.html#alcohol.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "alcohol",
+    "terms": [
+      "alcohol"
+    ],
+    "url": "lexical/alcohol/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alike.ADJ1",
+    "terms": [
+      "alike.ADJ1",
+      "彼此相像的",
+      "strikingly alike",
+      "remarkably alike",
+      "look alike",
+      "be alike in many respects"
+    ],
+    "url": "lexical/alike/index.html#alike.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "look alike",
+    "terms": [
+      "look alike",
+      "alike.ADJ1",
+      "彼此相像的"
+    ],
+    "url": "lexical/alike/index.html#alike.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "be alike in many respects",
+    "terms": [
+      "be alike in many respects",
+      "alike.ADJ1",
+      "彼此相像的"
+    ],
+    "url": "lexical/alike/index.html#alike.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alike.ADV1",
+    "terms": [
+      "alike.ADV1",
+      "以同样方式；同样适用于所列各方",
+      "friends and strangers alike",
+      "young and old alike",
+      "A and B alike"
+    ],
+    "url": "lexical/alike/index.html#alike.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "friends and strangers alike",
+    "terms": [
+      "friends and strangers alike",
+      "alike.ADV1",
+      "以同样方式；同样适用于所列各方"
+    ],
+    "url": "lexical/alike/index.html#alike.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "young and old alike",
+    "terms": [
+      "young and old alike",
+      "alike.ADV1",
+      "以同样方式；同样适用于所列各方"
+    ],
+    "url": "lexical/alike/index.html#alike.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "A and B alike",
+    "terms": [
+      "A and B alike",
+      "alike.ADV1",
+      "以同样方式；同样适用于所列各方"
+    ],
+    "url": "lexical/alike/index.html#alike.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "alike",
+    "terms": [
+      "alike"
+    ],
+    "url": "lexical/alike/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alive.ADJ1",
+    "terms": [
+      "alive.ADJ1",
+      "活着的；没有死亡",
+      "found alive",
+      "keep someone alive",
+      "alive and well"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "alive and well",
+    "terms": [
+      "alive and well",
+      "alive.ADJ1",
+      "活着的；没有死亡"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alive.ADJ2",
+    "terms": [
+      "alive.ADJ2",
+      "仍存在、仍活跃或仍有影响的",
+      "keep the tradition alive",
+      "remain alive",
+      "keep X alive"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "keep X alive",
+    "terms": [
+      "keep X alive",
+      "alive.ADJ2",
+      "仍存在、仍活跃或仍有影响的"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alive.ADJ3",
+    "terms": [
+      "alive.ADJ3",
+      "充满活动、活力或警觉意识的",
+      "alive with excitement",
+      "fully alive to the risks",
+      "come alive",
+      "come alive"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "come alive",
+    "terms": [
+      "come alive",
+      "alive.ADJ3",
+      "充满活动、活力或警觉意识的"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "come alive",
+    "terms": [
+      "come alive",
+      "alive.ADJ3",
+      "充满活动、活力或警觉意识的"
+    ],
+    "url": "lexical/alive/index.html#alive.ADJ3"
+  },
+  {
+    "type": "Headword",
+    "title": "alive",
+    "terms": [
+      "alive"
+    ],
+    "url": "lexical/alive/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "all.DET1",
+    "terms": [
+      "all.DET1",
+      "整个数量或集合中的每一个成员",
+      "all day",
+      "all kinds of",
+      "all the time",
+      "all of a sudden",
+      "all (of) X"
+    ],
+    "url": "lexical/all/index.html#all.DET1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all the time",
+    "terms": [
+      "all the time",
+      "all.DET1",
+      "整个数量或集合中的每一个成员"
+    ],
+    "url": "lexical/all/index.html#all.DET1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all of a sudden",
+    "terms": [
+      "all of a sudden",
+      "all.DET1",
+      "整个数量或集合中的每一个成员"
+    ],
+    "url": "lexical/all/index.html#all.DET1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all (of) X",
+    "terms": [
+      "all (of) X",
+      "all.DET1",
+      "整个数量或集合中的每一个成员"
+    ],
+    "url": "lexical/all/index.html#all.DET1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "all.PRON1",
+    "terms": [
+      "all.PRON1",
+      "上下文所指的一切或所有人",
+      "all I need",
+      "above all",
+      "all that + CLAUSE"
+    ],
+    "url": "lexical/all/index.html#all.PRON1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all I need",
+    "terms": [
+      "all I need",
+      "all.PRON1",
+      "上下文所指的一切或所有人"
+    ],
+    "url": "lexical/all/index.html#all.PRON1"
+  },
+  {
+    "type": "Chunk",
+    "title": "above all",
+    "terms": [
+      "above all",
+      "all.PRON1",
+      "上下文所指的一切或所有人"
+    ],
+    "url": "lexical/all/index.html#all.PRON1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all that + CLAUSE",
+    "terms": [
+      "all that + CLAUSE",
+      "all.PRON1",
+      "上下文所指的一切或所有人"
+    ],
+    "url": "lexical/all/index.html#all.PRON1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "all.ADV1",
+    "terms": [
+      "all.ADV1",
+      "完全；全然",
+      "all alone",
+      "all too + adjective",
+      "all over"
+    ],
+    "url": "lexical/all/index.html#all.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all alone",
+    "terms": [
+      "all alone",
+      "all.ADV1",
+      "完全；全然"
+    ],
+    "url": "lexical/all/index.html#all.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all too + adjective",
+    "terms": [
+      "all too + adjective",
+      "all.ADV1",
+      "完全；全然"
+    ],
+    "url": "lexical/all/index.html#all.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "all over",
+    "terms": [
+      "all over",
+      "all.ADV1",
+      "完全；全然"
+    ],
+    "url": "lexical/all/index.html#all.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "all",
+    "terms": [
+      "all"
+    ],
+    "url": "lexical/all/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "allow.V1",
+    "terms": [
+      "allow.V1",
+      "准许某人做某事或准许某事",
+      "allow access",
+      "allow sufficient time",
+      "not allow someone to do something"
+    ],
+    "url": "lexical/allow/index.html#allow.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "not allow someone to do something",
+    "terms": [
+      "not allow someone to do something",
+      "allow.V1",
+      "准许某人做某事或准许某事"
+    ],
+    "url": "lexical/allow/index.html#allow.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "allow.V2",
+    "terms": [
+      "allow.V2",
+      "创造条件，使某事成为可能",
+      "allow flexibility",
+      "allow comparison",
+      "allow X to happen",
+      "allow for X"
+    ],
+    "url": "lexical/allow/index.html#allow.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "allow X to happen",
+    "terms": [
+      "allow X to happen",
+      "allow.V2",
+      "创造条件，使某事成为可能"
+    ],
+    "url": "lexical/allow/index.html#allow.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "allow for X",
+    "terms": [
+      "allow for X",
+      "allow.V2",
+      "创造条件，使某事成为可能"
+    ],
+    "url": "lexical/allow/index.html#allow.V2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "allow.V3",
+    "terms": [
+      "allow.V3",
+      "为某用途留出数量；正式语境中承认某观点",
+      "allow two hours for the journey",
+      "I allow that ..."
+    ],
+    "url": "lexical/allow/index.html#allow.V3"
+  },
+  {
+    "type": "Chunk",
+    "title": "allow two hours for the journey",
+    "terms": [
+      "allow two hours for the journey",
+      "allow.V3",
+      "为某用途留出数量；正式语境中承认某观点"
+    ],
+    "url": "lexical/allow/index.html#allow.V3"
+  },
+  {
+    "type": "Chunk",
+    "title": "I allow that ...",
+    "terms": [
+      "I allow that ...",
+      "allow.V3",
+      "为某用途留出数量；正式语境中承认某观点"
+    ],
+    "url": "lexical/allow/index.html#allow.V3"
+  },
+  {
+    "type": "Headword",
+    "title": "allow",
+    "terms": [
+      "allow"
+    ],
+    "url": "lexical/allow/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alloy.N1",
+    "terms": [
+      "alloy.N1",
+      "由至少一种金属与其他元素构成的金属材料",
+      "metal alloy",
+      "aluminium alloy",
+      "alloy composition",
+      "an alloy of A and B"
+    ],
+    "url": "lexical/alloy/index.html#alloy.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "an alloy of A and B",
+    "terms": [
+      "an alloy of A and B",
+      "alloy.N1",
+      "由至少一种金属与其他元素构成的金属材料"
+    ],
+    "url": "lexical/alloy/index.html#alloy.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alloy.V1",
+    "terms": [
+      "alloy.V1",
+      "把金属与另一元素混合以改变其性质",
+      "alloy steel with chromium"
+    ],
+    "url": "lexical/alloy/index.html#alloy.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "alloy",
+    "terms": [
+      "alloy"
+    ],
+    "url": "lexical/alloy/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "almost.ADV1",
+    "terms": [
+      "almost.ADV1",
+      "接近某个限度但没有完全达到",
+      "almost certainly",
+      "almost impossible",
+      "almost all",
+      "almost never",
+      "almost as + adjective + as",
+      "almost X"
+    ],
+    "url": "lexical/almost/index.html#almost.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "almost all",
+    "terms": [
+      "almost all",
+      "almost.ADV1",
+      "接近某个限度但没有完全达到"
+    ],
+    "url": "lexical/almost/index.html#almost.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "almost never",
+    "terms": [
+      "almost never",
+      "almost.ADV1",
+      "接近某个限度但没有完全达到"
+    ],
+    "url": "lexical/almost/index.html#almost.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "almost as + adjective + as",
+    "terms": [
+      "almost as + adjective + as",
+      "almost.ADV1",
+      "接近某个限度但没有完全达到"
+    ],
+    "url": "lexical/almost/index.html#almost.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "almost X",
+    "terms": [
+      "almost X",
+      "almost.ADV1",
+      "接近某个限度但没有完全达到"
+    ],
+    "url": "lexical/almost/index.html#almost.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "almost",
+    "terms": [
+      "almost"
+    ],
+    "url": "lexical/almost/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alone.ADJ1",
+    "terms": [
+      "alone.ADJ1",
+      "没有他人陪伴的",
+      "completely alone",
+      "feel alone",
+      "leave me alone",
+      "go it alone"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "leave me alone",
+    "terms": [
+      "leave me alone",
+      "alone.ADJ1",
+      "没有他人陪伴的"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "go it alone",
+    "terms": [
+      "go it alone",
+      "alone.ADJ1",
+      "没有他人陪伴的"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alone.ADJ2",
+    "terms": [
+      "alone.ADJ2",
+      "独力承担的；单凭自身就足够的",
+      "cannot do it alone",
+      "X alone does not explain Y",
+      "X alone"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "cannot do it alone",
+    "terms": [
+      "cannot do it alone",
+      "alone.ADJ2",
+      "独力承担的；单凭自身就足够的"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "X alone does not explain Y",
+    "terms": [
+      "X alone does not explain Y",
+      "alone.ADJ2",
+      "独力承担的；单凭自身就足够的"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "X alone",
+    "terms": [
+      "X alone",
+      "alone.ADJ2",
+      "独力承担的；单凭自身就足够的"
+    ],
+    "url": "lexical/alone/index.html#alone.ADJ2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alone.ADV1",
+    "terms": [
+      "alone.ADV1",
+      "无陪伴或无协助地",
+      "travel alone",
+      "work alone"
+    ],
+    "url": "lexical/alone/index.html#alone.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "travel alone",
+    "terms": [
+      "travel alone",
+      "alone.ADV1",
+      "无陪伴或无协助地"
+    ],
+    "url": "lexical/alone/index.html#alone.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "work alone",
+    "terms": [
+      "work alone",
+      "alone.ADV1",
+      "无陪伴或无协助地"
+    ],
+    "url": "lexical/alone/index.html#alone.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "alone",
+    "terms": [
+      "alone"
+    ],
+    "url": "lexical/alone/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "along.PREP1",
+    "terms": [
+      "along.PREP1",
+      "沿着路线、边缘或线状物",
+      "along the coast",
+      "along the road"
+    ],
+    "url": "lexical/along/index.html#along.PREP1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "along.ADV1",
+    "terms": [
+      "along.ADV1",
+      "沿既定方向向前",
+      "come along",
+      "move along",
+      "pass something along",
+      "along with X"
+    ],
+    "url": "lexical/along/index.html#along.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "come along",
+    "terms": [
+      "come along",
+      "along.ADV1",
+      "沿既定方向向前"
+    ],
+    "url": "lexical/along/index.html#along.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "move along",
+    "terms": [
+      "move along",
+      "along.ADV1",
+      "沿既定方向向前"
+    ],
+    "url": "lexical/along/index.html#along.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "pass something along",
+    "terms": [
+      "pass something along",
+      "along.ADV1",
+      "沿既定方向向前"
+    ],
+    "url": "lexical/along/index.html#along.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "along with X",
+    "terms": [
+      "along with X",
+      "along.ADV1",
+      "沿既定方向向前"
+    ],
+    "url": "lexical/along/index.html#along.ADV1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "along.ADV2",
+    "terms": [
+      "along.ADV2",
+      "处于某个进展阶段",
+      "How is the work coming along?",
+      "well along in the process",
+      "come along"
+    ],
+    "url": "lexical/along/index.html#along.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "How is the work coming along?",
+    "terms": [
+      "How is the work coming along?",
+      "along.ADV2",
+      "处于某个进展阶段"
+    ],
+    "url": "lexical/along/index.html#along.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "well along in the process",
+    "terms": [
+      "well along in the process",
+      "along.ADV2",
+      "处于某个进展阶段"
+    ],
+    "url": "lexical/along/index.html#along.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "come along",
+    "terms": [
+      "come along",
+      "along.ADV2",
+      "处于某个进展阶段"
+    ],
+    "url": "lexical/along/index.html#along.ADV2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "along.PREP2",
+    "terms": [
+      "along.PREP2",
+      "连同；与……一起",
+      "along with",
+      "A, along with B, does X"
+    ],
+    "url": "lexical/along/index.html#along.PREP2"
+  },
+  {
+    "type": "Chunk",
+    "title": "along with",
+    "terms": [
+      "along with",
+      "along.PREP2",
+      "连同；与……一起"
+    ],
+    "url": "lexical/along/index.html#along.PREP2"
+  },
+  {
+    "type": "Chunk",
+    "title": "A, along with B, does X",
+    "terms": [
+      "A, along with B, does X",
+      "along.PREP2",
+      "连同；与……一起"
+    ],
+    "url": "lexical/along/index.html#along.PREP2"
+  },
+  {
+    "type": "Headword",
+    "title": "along",
+    "terms": [
+      "along"
+    ],
+    "url": "lexical/along/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "aloud.ADV1",
+    "terms": [
+      "aloud.ADV1",
+      "出声地，而不是默读或默想",
+      "read aloud",
+      "think aloud",
+      "wonder aloud"
+    ],
+    "url": "lexical/aloud/index.html#aloud.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "wonder aloud",
+    "terms": [
+      "wonder aloud",
+      "aloud.ADV1",
+      "出声地，而不是默读或默想"
+    ],
+    "url": "lexical/aloud/index.html#aloud.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "aloud",
+    "terms": [
+      "aloud"
+    ],
+    "url": "lexical/aloud/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alphabet.N1",
+    "terms": [
+      "alphabet.N1",
+      "按固定顺序排列、用于书写语言的整套字母",
+      "Roman alphabet",
+      "phonetic alphabet",
+      "from A to Z"
+    ],
+    "url": "lexical/alphabet/index.html#alphabet.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "from A to Z",
+    "terms": [
+      "from A to Z",
+      "alphabet.N1",
+      "按固定顺序排列、用于书写语言的整套字母"
+    ],
+    "url": "lexical/alphabet/index.html#alphabet.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alphabet.N2",
+    "terms": [
+      "alphabet.N2",
+      "专业系统中作为基本单位的一套符号",
+      "genetic alphabet",
+      "symbol alphabet"
+    ],
+    "url": "lexical/alphabet/index.html#alphabet.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "alphabet",
+    "terms": [
+      "alphabet"
+    ],
+    "url": "lexical/alphabet/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "already.ADV1",
+    "terms": [
+      "already.ADV1",
+      "在当前或另一参照时间之前已经发生或成立",
+      "already established",
+      "already available",
+      "already know",
+      "already too late",
+      "already + EVENT/STATE"
+    ],
+    "url": "lexical/already/index.html#already.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "already know",
+    "terms": [
+      "already know",
+      "already.ADV1",
+      "在当前或另一参照时间之前已经发生或成立"
+    ],
+    "url": "lexical/already/index.html#already.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "already too late",
+    "terms": [
+      "already too late",
+      "already.ADV1",
+      "在当前或另一参照时间之前已经发生或成立"
+    ],
+    "url": "lexical/already/index.html#already.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "already + EVENT/STATE",
+    "terms": [
+      "already + EVENT/STATE",
+      "already.ADV1",
+      "在当前或另一参照时间之前已经发生或成立"
+    ],
+    "url": "lexical/already/index.html#already.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "already",
+    "terms": [
+      "already"
+    ],
+    "url": "lexical/already/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "also.ADV1",
+    "terms": [
+      "also.ADV1",
+      "在已述内容之外再补充一个平行事项",
+      "also known as",
+      "also available",
+      "not only X but also Y",
+      "and also",
+      "not only X but also Y"
+    ],
+    "url": "lexical/also/index.html#also.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "not only X but also Y",
+    "terms": [
+      "not only X but also Y",
+      "also.ADV1",
+      "在已述内容之外再补充一个平行事项"
+    ],
+    "url": "lexical/also/index.html#also.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "and also",
+    "terms": [
+      "and also",
+      "also.ADV1",
+      "在已述内容之外再补充一个平行事项"
+    ],
+    "url": "lexical/also/index.html#also.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "not only X but also Y",
+    "terms": [
+      "not only X but also Y",
+      "also.ADV1",
+      "在已述内容之外再补充一个平行事项"
+    ],
+    "url": "lexical/also/index.html#also.ADV1"
+  },
+  {
+    "type": "Headword",
+    "title": "also",
+    "terms": [
+      "also"
+    ],
+    "url": "lexical/also/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alter.V1",
+    "terms": [
+      "alter.V1",
+      "改变某事物的某些特征，但通常不彻底替换它",
+      "alter the balance",
+      "alter behaviour",
+      "significantly alter"
+    ],
+    "url": "lexical/alter/index.html#alter.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alter.V2",
+    "terms": [
+      "alter.V2",
+      "自身在某方面发生变化",
+      "circumstances alter",
+      "attitudes alter"
+    ],
+    "url": "lexical/alter/index.html#alter.V2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alter.V3",
+    "terms": [
+      "alter.V3",
+      "修改衣物的尺寸或形状，使之更合身",
+      "alter a dress",
+      "have a suit altered"
+    ],
+    "url": "lexical/alter/index.html#alter.V3"
+  },
+  {
+    "type": "Headword",
+    "title": "alter",
+    "terms": [
+      "alter"
+    ],
+    "url": "lexical/alter/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alternative.N1",
+    "terms": [
+      "alternative.N1",
+      "可以替代另一方案的一种选择",
+      "viable alternative",
+      "practical alternative",
+      "seek an alternative",
+      "have no alternative but to",
+      "an alternative to X",
+      "no alternative but to X"
+    ],
+    "url": "lexical/alternative/index.html#alternative.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "have no alternative but to",
+    "terms": [
+      "have no alternative but to",
+      "alternative.N1",
+      "可以替代另一方案的一种选择"
+    ],
+    "url": "lexical/alternative/index.html#alternative.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "an alternative to X",
+    "terms": [
+      "an alternative to X",
+      "alternative.N1",
+      "可以替代另一方案的一种选择"
+    ],
+    "url": "lexical/alternative/index.html#alternative.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "no alternative but to X",
+    "terms": [
+      "no alternative but to X",
+      "alternative.N1",
+      "可以替代另一方案的一种选择"
+    ],
+    "url": "lexical/alternative/index.html#alternative.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alternative.ADJ1",
+    "terms": [
+      "alternative.ADJ1",
+      "可作为另一选择或替代方案的",
+      "alternative approach",
+      "alternative energy",
+      "alternative explanation"
+    ],
+    "url": "lexical/alternative/index.html#alternative.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "alternative.ADJ2",
+    "terms": [
+      "alternative.ADJ2",
+      "处于主流惯例之外的",
+      "alternative medicine",
+      "alternative lifestyle"
+    ],
+    "url": "lexical/alternative/index.html#alternative.ADJ2"
+  },
+  {
+    "type": "Headword",
+    "title": "alternative",
+    "terms": [
+      "alternative"
+    ],
+    "url": "lexical/alternative/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "although.CONJ1",
+    "terms": [
+      "although.CONJ1",
+      "承认一个事实，同时指出与通常预期相反的主句仍成立",
+      "although this may be true",
+      "although not + adjective/participle",
+      "Although P, Q"
+    ],
+    "url": "lexical/although/index.html#although.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "although this may be true",
+    "terms": [
+      "although this may be true",
+      "although.CONJ1",
+      "承认一个事实，同时指出与通常预期相反的主句仍成立"
+    ],
+    "url": "lexical/although/index.html#although.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "although not + adjective/participle",
+    "terms": [
+      "although not + adjective/participle",
+      "although.CONJ1",
+      "承认一个事实，同时指出与通常预期相反的主句仍成立"
+    ],
+    "url": "lexical/although/index.html#although.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "Although P, Q",
+    "terms": [
+      "Although P, Q",
+      "although.CONJ1",
+      "承认一个事实，同时指出与通常预期相反的主句仍成立"
+    ],
+    "url": "lexical/although/index.html#although.CONJ1"
+  },
+  {
+    "type": "Headword",
+    "title": "although",
+    "terms": [
+      "although"
+    ],
+    "url": "lexical/although/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "altitude.N1",
+    "terms": [
+      "altitude.N1",
+      "相对于基准面的垂直高度，通常指海拔",
+      "high altitude",
+      "low altitude",
+      "cruising altitude",
+      "altitude sickness",
+      "gain altitude",
+      "lose altitude",
+      "reach an altitude of + MEASUREMENT"
+    ],
+    "url": "lexical/altitude/index.html#altitude.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "gain altitude",
+    "terms": [
+      "gain altitude",
+      "altitude.N1",
+      "相对于基准面的垂直高度，通常指海拔"
+    ],
+    "url": "lexical/altitude/index.html#altitude.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "lose altitude",
+    "terms": [
+      "lose altitude",
+      "altitude.N1",
+      "相对于基准面的垂直高度，通常指海拔"
+    ],
+    "url": "lexical/altitude/index.html#altitude.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "reach an altitude of + MEASUREMENT",
+    "terms": [
+      "reach an altitude of + MEASUREMENT",
+      "altitude.N1",
+      "相对于基准面的垂直高度，通常指海拔"
+    ],
+    "url": "lexical/altitude/index.html#altitude.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "altitude.N2",
+    "terms": [
+      "altitude.N2",
+      "天体在地平线以上的角高度",
+      "solar altitude"
+    ],
+    "url": "lexical/altitude/index.html#altitude.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "altitude",
+    "terms": [
+      "altitude"
+    ],
+    "url": "lexical/altitude/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "altogether.ADV1",
+    "terms": [
+      "altogether.ADV1",
+      "合计；总共",
+      "altogether, there were + NUMBER"
+    ],
+    "url": "lexical/altogether/index.html#altogether.ADV1"
+  },
+  {
+    "type": "Chunk",
+    "title": "altogether, there were + NUMBER",
+    "terms": [
+      "altogether, there were + NUMBER",
+      "altogether.ADV1",
+      "合计；总共"
+    ],
+    "url": "lexical/altogether/index.html#altogether.ADV1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "altogether.ADV2",
+    "terms": [
+      "altogether.ADV2",
+      "完全；彻底",
+      "stop altogether",
+      "avoid altogether",
+      "disappear altogether",
+      "a different matter altogether"
+    ],
+    "url": "lexical/altogether/index.html#altogether.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "a different matter altogether",
+    "terms": [
+      "a different matter altogether",
+      "altogether.ADV2",
+      "完全；彻底"
+    ],
+    "url": "lexical/altogether/index.html#altogether.ADV2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "altogether.ADV3",
+    "terms": [
+      "altogether.ADV3",
+      "总的说来；综合来看"
+    ],
+    "url": "lexical/altogether/index.html#altogether.ADV3"
+  },
+  {
+    "type": "Headword",
+    "title": "altogether",
+    "terms": [
+      "altogether"
+    ],
+    "url": "lexical/altogether/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "aluminium.N1",
+    "terms": [
+      "aluminium.N1",
+      "化学元素铝；英式拼写",
+      "aluminium alloy",
+      "aluminium foil",
+      "aluminium can",
+      "recycled aluminium"
+    ],
+    "url": "lexical/aluminium/index.html#aluminium.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "aluminium",
+    "terms": [
+      "aluminium"
+    ],
+    "url": "lexical/aluminium/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "always.ADV1",
+    "terms": [
+      "always.ADV1",
+      "每次都；始终",
+      "always available",
+      "always remember"
+    ],
+    "url": "lexical/always/index.html#always.ADV1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "always.ADV2",
+    "terms": [
+      "always.ADV2",
+      "永远；一直到未来",
+      "as always",
+      "once ..., always ..."
+    ],
+    "url": "lexical/always/index.html#always.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "as always",
+    "terms": [
+      "as always",
+      "always.ADV2",
+      "永远；一直到未来"
+    ],
+    "url": "lexical/always/index.html#always.ADV2"
+  },
+  {
+    "type": "Chunk",
+    "title": "once ..., always ...",
+    "terms": [
+      "once ..., always ...",
+      "always.ADV2",
+      "永远；一直到未来"
+    ],
+    "url": "lexical/always/index.html#always.ADV2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "always.ADV3",
+    "terms": [
+      "always.ADV3",
+      "老是……，常带不满语气"
+    ],
+    "url": "lexical/always/index.html#always.ADV3"
+  },
+  {
+    "type": "Headword",
+    "title": "always",
+    "terms": [
+      "always"
+    ],
+    "url": "lexical/always/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amaze.V1",
+    "terms": [
+      "amaze.V1",
+      "使某人感到非常惊讶",
+      "absolutely amaze",
+      "never cease to amaze",
+      "to my amazement",
+      "It amazes me that ..."
+    ],
+    "url": "lexical/amaze/index.html#amaze.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "to my amazement",
+    "terms": [
+      "to my amazement",
+      "amaze.V1",
+      "使某人感到非常惊讶"
+    ],
+    "url": "lexical/amaze/index.html#amaze.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "It amazes me that ...",
+    "terms": [
+      "It amazes me that ...",
+      "amaze.V1",
+      "使某人感到非常惊讶"
+    ],
+    "url": "lexical/amaze/index.html#amaze.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "amaze",
+    "terms": [
+      "amaze"
+    ],
+    "url": "lexical/amaze/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ambition.N1",
+    "terms": [
+      "ambition.N1",
+      "追求成就的强烈进取心",
+      "personal ambition",
+      "political ambition",
+      "drive and ambition"
+    ],
+    "url": "lexical/ambition/index.html#ambition.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ambition.N2",
+    "terms": [
+      "ambition.N2",
+      "强烈希望实现的具体目标",
+      "lifelong ambition",
+      "burning ambition",
+      "achieve an ambition",
+      "realize an ambition",
+      "pursue an ambition",
+      "fulfil an ambition"
+    ],
+    "url": "lexical/ambition/index.html#ambition.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "fulfil an ambition",
+    "terms": [
+      "fulfil an ambition",
+      "ambition.N2",
+      "强烈希望实现的具体目标"
+    ],
+    "url": "lexical/ambition/index.html#ambition.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "ambition",
+    "terms": [
+      "ambition"
+    ],
+    "url": "lexical/ambition/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ambulance.N1",
+    "terms": [
+      "ambulance.N1",
+      "运送病患的急救车辆或服务",
+      "ambulance service",
+      "ambulance crew",
+      "air ambulance",
+      "call an ambulance",
+      "wait for an ambulance"
+    ],
+    "url": "lexical/ambulance/index.html#ambulance.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "call an ambulance",
+    "terms": [
+      "call an ambulance",
+      "ambulance.N1",
+      "运送病患的急救车辆或服务"
+    ],
+    "url": "lexical/ambulance/index.html#ambulance.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "wait for an ambulance",
+    "terms": [
+      "wait for an ambulance",
+      "ambulance.N1",
+      "运送病患的急救车辆或服务"
+    ],
+    "url": "lexical/ambulance/index.html#ambulance.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "ambulance",
+    "terms": [
+      "ambulance"
+    ],
+    "url": "lexical/ambulance/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "America.PN1",
+    "terms": [
+      "America.PN1",
+      "美国的简称",
+      "rural America",
+      "modern America"
+    ],
+    "url": "lexical/America/index.html#America.PN1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "America.PN2",
+    "terms": [
+      "America.PN2",
+      "美洲；北美洲与南美洲整体",
+      "North America",
+      "South America"
+    ],
+    "url": "lexical/America/index.html#America.PN2"
+  },
+  {
+    "type": "Headword",
+    "title": "America",
+    "terms": [
+      "America"
+    ],
+    "url": "lexical/America/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "American.ADJ1",
+    "terms": [
+      "American.ADJ1",
+      "美国的；与美国有关的",
+      "American English",
+      "American citizen",
+      "American culture"
+    ],
+    "url": "lexical/American/index.html#American.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "American.ADJ2",
+    "terms": [
+      "American.ADJ2",
+      "美洲的；与南北美洲有关的",
+      "American continent",
+      "American tropics"
+    ],
+    "url": "lexical/American/index.html#American.ADJ2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "American.N1",
+    "terms": [
+      "American.N1",
+      "美国人"
+    ],
+    "url": "lexical/American/index.html#American.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "American",
+    "terms": [
+      "American"
+    ],
+    "url": "lexical/American/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "among.PREP1",
+    "terms": [
+      "among.PREP1",
+      "处在多个事物或人围绕之中",
+      "among the crowd",
+      "among the trees",
+      "among the evidence"
+    ],
+    "url": "lexical/among/index.html#among.PREP1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "among.PREP2",
+    "terms": [
+      "among.PREP2",
+      "存在或发生于某一群体内部",
+      "popular among",
+      "common among",
+      "agreement among",
+      "among the leading"
+    ],
+    "url": "lexical/among/index.html#among.PREP2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "among.PREP3",
+    "terms": [
+      "among.PREP3",
+      "在群体成员之间分配、共享或互动",
+      "among themselves",
+      "among other things",
+      "among other things"
+    ],
+    "url": "lexical/among/index.html#among.PREP3"
+  },
+  {
+    "type": "Chunk",
+    "title": "among themselves",
+    "terms": [
+      "among themselves",
+      "among.PREP3",
+      "在群体成员之间分配、共享或互动"
+    ],
+    "url": "lexical/among/index.html#among.PREP3"
+  },
+  {
+    "type": "Chunk",
+    "title": "among other things",
+    "terms": [
+      "among other things",
+      "among.PREP3",
+      "在群体成员之间分配、共享或互动"
+    ],
+    "url": "lexical/among/index.html#among.PREP3"
+  },
+  {
+    "type": "Chunk",
+    "title": "among other things",
+    "terms": [
+      "among other things",
+      "among.PREP3",
+      "在群体成员之间分配、共享或互动"
+    ],
+    "url": "lexical/among/index.html#among.PREP3"
+  },
+  {
+    "type": "Headword",
+    "title": "among",
+    "terms": [
+      "among"
+    ],
+    "url": "lexical/among/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amongst.PREP1",
+    "terms": [
+      "amongst.PREP1",
+      "among 的地区性变体；在群体之中",
+      "amongst other things",
+      "amongst themselves"
+    ],
+    "url": "lexical/amongst/index.html#amongst.PREP1"
+  },
+  {
+    "type": "Chunk",
+    "title": "amongst other things",
+    "terms": [
+      "amongst other things",
+      "amongst.PREP1",
+      "among 的地区性变体；在群体之中"
+    ],
+    "url": "lexical/amongst/index.html#amongst.PREP1"
+  },
+  {
+    "type": "Chunk",
+    "title": "amongst themselves",
+    "terms": [
+      "amongst themselves",
+      "amongst.PREP1",
+      "among 的地区性变体；在群体之中"
+    ],
+    "url": "lexical/amongst/index.html#amongst.PREP1"
+  },
+  {
+    "type": "Headword",
+    "title": "amongst",
+    "terms": [
+      "amongst"
+    ],
+    "url": "lexical/amongst/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amount.N1",
+    "terms": [
+      "amount.N1",
+      "不可数事物或抽象程度的数量",
+      "large amount",
+      "small amount",
+      "considerable amount",
+      "total amount",
+      "same amount",
+      "a certain amount of",
+      "any amount of",
+      "no amount of",
+      "no amount of X can/will Y"
+    ],
+    "url": "lexical/amount/index.html#amount.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "a certain amount of",
+    "terms": [
+      "a certain amount of",
+      "amount.N1",
+      "不可数事物或抽象程度的数量"
+    ],
+    "url": "lexical/amount/index.html#amount.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "any amount of",
+    "terms": [
+      "any amount of",
+      "amount.N1",
+      "不可数事物或抽象程度的数量"
+    ],
+    "url": "lexical/amount/index.html#amount.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "no amount of",
+    "terms": [
+      "no amount of",
+      "amount.N1",
+      "不可数事物或抽象程度的数量"
+    ],
+    "url": "lexical/amount/index.html#amount.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "no amount of X can/will Y",
+    "terms": [
+      "no amount of X can/will Y",
+      "amount.N1",
+      "不可数事物或抽象程度的数量"
+    ],
+    "url": "lexical/amount/index.html#amount.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amount.V1",
+    "terms": [
+      "amount.V1",
+      "合计达到某个总数",
+      "amount to a total of"
+    ],
+    "url": "lexical/amount/index.html#amount.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amount.V2",
+    "terms": [
+      "amount.V2",
+      "在实际意义或效果上等同于",
+      "amount to a refusal",
+      "amount to saying that ...",
+      "not amount to much",
+      "X amounts to Y"
+    ],
+    "url": "lexical/amount/index.html#amount.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "amount to a refusal",
+    "terms": [
+      "amount to a refusal",
+      "amount.V2",
+      "在实际意义或效果上等同于"
+    ],
+    "url": "lexical/amount/index.html#amount.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "amount to saying that ...",
+    "terms": [
+      "amount to saying that ...",
+      "amount.V2",
+      "在实际意义或效果上等同于"
+    ],
+    "url": "lexical/amount/index.html#amount.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "not amount to much",
+    "terms": [
+      "not amount to much",
+      "amount.V2",
+      "在实际意义或效果上等同于"
+    ],
+    "url": "lexical/amount/index.html#amount.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "X amounts to Y",
+    "terms": [
+      "X amounts to Y",
+      "amount.V2",
+      "在实际意义或效果上等同于"
+    ],
+    "url": "lexical/amount/index.html#amount.V2"
+  },
+  {
+    "type": "Headword",
+    "title": "amount",
+    "terms": [
+      "amount"
+    ],
+    "url": "lexical/amount/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ampere.N1",
+    "terms": [
+      "ampere.N1",
+      "电流的国际单位安培",
+      "ampere rating",
+      "ampere-hour"
+    ],
+    "url": "lexical/ampere/index.html#ampere.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "ampere",
+    "terms": [
+      "ampere"
+    ],
+    "url": "lexical/ampere/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amplify.V1",
+    "terms": [
+      "amplify.V1",
+      "增强声音或物理信号",
+      "amplify a signal",
+      "amplify sound",
+      "electronically amplified"
+    ],
+    "url": "lexical/amplify/index.html#amplify.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amplify.V2",
+    "terms": [
+      "amplify.V2",
+      "增强某种效果、问题或风险",
+      "amplify the effect",
+      "amplify inequality",
+      "amplify risk",
+      "amplify differences"
+    ],
+    "url": "lexical/amplify/index.html#amplify.V2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amplify.V3",
+    "terms": [
+      "amplify.V3",
+      "扩展说明或扩大信息传播",
+      "amplify a message",
+      "amplify marginalized voices"
+    ],
+    "url": "lexical/amplify/index.html#amplify.V3"
+  },
+  {
+    "type": "Headword",
+    "title": "amplify",
+    "terms": [
+      "amplify"
+    ],
+    "url": "lexical/amplify/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amuse.V1",
+    "terms": [
+      "amuse.V1",
+      "使人发笑或感到有趣",
+      "greatly amuse",
+      "easily amused",
+      "not amused",
+      "be amused to see/hear/learn"
+    ],
+    "url": "lexical/amuse/index.html#amuse.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "be amused to see/hear/learn",
+    "terms": [
+      "be amused to see/hear/learn",
+      "amuse.V1",
+      "使人发笑或感到有趣"
+    ],
+    "url": "lexical/amuse/index.html#amuse.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "amuse.V2",
+    "terms": [
+      "amuse.V2",
+      "使某人在一段时间内愉快地消遣",
+      "amuse the children",
+      "keep yourself amused",
+      "amuse oneself by + -ing"
+    ],
+    "url": "lexical/amuse/index.html#amuse.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "amuse oneself by + -ing",
+    "terms": [
+      "amuse oneself by + -ing",
+      "amuse.V2",
+      "使某人在一段时间内愉快地消遣"
+    ],
+    "url": "lexical/amuse/index.html#amuse.V2"
+  },
+  {
+    "type": "Headword",
+    "title": "amuse",
+    "terms": [
+      "amuse"
+    ],
+    "url": "lexical/amuse/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "analyse.V1",
+    "terms": [
+      "analyse.V1",
+      "通过拆分要素与关系进行系统分析",
+      "analyse data",
+      "analyse the results",
+      "analyse a sample",
+      "critically analyse",
+      "statistically analyse",
+      "analyse in detail",
+      "analyse the relationship between A and B",
+      "analyse the relationship between A and B"
+    ],
+    "url": "lexical/analyse/index.html#analyse.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "analyse in detail",
+    "terms": [
+      "analyse in detail",
+      "analyse.V1",
+      "通过拆分要素与关系进行系统分析"
+    ],
+    "url": "lexical/analyse/index.html#analyse.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "analyse the relationship between A and B",
+    "terms": [
+      "analyse the relationship between A and B",
+      "analyse.V1",
+      "通过拆分要素与关系进行系统分析"
+    ],
+    "url": "lexical/analyse/index.html#analyse.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "analyse the relationship between A and B",
+    "terms": [
+      "analyse the relationship between A and B",
+      "analyse.V1",
+      "通过拆分要素与关系进行系统分析"
+    ],
+    "url": "lexical/analyse/index.html#analyse.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "analyse",
+    "terms": [
+      "analyse"
+    ],
+    "url": "lexical/analyse/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "analysis.N1",
+    "terms": [
+      "analysis.N1",
+      "系统分析的过程或方法",
+      "data analysis",
+      "statistical analysis",
+      "detailed analysis",
+      "comparative analysis",
+      "cost-benefit analysis",
+      "under analysis",
+      "subject to analysis",
+      "on closer analysis"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "under analysis",
+    "terms": [
+      "under analysis",
+      "analysis.N1",
+      "系统分析的过程或方法"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "subject to analysis",
+    "terms": [
+      "subject to analysis",
+      "analysis.N1",
+      "系统分析的过程或方法"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "on closer analysis",
+    "terms": [
+      "on closer analysis",
+      "analysis.N1",
+      "系统分析的过程或方法"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "analysis.N2",
+    "terms": [
+      "analysis.N2",
+      "分析所得的解释或论述",
+      "critical analysis",
+      "economic analysis",
+      "political analysis",
+      "independent analysis",
+      "according to the analysis"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "according to the analysis",
+    "terms": [
+      "according to the analysis",
+      "analysis.N2",
+      "分析所得的解释或论述"
+    ],
+    "url": "lexical/analysis/index.html#analysis.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "analysis",
+    "terms": [
+      "analysis"
+    ],
+    "url": "lexical/analysis/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ancestor.N1",
+    "terms": [
+      "ancestor.N1",
+      "血缘谱系中的祖先",
+      "common ancestor",
+      "direct ancestor",
+      "distant ancestor",
+      "maternal ancestor",
+      "trace one's ancestors",
+      "descended from an ancestor"
+    ],
+    "url": "lexical/ancestor/index.html#ancestor.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "trace one's ancestors",
+    "terms": [
+      "trace one's ancestors",
+      "ancestor.N1",
+      "血缘谱系中的祖先"
+    ],
+    "url": "lexical/ancestor/index.html#ancestor.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "descended from an ancestor",
+    "terms": [
+      "descended from an ancestor",
+      "ancestor.N1",
+      "血缘谱系中的祖先"
+    ],
+    "url": "lexical/ancestor/index.html#ancestor.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ancestor.N2",
+    "terms": [
+      "ancestor.N2",
+      "进化或发展上的祖型",
+      "evolutionary ancestor",
+      "wild ancestor",
+      "common ancestor",
+      "evolve from a common ancestor"
+    ],
+    "url": "lexical/ancestor/index.html#ancestor.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "evolve from a common ancestor",
+    "terms": [
+      "evolve from a common ancestor",
+      "ancestor.N2",
+      "进化或发展上的祖型"
+    ],
+    "url": "lexical/ancestor/index.html#ancestor.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "ancestor",
+    "terms": [
+      "ancestor"
+    ],
+    "url": "lexical/ancestor/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.N1",
+    "terms": [
+      "anchor.N1",
+      "固定船只的锚",
+      "ship's anchor",
+      "anchor chain",
+      "anchor point",
+      "drop anchor",
+      "weigh anchor",
+      "at anchor"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "drop anchor",
+    "terms": [
+      "drop anchor",
+      "anchor.N1",
+      "固定船只的锚"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "weigh anchor",
+    "terms": [
+      "weigh anchor",
+      "anchor.N1",
+      "固定船只的锚"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "at anchor",
+    "terms": [
+      "at anchor",
+      "anchor.N1",
+      "固定船只的锚"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.N2",
+    "terms": [
+      "anchor.N2",
+      "提供稳定性的支柱",
+      "emotional anchor",
+      "stable anchor",
+      "anchor institution",
+      "provide an anchor for"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "provide an anchor for",
+    "terms": [
+      "provide an anchor for",
+      "anchor.N2",
+      "提供稳定性的支柱"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.N3",
+    "terms": [
+      "anchor.N3",
+      "新闻或时事节目的主播",
+      "television anchor",
+      "news anchor",
+      "evening-news anchor"
+    ],
+    "url": "lexical/anchor/index.html#anchor.N3"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.V1",
+    "terms": [
+      "anchor.V1",
+      "把船只或物体固定住",
+      "anchor a boat",
+      "securely anchored",
+      "anchor a cable"
+    ],
+    "url": "lexical/anchor/index.html#anchor.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.V2",
+    "terms": [
+      "anchor.V2",
+      "使观点或系统稳固地建立在某个基础上",
+      "anchor expectations",
+      "anchor an argument",
+      "firmly anchored in evidence",
+      "be anchored in evidence"
+    ],
+    "url": "lexical/anchor/index.html#anchor.V2"
+  },
+  {
+    "type": "Chunk",
+    "title": "be anchored in evidence",
+    "terms": [
+      "be anchored in evidence",
+      "anchor.V2",
+      "使观点或系统稳固地建立在某个基础上"
+    ],
+    "url": "lexical/anchor/index.html#anchor.V2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anchor.V3",
+    "terms": [
+      "anchor.V3",
+      "主持新闻或时事节目",
+      "anchor the evening news",
+      "anchor live coverage"
+    ],
+    "url": "lexical/anchor/index.html#anchor.V3"
+  },
+  {
+    "type": "Headword",
+    "title": "anchor",
+    "terms": [
+      "anchor"
+    ],
+    "url": "lexical/anchor/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ancient.ADJ1",
+    "terms": [
+      "ancient.ADJ1",
+      "属于遥远古代世界的",
+      "ancient civilization",
+      "ancient Greece",
+      "ancient history",
+      "ancient ruins",
+      "ancient manuscript",
+      "in ancient times"
+    ],
+    "url": "lexical/ancient/index.html#ancient.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "in ancient times",
+    "terms": [
+      "in ancient times",
+      "ancient.ADJ1",
+      "属于遥远古代世界的"
+    ],
+    "url": "lexical/ancient/index.html#ancient.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ancient.ADJ2",
+    "terms": [
+      "ancient.ADJ2",
+      "极其古老的；陈旧的",
+      "ancient woodland",
+      "ancient tradition",
+      "ancient monument",
+      "ancient custom",
+      "as ancient as"
+    ],
+    "url": "lexical/ancient/index.html#ancient.ADJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "as ancient as",
+    "terms": [
+      "as ancient as",
+      "ancient.ADJ2",
+      "极其古老的；陈旧的"
+    ],
+    "url": "lexical/ancient/index.html#ancient.ADJ2"
+  },
+  {
+    "type": "Headword",
+    "title": "ancient",
+    "terms": [
+      "ancient"
+    ],
+    "url": "lexical/ancient/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "and.CONJ1",
+    "terms": [
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补",
+      "and so on",
+      "and/or",
+      "and all that",
+      "both X and Y",
+      "and so on"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "and so on",
+    "terms": [
+      "and so on",
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "and/or",
+    "terms": [
+      "and/or",
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "and all that",
+    "terms": [
+      "and all that",
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "both X and Y",
+    "terms": [
+      "both X and Y",
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "and so on",
+    "terms": [
+      "and so on",
+      "and.CONJ1",
+      "连接对等成分，表示并列或增补"
+    ],
+    "url": "lexical/and/index.html#and.CONJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "and.CONJ2",
+    "terms": [
+      "and.CONJ2",
+      "连接事件，暗示先后或结果",
+      "try and + verb",
+      "go and + verb",
+      "come and + verb",
+      "imperative + and + result",
+      "go/come and + verb"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "try and + verb",
+    "terms": [
+      "try and + verb",
+      "and.CONJ2",
+      "连接事件，暗示先后或结果"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "go and + verb",
+    "terms": [
+      "go and + verb",
+      "and.CONJ2",
+      "连接事件，暗示先后或结果"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "come and + verb",
+    "terms": [
+      "come and + verb",
+      "and.CONJ2",
+      "连接事件，暗示先后或结果"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "imperative + and + result",
+    "terms": [
+      "imperative + and + result",
+      "and.CONJ2",
+      "连接事件，暗示先后或结果"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Chunk",
+    "title": "go/come and + verb",
+    "terms": [
+      "go/come and + verb",
+      "and.CONJ2",
+      "连接事件，暗示先后或结果"
+    ],
+    "url": "lexical/and/index.html#and.CONJ2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "and.CONJ3",
+    "terms": [
+      "and.CONJ3",
+      "用于重复结构或固定并列词组",
+      "more and more",
+      "again and again",
+      "by and large",
+      "peace and quiet",
+      "black and white",
+      "comparative and comparative",
+      "again and again"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "more and more",
+    "terms": [
+      "more and more",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "again and again",
+    "terms": [
+      "again and again",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "by and large",
+    "terms": [
+      "by and large",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "peace and quiet",
+    "terms": [
+      "peace and quiet",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "black and white",
+    "terms": [
+      "black and white",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "comparative and comparative",
+    "terms": [
+      "comparative and comparative",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Chunk",
+    "title": "again and again",
+    "terms": [
+      "again and again",
+      "and.CONJ3",
+      "用于重复结构或固定并列词组"
+    ],
+    "url": "lexical/and/index.html#and.CONJ3"
+  },
+  {
+    "type": "Headword",
+    "title": "and",
+    "terms": [
+      "and"
+    ],
+    "url": "lexical/and/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angel.N1",
+    "terms": [
+      "angel.N1",
+      "宗教传统中的天使或神使",
+      "guardian angel",
+      "fallen angel",
+      "angel of mercy",
+      "the angel Gabriel"
+    ],
+    "url": "lexical/angel/index.html#angel.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "the angel Gabriel",
+    "terms": [
+      "the angel Gabriel",
+      "angel.N1",
+      "宗教传统中的天使或神使"
+    ],
+    "url": "lexical/angel/index.html#angel.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angel.N2",
+    "terms": [
+      "angel.N2",
+      "极其善良、乐于助人的人",
+      "absolute angel",
+      "little angel",
+      "Be an angel and ...",
+      "You're an angel.",
+      "Be an angel and + action"
+    ],
+    "url": "lexical/angel/index.html#angel.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "Be an angel and ...",
+    "terms": [
+      "Be an angel and ...",
+      "angel.N2",
+      "极其善良、乐于助人的人"
+    ],
+    "url": "lexical/angel/index.html#angel.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "You're an angel.",
+    "terms": [
+      "You're an angel.",
+      "angel.N2",
+      "极其善良、乐于助人的人"
+    ],
+    "url": "lexical/angel/index.html#angel.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "Be an angel and + action",
+    "terms": [
+      "Be an angel and + action",
+      "angel.N2",
+      "极其善良、乐于助人的人"
+    ],
+    "url": "lexical/angel/index.html#angel.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "angel",
+    "terms": [
+      "angel"
+    ],
+    "url": "lexical/angel/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anger.N1",
+    "terms": [
+      "anger.N1",
+      "强烈的愤怒或不满",
+      "deep anger",
+      "growing anger",
+      "public anger",
+      "express anger",
+      "provoke anger",
+      "shake with anger",
+      "a surge of anger",
+      "in anger"
+    ],
+    "url": "lexical/anger/index.html#anger.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "shake with anger",
+    "terms": [
+      "shake with anger",
+      "anger.N1",
+      "强烈的愤怒或不满"
+    ],
+    "url": "lexical/anger/index.html#anger.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "a surge of anger",
+    "terms": [
+      "a surge of anger",
+      "anger.N1",
+      "强烈的愤怒或不满"
+    ],
+    "url": "lexical/anger/index.html#anger.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "in anger",
+    "terms": [
+      "in anger",
+      "anger.N1",
+      "强烈的愤怒或不满"
+    ],
+    "url": "lexical/anger/index.html#anger.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "anger.V1",
+    "terms": [
+      "anger.V1",
+      "使某人愤怒",
+      "deeply anger",
+      "anger residents",
+      "angered by the decision"
+    ],
+    "url": "lexical/anger/index.html#anger.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "anger",
+    "terms": [
+      "anger"
+    ],
+    "url": "lexical/anger/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle-people.N1",
+    "terms": [
+      "angle-people.N1",
+      "历史上的盎格鲁人",
+      "Angles and Saxons",
+      "Germanic Angles",
+      "the land of the Angles"
+    ],
+    "url": "lexical/angle-people/index.html#angle-people.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "the land of the Angles",
+    "terms": [
+      "the land of the Angles",
+      "angle-people.N1",
+      "历史上的盎格鲁人"
+    ],
+    "url": "lexical/angle-people/index.html#angle-people.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "Angle",
+    "terms": [
+      "Angle"
+    ],
+    "url": "lexical/angle-people/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle.N1",
+    "terms": [
+      "angle.N1",
+      "几何中的角",
+      "right angle",
+      "acute angle",
+      "obtuse angle",
+      "angle of incidence",
+      "steep angle",
+      "at right angles to",
+      "at right angles to"
+    ],
+    "url": "lexical/angle/index.html#angle.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "at right angles to",
+    "terms": [
+      "at right angles to",
+      "angle.N1",
+      "几何中的角"
+    ],
+    "url": "lexical/angle/index.html#angle.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "at right angles to",
+    "terms": [
+      "at right angles to",
+      "angle.N1",
+      "几何中的角"
+    ],
+    "url": "lexical/angle/index.html#angle.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle.N2",
+    "terms": [
+      "angle.N2",
+      "观察或放置事物的方位与角度",
+      "camera angle",
+      "viewing angle",
+      "different angle",
+      "awkward angle",
+      "from every angle",
+      "at an angle",
+      "from every angle"
+    ],
+    "url": "lexical/angle/index.html#angle.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "from every angle",
+    "terms": [
+      "from every angle",
+      "angle.N2",
+      "观察或放置事物的方位与角度"
+    ],
+    "url": "lexical/angle/index.html#angle.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "at an angle",
+    "terms": [
+      "at an angle",
+      "angle.N2",
+      "观察或放置事物的方位与角度"
+    ],
+    "url": "lexical/angle/index.html#angle.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "from every angle",
+    "terms": [
+      "from every angle",
+      "angle.N2",
+      "观察或放置事物的方位与角度"
+    ],
+    "url": "lexical/angle/index.html#angle.N2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle.N3",
+    "terms": [
+      "angle.N3",
+      "解释、报道或推介某事的切入视角",
+      "fresh angle",
+      "new angle",
+      "human-interest angle",
+      "marketing angle",
+      "look at it from another angle",
+      "work an angle",
+      "from another angle"
+    ],
+    "url": "lexical/angle/index.html#angle.N3"
+  },
+  {
+    "type": "Chunk",
+    "title": "look at it from another angle",
+    "terms": [
+      "look at it from another angle",
+      "angle.N3",
+      "解释、报道或推介某事的切入视角"
+    ],
+    "url": "lexical/angle/index.html#angle.N3"
+  },
+  {
+    "type": "Chunk",
+    "title": "work an angle",
+    "terms": [
+      "work an angle",
+      "angle.N3",
+      "解释、报道或推介某事的切入视角"
+    ],
+    "url": "lexical/angle/index.html#angle.N3"
+  },
+  {
+    "type": "Chunk",
+    "title": "from another angle",
+    "terms": [
+      "from another angle",
+      "angle.N3",
+      "解释、报道或推介某事的切入视角"
+    ],
+    "url": "lexical/angle/index.html#angle.N3"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle.V1",
+    "terms": [
+      "angle.V1",
+      "使物体呈某角度；斜向移动",
+      "angle the camera",
+      "angle the blade",
+      "angle sharply toward"
+    ],
+    "url": "lexical/angle/index.html#angle.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angle.V2",
+    "terms": [
+      "angle.V2",
+      "针对受众或目标有策略地呈现信息",
+      "angle a story",
+      "angle a pitch",
+      "carefully angled"
+    ],
+    "url": "lexical/angle/index.html#angle.V2"
+  },
+  {
+    "type": "Headword",
+    "title": "angle",
+    "terms": [
+      "angle"
+    ],
+    "url": "lexical/angle/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angry.ADJ1",
+    "terms": [
+      "angry.ADJ1",
+      "感到或表现出强烈不满",
+      "deeply angry",
+      "visibly angry",
+      "angry response",
+      "angry protest",
+      "get angry",
+      "make somebody angry",
+      "angry with X for doing Y"
+    ],
+    "url": "lexical/angry/index.html#angry.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "get angry",
+    "terms": [
+      "get angry",
+      "angry.ADJ1",
+      "感到或表现出强烈不满"
+    ],
+    "url": "lexical/angry/index.html#angry.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "make somebody angry",
+    "terms": [
+      "make somebody angry",
+      "angry.ADJ1",
+      "感到或表现出强烈不满"
+    ],
+    "url": "lexical/angry/index.html#angry.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "angry with X for doing Y",
+    "terms": [
+      "angry with X for doing Y",
+      "angry.ADJ1",
+      "感到或表现出强烈不满"
+    ],
+    "url": "lexical/angry/index.html#angry.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "angry.ADJ2",
+    "terms": [
+      "angry.ADJ2",
+      "外观凶险、猛烈或红肿的",
+      "angry sea",
+      "angry clouds",
+      "angry red rash",
+      "angry-looking wound"
+    ],
+    "url": "lexical/angry/index.html#angry.ADJ2"
+  },
+  {
+    "type": "Headword",
+    "title": "angry",
+    "terms": [
+      "angry"
+    ],
+    "url": "lexical/angry/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "animal.N1",
+    "terms": [
+      "animal.N1",
+      "日常语境中的非人类动物",
+      "wild animal",
+      "domestic animal",
+      "farm animal",
+      "animal welfare",
+      "animal behaviour",
+      "cruelty to animals",
+      "experiments on animals"
+    ],
+    "url": "lexical/animal/index.html#animal.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "cruelty to animals",
+    "terms": [
+      "cruelty to animals",
+      "animal.N1",
+      "日常语境中的非人类动物"
+    ],
+    "url": "lexical/animal/index.html#animal.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "experiments on animals",
+    "terms": [
+      "experiments on animals",
+      "animal.N1",
+      "日常语境中的非人类动物"
+    ],
+    "url": "lexical/animal/index.html#animal.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "animal.N2",
+    "terms": [
+      "animal.N2",
+      "生物分类中动物界的成员",
+      "animal species",
+      "animal cell",
+      "animal kingdom",
+      "marine animal"
+    ],
+    "url": "lexical/animal/index.html#animal.N2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "animal.N3",
+    "terms": [
+      "animal.N3",
+      "被视为野蛮、本能化或精力异常旺盛的人",
+      "party animal",
+      "political animal",
+      "a different animal"
+    ],
+    "url": "lexical/animal/index.html#animal.N3"
+  },
+  {
+    "type": "Chunk",
+    "title": "a different animal",
+    "terms": [
+      "a different animal",
+      "animal.N3",
+      "被视为野蛮、本能化或精力异常旺盛的人"
+    ],
+    "url": "lexical/animal/index.html#animal.N3"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "animal.ADJ1",
+    "terms": [
+      "animal.ADJ1",
+      "与动物或肉体本能有关的",
+      "animal protein",
+      "animal tissue",
+      "animal instinct",
+      "animal feed"
+    ],
+    "url": "lexical/animal/index.html#animal.ADJ1"
+  },
+  {
+    "type": "Headword",
+    "title": "animal",
+    "terms": [
+      "animal"
+    ],
+    "url": "lexical/animal/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "ankle.N1",
+    "terms": [
+      "ankle.N1",
+      "连接脚与小腿的踝关节及其周围",
+      "sprained ankle",
+      "broken ankle",
+      "ankle injury",
+      "ankle joint",
+      "swollen ankle",
+      "twist one's ankle",
+      "ankle-deep in"
+    ],
+    "url": "lexical/ankle/index.html#ankle.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "twist one's ankle",
+    "terms": [
+      "twist one's ankle",
+      "ankle.N1",
+      "连接脚与小腿的踝关节及其周围"
+    ],
+    "url": "lexical/ankle/index.html#ankle.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "ankle-deep in",
+    "terms": [
+      "ankle-deep in",
+      "ankle.N1",
+      "连接脚与小腿的踝关节及其周围"
+    ],
+    "url": "lexical/ankle/index.html#ankle.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "ankle",
+    "terms": [
+      "ankle"
+    ],
+    "url": "lexical/ankle/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "announce.V1",
+    "terms": [
+      "announce.V1",
+      "正式或公开宣布信息",
+      "announce a decision",
+      "announce plans",
+      "announce results",
+      "officially announce",
+      "announce one's resignation",
+      "pleased/proud to announce",
+      "It was announced that + clause"
+    ],
+    "url": "lexical/announce/index.html#announce.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "pleased/proud to announce",
+    "terms": [
+      "pleased/proud to announce",
+      "announce.V1",
+      "正式或公开宣布信息"
+    ],
+    "url": "lexical/announce/index.html#announce.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "It was announced that + clause",
+    "terms": [
+      "It was announced that + clause",
+      "announce.V1",
+      "正式或公开宣布信息"
+    ],
+    "url": "lexical/announce/index.html#announce.V1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "announce.V2",
+    "terms": [
+      "announce.V2",
+      "公开介绍或报出人、结果或项目",
+      "announce the winner",
+      "announce the arrival",
+      "announce the next speaker"
+    ],
+    "url": "lexical/announce/index.html#announce.V2"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "announce.V3",
+    "terms": [
+      "announce.V3",
+      "预示某事即将到来或开始",
+      "announce the arrival of",
+      "announce the beginning of",
+      "announce a new era"
+    ],
+    "url": "lexical/announce/index.html#announce.V3"
+  },
+  {
+    "type": "Headword",
+    "title": "announce",
+    "terms": [
+      "announce"
+    ],
+    "url": "lexical/announce/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "announcer.N1",
+    "terms": [
+      "announcer.N1",
+      "介绍节目、项目或发布现场信息的人",
+      "radio announcer",
+      "television announcer",
+      "public-address announcer",
+      "sports announcer",
+      "the stadium announcer"
+    ],
+    "url": "lexical/announcer/index.html#announcer.N1"
+  },
+  {
+    "type": "Chunk",
+    "title": "the stadium announcer",
+    "terms": [
+      "the stadium announcer",
+      "announcer.N1",
+      "介绍节目、项目或发布现场信息的人"
+    ],
+    "url": "lexical/announcer/index.html#announcer.N1"
+  },
+  {
+    "type": "Headword",
+    "title": "announcer",
+    "terms": [
+      "announcer"
+    ],
+    "url": "lexical/announcer/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "annoy.V1",
+    "terms": [
+      "annoy.V1",
+      "使人感到轻微愤怒、不耐烦或烦扰",
+      "really annoy",
+      "constantly annoy",
+      "annoy customers",
+      "annoy the neighbours",
+      "just to annoy somebody",
+      "be annoyed with oneself",
+      "It annoys X that P"
+    ],
+    "url": "lexical/annoy/index.html#annoy.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "just to annoy somebody",
+    "terms": [
+      "just to annoy somebody",
+      "annoy.V1",
+      "使人感到轻微愤怒、不耐烦或烦扰"
+    ],
+    "url": "lexical/annoy/index.html#annoy.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "be annoyed with oneself",
+    "terms": [
+      "be annoyed with oneself",
+      "annoy.V1",
+      "使人感到轻微愤怒、不耐烦或烦扰"
+    ],
+    "url": "lexical/annoy/index.html#annoy.V1"
+  },
+  {
+    "type": "Chunk",
+    "title": "It annoys X that P",
+    "terms": [
+      "It annoys X that P",
+      "annoy.V1",
+      "使人感到轻微愤怒、不耐烦或烦扰"
+    ],
+    "url": "lexical/annoy/index.html#annoy.V1"
+  },
+  {
+    "type": "Headword",
+    "title": "annoy",
+    "terms": [
+      "annoy"
+    ],
+    "url": "lexical/annoy/index.html"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "annual.ADJ1",
+    "terms": [
+      "annual.ADJ1",
+      "每年一次的；按一年计算的",
+      "annual meeting",
+      "annual report",
+      "annual income",
+      "annual rate",
+      "annual leave",
+      "annual rainfall",
+      "on an annual basis",
+      "on an annual basis"
+    ],
+    "url": "lexical/annual/index.html#annual.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "on an annual basis",
+    "terms": [
+      "on an annual basis",
+      "annual.ADJ1",
+      "每年一次的；按一年计算的"
+    ],
+    "url": "lexical/annual/index.html#annual.ADJ1"
+  },
+  {
+    "type": "Chunk",
+    "title": "on an annual basis",
+    "terms": [
+      "on an annual basis",
+      "annual.ADJ1",
+      "每年一次的；按一年计算的"
+    ],
+    "url": "lexical/annual/index.html#annual.ADJ1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "annual.N1",
+    "terms": [
+      "annual.N1",
+      "每年出版一次的出版物",
+      "school annual",
+      "literary annual",
+      "company annual"
+    ],
+    "url": "lexical/annual/index.html#annual.N1"
+  },
+  {
+    "type": "Lexical Element",
+    "title": "annual.N2",
+    "terms": [
+      "annual.N2",
+      "一个生长季内完成生命周期的一年生植物",
+      "summer annual",
+      "winter annual",
+      "hardy annual",
+      "annual plant",
+      "annuals and perennials"
+    ],
+    "url": "lexical/annual/index.html#annual.N2"
+  },
+  {
+    "type": "Chunk",
+    "title": "annuals and perennials",
+    "terms": [
+      "annuals and perennials",
+      "annual.N2",
+      "一个生长季内完成生命周期的一年生植物"
+    ],
+    "url": "lexical/annual/index.html#annual.N2"
+  },
+  {
+    "type": "Headword",
+    "title": "annual",
+    "terms": [
+      "annual"
+    ],
+    "url": "lexical/annual/index.html"
+  },
+  {
+    "type": "Sentence Logic",
+    "title": "Concession and Qualification",
+    "terms": [
+      "Concession and Qualification",
+      "让步与限定：承认反向事实，同时控制结论的适用范围与强度。",
+      "concession-qualification"
+    ],
+    "url": "logic/concession-qualification.html"
+  }
+]
