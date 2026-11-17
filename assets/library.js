@@ -11,4 +11,3 @@ export function orderItems(items, order = 'newest') {
     return (order === 'oldest' ? 1 : -1) * (a.date ?? '').localeCompare(b.date ?? '') || a.title.localeCompare(b.title, 'en') || a.url.localeCompare(b.url, 'en');
   });
 }
-

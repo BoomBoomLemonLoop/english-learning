@@ -89,4 +89,3 @@ export async function scan(root) {
   }
   return orderItems(items);
 }
-
