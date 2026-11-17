@@ -1,0 +1,2 @@
+:root{color-scheme:dark;--bg:#111916;--panel:#18221d;--text:#edf1e9;--muted:#a4b2a7;--line:#314038;--accent:#c7e8a0}
+:root[data-theme="light"]{color-scheme:light;--bg:#f6f7f2;--panel:#fff;--text:#1b3025;--muted:#57695d;--line:#d5dfd3;--accent:#376523}
