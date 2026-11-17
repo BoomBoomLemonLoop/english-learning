@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, writeFile, readFile, rm, cp } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
-import { scan, validDate, orderItems, sections } from '../scripts/catalog.mjs';
+import { scan, validDate, orderItems, sections, walk } from '../scripts/catalog.mjs';
 import { build } from '../scripts/build.mjs';
 import { validate } from '../scripts/validate.mjs';
 import { createServer } from '../scripts/preview.mjs';
@@ -17,6 +17,50 @@ async function fixture(t) {
   return { root, put: async (file, text) => { const dest = path.join(root, file); await mkdir(path.dirname(dest), { recursive: true }); await writeFile(dest, text); } };
 }
 const folder = 'content/scenario-speaking/';
+test('object URL APIs in inline and external scripts are not CSS file references', async t => {
+  const { root, put } = await fixture(t);
+  const script = "const url = URL.createObjectURL(blob); URL.revokeObjectURL(url);";
+  await put('_site/index.html', `<script>${script}</script><script src="download.js"></script>`);
+  await put('_site/download.js', script);
+  await validate(path.join(root, '_site'));
+});
+test('HTML script strings and comments are not static markup or CSS', async t => {
+  const { root, put } = await fixture(t);
+  await put('_site/index.html', `<!-- <img src="comment.png"><style>p{background:url(comment.svg)}</style> -->
+    <script>const template = '<img src="dynamic.png">'; const css = 'url(runtime.svg)';</script>
+    <textarea><img src="example.png"></textarea>
+    <style>/* url(comment.svg) */p::before{content:"url(example.svg)"}</style>`);
+  await validate(path.join(root, '_site'));
+});
+test('CSS references in stylesheets, style blocks and style attributes remain validated', async t => {
+  const { root, put } = await fixture(t);
+  await put('_site/index.html', `<link rel="stylesheet" href="css/main.css"><style>@import "theme.css";p{background:url(block.svg)}</style><div style="background:url(inline.svg)"></div>`);
+  await put('_site/css/main.css', '@import "nested.css";p{background:url(../external.svg)}');
+  const targets = ['theme.css', 'block.svg', 'inline.svg', 'nested.css', '../external.svg'];
+  await assert.rejects(validate(path.join(root, '_site')), error => targets.every(target => error.message.includes(target)));
+  for (const file of ['theme.css', 'block.svg', 'inline.svg', 'css/nested.css', 'external.svg']) await put('_site/' + file, '');
+  await validate(path.join(root, '_site'));
+});
+test('script source and JS module files are still checked', async t => {
+  const { root, put } = await fixture(t);
+  await put('_site/index.html', '<script src="missing.js"></script>');
+  await put('_site/app.js', 'import { value } from "./missing-module.js";');
+  await assert.rejects(validate(path.join(root, '_site')), error => error.message.includes('missing.js') && error.message.includes('missing-module.js'));
+});
+test('the current uploaded collection builds with every content file preserved byte-for-byte', async t => {
+  const { root } = await fixture(t);
+  // Exercise real uploads too, without tying the suite to a lesson that the
+  // owner may later rename or replace as part of normal content maintenance.
+  await cp(path.join(source, 'content'), path.join(root, 'content'), { recursive: true });
+  const { output, items } = await build(root);
+  for (const file of await walk(path.join(root, 'content'))) {
+    if (path.basename(file) === 'learning.json') continue;
+    assert.deepEqual(await readFile(path.join(output, path.relative(root, file))), await readFile(file));
+  }
+  for (const item of items) {
+    assert.deepEqual(await readFile(path.join(output, decodeURIComponent(item.url))), await readFile(path.join(root, decodeURIComponent(item.url))));
+  }
+});
 test('standalone upload needs no metadata; filename supplies date and title entities decode', async t => {
   const { root, put } = await fixture(t);
   await put(folder + '2026-11-17-coffee.html', '<title>Coffee &amp; conversation</title><p>Order politely.</p>');
