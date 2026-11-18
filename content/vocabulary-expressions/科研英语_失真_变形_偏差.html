@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科研英语听读卡 | Distortion · Deformation · Deviation</title>
+<style>
+:root{--bg:#f4f7fa;--ink:#172d40;--muted:#5c7081;--card:#fff;--border:#d7e1e9;--accent:#0f6786;--accentbg:#e7f4f9;--good:#137353;--bad:#b2393b;--shadow:0 5px 25px rgba(20,56,78,.055)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.55}
+button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #6caec4;outline-offset:2px}
+header{background:#143e59;color:white;padding:28px max(20px,calc((100vw - 1120px)/2));}
+header .kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:#afdce9;font-weight:700}h1{font-size:clamp(26px,4vw,35px);line-height:1.2;margin:7px 0 10px}header p{color:#d1e6ee;margin:0;max-width:760px;font-size:14px}
+main{max-width:1120px;padding:20px;margin:auto}.toolbar,.panel{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:17px;box-shadow:var(--shadow)}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:18px;margin-bottom:17px}.settings{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.setting{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}.setting select{max-width:220px}
+input[type="range"]{width:110px;accent-color:var(--accent)}select,input[type="search"],textarea{border:1px solid #c4d4df;border-radius:9px;background:white;color:var(--ink);padding:8px}.btn{border:1px solid #bed0dc;background:#f7fafc;border-radius:9px;padding:8px 12px;font-weight:600;color:#25506a;transition:background .15s;min-height:38px}.btn:hover{background:#e9f3f8}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:#07516d}.btn.stop{color:#973435}.btn.small{font-size:12px;min-height:32px;padding:6px 9px}
+.status{font-size:12px;color:var(--muted);padding-top:10px;grid-column:1/-1;min-height:30px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{background:transparent;border:1px solid #cbd9e2;color:#365d74;border-radius:30px;padding:8px 15px;font-weight:600}.tab.active{background:#143e59;border-color:#143e59;color:white}
+.view{display:none}.view.active{display:block}.filters{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:13px}.filters input[type="search"]{min-width:240px;width:min(360px,100%)}.filters .left{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(315px,1fr));gap:13px}.card{border:1px solid var(--border);border-radius:15px;padding:19px;background:white;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.tag{font-size:11px;font-weight:700;color:#326b81;letter-spacing:.01em}.fav{font-size:21px;background:transparent;border:0;color:#9db3bf;padding:3px 6px}.fav.on{color:#df9d26}.term{font-size:25px;font-weight:730;letter-spacing:-.02em;line-height:1.25;overflow-wrap:anywhere}.zh{color:#35596a;font-weight:650}.note{font-size:13px;color:var(--muted)}.example{background:#f2f7fa;border-left:3px solid #4e9ab0;padding:10px 12px;border-radius:5px;font-size:14px;margin-top:3px}.translation{font-size:13px;color:#657989}.card-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:6px}.hiddenmeaning .zh,.hiddenmeaning .translation{filter:blur(6px);user-select:none}.hiddenmeaning .zh:hover,.hiddenmeaning .translation:hover{filter:none}
+.section-title{font-size:18px;font-weight:750;margin:0 0 8px}.subtext{color:var(--muted);font-size:13px}.panel{margin-bottom:16px}
+.bigword{font-size:clamp(30px,5vw,44px);font-weight:750;margin:12px 0;color:#144760}.bigzh{font-size:20px;color:#2c6376;margin:8px 0}.flashbox{text-align:center;max-width:680px;margin:0 auto}.count{font-size:13px;color:var(--muted)}.flash-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}.flash-description{margin-top:14px;color:var(--muted);font-size:14px}.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}.quiz-options button{text-align:left;min-height:51px}.quiz-options button.correct{border-color:#15865e;background:#e9f8f0;color:#0a6a47}.quiz-options button.wrong{border-color:#d47578;background:#fdeff0;color:#ac333d}.feedback{min-height:26px;font-weight:650;color:#355b6c}.practice-list{display:grid;gap:10px;margin-top:12px}.practice-item{border:1px solid var(--border);border-radius:10px;padding:12px;background:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px}.practice-item .en{font-weight:650}.practice-item .cn{color:var(--muted);font-size:13px}textarea{width:100%;resize:vertical;min-height:88px;margin:9px 0}.hint{font-size:12px;color:var(--muted)}footer{max-width:1120px;margin:0 auto;padding:16px 20px 32px;font-size:12px;color:var(--muted)}
+@media(max-width:700px){.toolbar{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.quiz-options{grid-template-columns:1fr}.practice-item{flex-direction:column;align-items:flex-start}.settings{align-items:center}.card{padding:16px}}
+@media print{header{background:white;color:black}.toolbar,.tabs,.btn,.filters{display:none!important}.view{display:block!important}.card{break-inside:avoid}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="kicker">Academic English · CFD & Research</div><h1>失真 · 变形 · 偏差</h1><p>离线词汇卡 + 英语朗读 + 跟读 + 自测。使用浏览器内置语音合成（Text-to-Speech, TTS），无需注册、上传或联网；可用语音取决于浏览器和系统。</p></header>
+<main>
+<section class="toolbar" aria-label="朗读设置">
+ <div class="settings">
+  <label class="setting">英文发音<select id="voiceSel"><option value="">自动选择英文语音</option></select></label>
+  <label class="setting">语速 <b id="rateLabel">0.90×</b><input id="rate" type="range" min="0.6" max="1.3" step="0.05" value="0.9"></label>
+  <label class="setting">重复次数<select id="repeat"><option value="1">1 次</option><option value="2" selected>2 次</option><option value="3">3 次</option><option value="5">5 次</option></select></label>
+ </div>
+ <div class="settings"><button class="btn primary" id="playVisible">▶ 连读当前单词</button><button class="btn stop" id="stop">■ 停止</button></div>
+ <div class="status" id="status" aria-live="polite">提示：点击任意“听单词”或“听例句”即可开始朗读；耳机/系统需开启声音。</div>
+</section>
+<nav class="tabs" aria-label="学习模式"><button class="tab active" data-tab="cards">词汇卡</button><button class="tab" data-tab="flash">记忆闪卡</button><button class="tab" data-tab="quiz">词义小测验</button><button class="tab" data-tab="practice">跟读练习</button></nav>
+<section id="cards" class="view active">
+ <div class="filters"><div class="left"><input id="search" type="search" placeholder="搜索单词、中文或英文例句" aria-label="搜索"><select id="category"><option value="">全部类别</option></select><label class="hint"><input type="checkbox" id="favsOnly"> 只看收藏</label></div><div class="left"><label class="hint"><input type="checkbox" id="hideCn"> 隐藏中文释义（自测）</label><span class="hint" id="cardCount"></span></div></div>
+ <div class="grid" id="cardsGrid"></div>
+</section>
+<section id="flash" class="view"><div class="panel flashbox"><p class="section-title">看英文 → 回忆中文 → 翻牌验证</p><p class="count" id="flashCount"></p><div id="flashWord" class="bigword"></div><div id="flashZh" class="bigzh" hidden></div><p class="flash-description" id="flashNote" hidden></p><div class="flash-actions"><button id="prevFlash" class="btn">上一张</button><button id="flipFlash" class="btn primary">显示释义</button><button id="speakFlash" class="btn">▶ 听单词</button><button id="nextFlash" class="btn">下一张</button></div></div><p class="hint">建议先自行发音，听 TTS 后再翻牌。键盘：← / → 切换，空格翻牌（非输入框焦点时）。</p></section>
+<section id="quiz" class="view"><div class="panel"><h2 class="section-title">词义辨析小测验</h2><p class="subtext">每题选出最贴切的中文含义。回答后会显示正确答案；可以反复练习。</p><div class="count" id="quizCount"></div><div class="bigword" id="quizWord"></div><button class="btn small" id="speakQuiz">▶ 听发音</button><div class="quiz-options" id="quizOptions"></div><div class="feedback" id="quizFeedback" aria-live="polite"></div><div class="flash-actions"><button class="btn" id="restartQuiz">重新开始</button><button class="btn primary" id="nextQuiz">下一题</button></div></div></section>
+<section id="practice" class="view">
+ <div class="panel"><h2 class="section-title">科研例句跟读</h2><p class="subtext">建议：先听 0.90× 两遍 → 自己读一遍 → 尝试不看文字复述。按每句右侧按钮即可朗读。</p><div id="practiceList" class="practice-list"></div></div>
+ <div class="panel"><h2 class="section-title">自由输入 · 英语朗读</h2><p class="subtext">把论文中的单词或句子粘贴进来，直接练习语音；文本只在本机浏览器中处理。</p><textarea id="freeText" placeholder="The predicted pressure ratio deviates from the reference value by 3%."></textarea><div class="settings"><button class="btn primary" id="freeSpeak">▶ 朗读输入内容</button><button class="btn" id="freeClear">清空输入</button></div></div>
+</section>
+</main><footer>词义提示：deformation 强调物理变形；distortion 强调失真或畸变；deviation 强调相对基准的偏离。不同科学分支的术语有交叉，应结合研究对象判断。TTS 使用浏览器 Web Speech API；系统未安装英语语音时可能需要安装语言语音包。</footer>
+<script>
+'use strict';
+const WORDS=[{"id": "distortion", "en": "distortion", "zh": "失真；畸变；扭曲", "cat": "失真 / Distortion", "note": "强调形状、信号、流场分布或信息相对于原始状态发生扭曲；不一定是结构受力变形。", "example": "Severe inlet-flow distortion may reduce compressor stability.", "translation": "严重的入口流场畸变可能降低压气机稳定性。"}, {"id": "distort", "en": "distort", "zh": "使失真；使扭曲（动词）", "cat": "失真 / Distortion", "note": "动词：distort a signal / an image / the results。", "example": "Measurement noise can distort the recorded signal.", "translation": "测量噪声可能使记录的信号失真。"}, {"id": "deformation", "en": "deformation", "zh": "（物理）变形", "cat": "变形 / Deformation", "note": "强调物体几何形状或尺寸发生改变；可分为弹性和塑性变形。", "example": "The blade undergoes elastic deformation under centrifugal loading.", "translation": "叶片在离心载荷下发生弹性变形。"}, {"id": "deform", "en": "deform", "zh": "使变形；发生变形（动词）", "cat": "变形 / Deformation", "note": "常与 under load / due to heating 等搭配。", "example": "A large thermal gradient can deform the casing.", "translation": "较大的温度梯度可能使机匣变形。"}, {"id": "mesh deformation", "en": "mesh deformation", "zh": "网格变形", "cat": "变形 / Deformation", "note": "常指为了适应移动边界而更新网格的位置与形状；不预设质量一定变差。", "example": "Mesh deformation is used to accommodate the moving boundary.", "translation": "采用网格变形来适应移动边界。"}, {"id": "mesh distortion", "en": "mesh distortion", "zh": "网格畸变", "cat": "失真 / Distortion", "note": "通常强调网格单元形状偏离理想状态、质量恶化；与 mesh deformation 侧重点不同。", "example": "Excessive mesh distortion can degrade numerical accuracy.", "translation": "严重的网格畸变可能降低数值计算精度。"}, {"id": "deviation", "en": "deviation", "zh": "偏离；偏差", "cat": "偏差 / Deviation", "note": "强调相对于参考值、目标值或基准状态的差异；偏离不一定意味着方法有错。", "example": "The predicted pressure ratio shows a 3% deviation from the reference value.", "translation": "预测压比相对于参考值偏离了 3%。"}, {"id": "deviate", "en": "deviate", "zh": "偏离（动词）", "cat": "偏差 / Deviation", "note": "高频结构：deviate from + 参考对象。", "example": "The simulated temperature deviates from the measured value.", "translation": "模拟温度偏离了测量值。"}, {"id": "error", "en": "error", "zh": "误差；错误", "cat": "科研近义词 / Related terms", "note": "在计量学中通常指测量值与参考量值之差；数值计算中还需区别离散误差和模型误差。", "example": "We calculated the relative error using the reference value.", "translation": "我们使用参考值计算了相对误差。"}, {"id": "bias", "en": "bias", "zh": "系统性偏差；偏倚", "cat": "科研近义词 / Related terms", "note": "强调估计结果持续偏向某一方向；“正偏差”取决于误差的符号定义。", "example": "The model consistently overpredicts temperature, indicating a positive bias.", "translation": "模型持续高估温度，说明存在正向系统偏差。"}, {"id": "discrepancy", "en": "discrepancy", "zh": "不一致；差异", "cat": "科研近义词 / Related terms", "note": "比较两组结果不吻合，不直接断言哪一组正确。", "example": "A discrepancy remains between the CFD predictions and the measurements.", "translation": "CFD 预测与测量之间仍存在差异。"}, {"id": "standard deviation", "en": "standard deviation", "zh": "标准差", "cat": "科研近义词 / Related terms", "note": "统计学中描述数据离散程度；不是“预测相对参考值的偏差”的同义词。", "example": "The standard deviation describes the spread of repeated measurements.", "translation": "标准差描述重复测量结果的离散程度。"}, {"id": "misrepresentation", "en": "misrepresentation", "zh": "不实呈现；歪曲表述", "cat": "科研近义词 / Related terms", "note": "用于内容被不准确地呈现或误导；通常不用于信号、叶片变形。", "example": "Selective reporting can lead to a misrepresentation of the findings.", "translation": "选择性报告可能导致对研究结果的不实呈现。"}, {"id": "inlet-flow distortion", "en": "inlet-flow distortion", "zh": "入口流场畸变", "cat": "失真 / Distortion", "note": "流体机械常用表达；强调入口速度/压力等分布的非均匀性。", "example": "Inlet-flow distortion should be considered when assessing compressor performance.", "translation": "评价压气机性能时应考虑入口流场畸变。"}];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const speechOK='speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+const saved=(()=>{try{return JSON.parse(localStorage.getItem('sci_english_favorites')||'[]')}catch{return []}})();
+let favorites=new Set(saved),voices=[],currentTab='cards',speechToken=0,flashIndex=0,flashRevealed=false,quizOrder=[],quizIndex=0,quizAnswered=false,quizScore=0;
+const setStatus=message=>$('#status').textContent=message;
+function voicesLoad(){if(!speechOK)return;voices=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang));
+ const select=$('#voiceSel'),before=select.value; select.innerHTML='<option value="">自动选择英文语音</option>';
+ voices.forEach((v,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=`${v.name} (${v.lang})${v.localService?' · 本机':''}`;select.appendChild(op)});
+ if(before && [...select.options].some(o=>o.value===before))select.value=before;
+}
+if(speechOK){voicesLoad();speechSynthesis.addEventListener?.('voiceschanged',voicesLoad)}else{setStatus('当前浏览器不支持 Web Speech API。请使用新版 Edge 或 Chrome，并检查系统语音包。')}
+function voiceFor(lang){if(lang==='zh-CN'){const all=speechSynthesis.getVoices();return all.find(v=>/^zh[-_](CN|Hans)/i.test(v.lang))||all.find(v=>/^zh/i.test(v.lang))||null}
+ const i=$('#voiceSel').value;return i!==''?voices[Number(i)]||null:voices.find(v=>/en[-_]US/i.test(v.lang))||voices[0]||null}
+function stopSpeech(){speechToken++;if(speechOK)speechSynthesis.cancel();setStatus('已停止。')}
+function saySegments(segments,description){if(!speechOK){setStatus('浏览器缺少语音合成功能；建议使用 Edge 或 Chrome。');return}
+ speechToken++;const token=speechToken;speechSynthesis.cancel();const rate=Number($('#rate').value),repeat=Number($('#repeat').value);
+ const items=segments.flatMap(segment=>Array.from({length:segment.count??repeat},()=>segment));let pos=0;
+ function next(){if(token!==speechToken)return;if(pos>=items.length){setStatus('朗读完成。');return}
+  const item=items[pos++],u=new SpeechSynthesisUtterance(item.text);u.lang=item.lang||'en-US';u.rate=rate;u.pitch=1;u.volume=1;
+  const v=voiceFor(u.lang);if(v){u.voice=v;if(u.lang!=='zh-CN')u.lang=v.lang}
+  u.onend=()=>{if(token===speechToken)next()};u.onerror=(e)=>{if(token!==speechToken)return;if(e.error==='interrupted'||e.error==='canceled')return;setStatus('语音失败：'+e.error+'。请检查语音包或换一种声音。')};
+  setStatus(`正在朗读 ${description||item.text}（${pos}/${items.length}）`);
+  speechSynthesis.speak(u);
+ }
+ next();
+}
+function speakTerm(w){saySegments([{text:w.en}],w.en)}
+function speakExample(w){saySegments([{text:w.example}],w.en+' · 例句')}
+function elem(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+function saveFavs(){try{localStorage.setItem('sci_english_favorites',JSON.stringify([...favorites]))}catch{}}
+function visibleWords(){const q=$('#search').value.trim().toLowerCase(),cat=$('#category').value;
+ return WORDS.filter(w=>(!cat||cat===w.cat)&&(!$('#favsOnly').checked||favorites.has(w.id))&&(!q||[w.en,w.zh,w.note,w.example,w.translation].some(s=>s.toLowerCase().includes(q))))}
+function renderCards(){const grid=$('#cardsGrid'),words=visibleWords();grid.replaceChildren();$('#cardCount').textContent=`${words.length} / ${WORDS.length} 张`;
+ if(!words.length){grid.appendChild(elem('p','hint','没有匹配的词汇。请调整筛选条件。'));return}
+ words.forEach(w=>{const card=elem('article','card'+($('#hideCn').checked?' hiddenmeaning':''));
+  const top=elem('div','card-top'),tag=elem('span','tag',w.cat),fav=elem('button','fav'+(favorites.has(w.id)?' on':''),favorites.has(w.id)?'★':'☆');fav.title='收藏/取消收藏';fav.setAttribute('aria-label','收藏 '+w.en);fav.onclick=()=>{favorites.has(w.id)?favorites.delete(w.id):favorites.add(w.id);saveFavs();renderCards()};top.append(tag,fav);
+  card.append(top,elem('div','term',w.en),elem('div','zh',w.zh),elem('div','note',w.note),elem('div','example',w.example),elem('div','translation',w.translation));
+  const actions=elem('div','card-actions');const b1=elem('button','btn small primary','▶ 听单词'),b2=elem('button','btn small','▶ 听例句'),b3=elem('button','btn small','中英对照');
+  b1.onclick=()=>speakTerm(w);b2.onclick=()=>speakExample(w);b3.onclick=()=>saySegments([{text:w.en},{text:w.example,count:1},{text:w.translation,lang:'zh-CN',count:1}],w.en+' · 中英对照');actions.append(b1,b2,b3);card.append(actions);grid.append(card)})}
+const categories=[...new Set(WORDS.map(w=>w.cat))];categories.forEach(cat=>{const opt=elem('option',null,cat);opt.value=cat;$('#category').append(opt)});
+['search','category','favsOnly','hideCn'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',renderCards));renderCards();
+$$('.tab').forEach(b=>b.onclick=()=>{currentTab=b.dataset.tab;$$('.tab').forEach(t=>t.classList.toggle('active',t===b));$$('.view').forEach(v=>v.classList.toggle('active',v.id===currentTab));if(currentTab==='flash')renderFlash();if(currentTab==='quiz'&&!quizOrder.length)restartQuiz()});
+$('#rate').oninput=()=>$('#rateLabel').textContent=Number($('#rate').value).toFixed(2)+'×';$('#stop').onclick=stopSpeech;
+$('#playVisible').onclick=()=>{const arr=currentTab==='cards'?visibleWords():WORDS;if(!arr.length){setStatus('当前没有可朗读的单词。');return}saySegments(arr.map(w=>({text:w.en,count:1})),`单词列表（共 ${arr.length} 个）`)};
+function renderFlash(){const w=WORDS[flashIndex];$('#flashCount').textContent=`${flashIndex+1} / ${WORDS.length}`;$('#flashWord').textContent=w.en;$('#flashZh').textContent=w.zh+' · '+w.translation;$('#flashNote').textContent=w.note;$('#flashZh').hidden=!flashRevealed;$('#flashNote').hidden=!flashRevealed;$('#flipFlash').textContent=flashRevealed?'隐藏释义':'显示释义'}
+function moveFlash(d){flashIndex=(flashIndex+d+WORDS.length)%WORDS.length;flashRevealed=false;renderFlash()}
+$('#prevFlash').onclick=()=>moveFlash(-1);$('#nextFlash').onclick=()=>moveFlash(1);$('#flipFlash').onclick=()=>{flashRevealed=!flashRevealed;renderFlash()};$('#speakFlash').onclick=()=>speakTerm(WORDS[flashIndex]);
+document.addEventListener('keydown',e=>{const node=e.target?.tagName;if(currentTab!=='flash'||['INPUT','TEXTAREA','SELECT','BUTTON'].includes(node))return;if(e.key==='ArrowRight'){moveFlash(1)}else if(e.key==='ArrowLeft'){moveFlash(-1)}else if(e.code==='Space'){e.preventDefault();flashRevealed=!flashRevealed;renderFlash()}});
+function shuffled(items){return [...items].sort(()=>Math.random()-.5)}
+function restartQuiz(){quizOrder=shuffled(WORDS);quizIndex=0;quizAnswered=false;quizScore=0;renderQuiz()}
+function renderQuiz(){const w=quizOrder[quizIndex];if(!w){$('#quizWord').textContent='练习完成';$('#quizCount').textContent=`答对 ${quizScore} / ${quizOrder.length} 题`;
+ $('#quizOptions').replaceChildren();$('#quizFeedback').textContent='可以点击“重新开始”再练一次。';$('#nextQuiz').disabled=true;return}
+ $('#nextQuiz').disabled=true;$('#quizCount').textContent=`第 ${quizIndex+1} / ${quizOrder.length} 题 · 已答对 ${quizScore} 题`;$('#quizWord').textContent=w.en;$('#quizFeedback').textContent='请选择最合适的含义。';
+ const choices=shuffled([w,...shuffled(WORDS.filter(x=>x.id!==w.id && x.zh!==w.zh)).slice(0,3)]),target=$('#quizOptions');target.replaceChildren();choices.forEach(c=>{const b=elem('button','btn',c.zh);b.onclick=()=>{if(quizAnswered)return;quizAnswered=true;const ok=c.id===w.id;if(ok)quizScore++;
+ [...target.children].forEach((node,i)=>{node.disabled=true;if(choices[i].id===w.id)node.classList.add('correct');else if(node===b)node.classList.add('wrong')});
+ $('#quizFeedback').textContent=(ok?'回答正确。':'未答对。')+' '+w.en+' = '+w.zh;$('#nextQuiz').disabled=false};target.append(b)})}
+$('#restartQuiz').onclick=restartQuiz;$('#nextQuiz').onclick=()=>{quizIndex++;quizAnswered=false;renderQuiz()};$('#speakQuiz').onclick=()=>{if(quizOrder[quizIndex])speakTerm(quizOrder[quizIndex])};
+const practiceRows=[
+ {en:'The blade undergoes elastic deformation under centrifugal loading.',cn:'叶片在离心载荷下发生弹性变形。'},
+ {en:'Measurement noise can distort the recorded signal.',cn:'测量噪声可能使记录的信号失真。'},
+ {en:'The predicted pressure ratio deviates from the reference value by 3%.',cn:'预测压比相对于参考值偏离了 3%。'},
+ {en:'A discrepancy remains between the CFD predictions and the measurements.',cn:'CFD 预测与测量之间仍存在差异。'},
+ {en:'The model consistently overpredicts temperature, indicating a positive bias.',cn:'模型持续高估温度，说明存在正向系统偏差。'},
+ {en:'Excessive mesh distortion can degrade numerical accuracy.',cn:'严重的网格畸变可能降低数值计算精度。'},
+ {en:'Observing a deviation does not necessarily identify its source.',cn:'观察到偏差，不代表已经找到了偏差的来源。'},
+];
+practiceRows.forEach((r,i)=>{const item=elem('div','practice-item'),texts=elem('div'),b=elem('button','btn small primary','▶ 听例句');texts.append(elem('div','en',`${i+1}. ${r.en}`),elem('div','cn',r.cn));b.onclick=()=>saySegments([{text:r.en}],`第 ${i+1} 句`);item.append(texts,b);$('#practiceList').append(item)});
+$('#freeSpeak').onclick=()=>{const txt=$('#freeText').value.trim();if(!txt){setStatus('请先输入需要朗读的英文。');return}saySegments([{text:txt}], '自定义文本')};$('#freeClear').onclick=()=>$('#freeText').value='';
+</script></body></html>
