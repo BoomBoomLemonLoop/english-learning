@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe4">
+  <meta name="description" content="外貌主题第12–18单元：图片、英文、中文与TTS同步展示的互动词卡。">
+  <title>日常英语 · 外貌 · 第12–18单元</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#study-card">跳到当前词卡</a>
+
+  <header class="site-header">
+    <div class="brand" aria-label="日常英语">
+      <span class="brand-mark" id="brand-mark" aria-hidden="true">12</span>
+      <span class="brand-copy">
+        <strong>日常英语</strong>
+        <span>Daily English</span>
+      </span>
+    </div>
+    <div class="header-note">
+      <span class="header-dot" aria-hidden="true"></span>
+      <span id="header-summary">外貌 · 第 12–18 单元</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">APPEARANCE · 外貌 · UNITS 12–18</p>
+        <h1 id="page-title">看见一种风格，<br><em>听见一个单词</em>。</h1>
+        <p class="intro-text">从发型、衣服、饰品到鞋类和美容，逐单元看插图、读单词、听发音。选择任意单元与起始卡片，即可自动学习。</p>
+      </div>
+      <div class="fashion-scene" aria-hidden="true">
+        <div class="fashion-orbit orbit-one"></div>
+        <div class="fashion-orbit orbit-two"></div>
+        <div class="fashion-card fashion-card-hair"><span>HAIR</span></div>
+        <div class="fashion-card fashion-card-style"><span>STYLE</span></div>
+        <div class="fashion-silhouette"><i></i><b></b></div>
+        <div class="fashion-tag">LOOK · LISTEN · LEARN</div>
+      </div>
+    </section>
+
+    <section class="learning-shell" aria-label="词卡学习台">
+      <div class="unit-browser" aria-labelledby="unit-browser-title">
+        <div class="unit-browser-copy">
+          <p class="panel-kicker">单元导航</p>
+          <h2 id="unit-browser-title">外貌 · 第 12–18 单元</h2>
+          <p id="unit-overview">选择今天要学习的场景。</p>
+        </div>
+        <div class="unit-picker">
+          <button class="unit-arrow" id="previous-unit" type="button" aria-label="上一个单元">←</button>
+          <label class="control-field unit-select-field">
+            <span>当前单元</span>
+            <select id="unit-select" aria-label="选择学习单元"></select>
+          </label>
+          <button class="unit-arrow" id="next-unit" type="button" aria-label="下一个单元">→</button>
+        </div>
+        <div class="unit-chips" id="unit-chips" role="tablist" aria-label="外貌主题单元"></div>
+      </div>
+
+      <div class="control-panel">
+        <div class="control-heading">
+          <div>
+            <p class="panel-kicker">播放设置</p>
+            <h2>安排你的练习节奏</h2>
+          </div>
+          <div class="tts-state" id="tts-state" role="status">
+            <span class="state-dot" aria-hidden="true"></span>
+            <span id="tts-state-text">TTS 准备中</span>
+          </div>
+        </div>
+
+        <div class="controls-grid">
+          <label class="control-field control-start">
+            <span>从哪张开始</span>
+            <select id="start-card" aria-label="选择起始卡片"></select>
+          </label>
+
+          <label class="control-field">
+            <span>朗读声音</span>
+            <select id="voice-select" aria-label="选择英语朗读声音">
+              <option value="">系统默认英语声音</option>
+            </select>
+          </label>
+
+          <label class="control-field range-field">
+            <span>卡片间隔 <output id="interval-value" for="interval-range">3 秒</output></span>
+            <input id="interval-range" type="range" min="1" max="12" value="3" step="1" aria-label="自动朗读卡片间隔，单位为秒">
+          </label>
+
+          <label class="control-field range-field">
+            <span>朗读速度 <output id="rate-value" for="rate-range">1.0×</output></span>
+            <input id="rate-range" type="range" min="0.6" max="1.4" value="1" step="0.1" aria-label="TTS朗读速度">
+          </label>
+
+          <fieldset class="mode-field">
+            <legend>播放顺序</legend>
+            <div class="segmented">
+              <label>
+                <input type="radio" name="play-mode" value="sequence" checked>
+                <span>顺序</span>
+              </label>
+              <label>
+                <input type="radio" name="play-mode" value="random">
+                <span>随机</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="transport" aria-label="播放控制">
+          <button class="transport-button secondary" id="prev-button" type="button" title="上一张（←）">
+            <span aria-hidden="true">←</span><span>上一张</span>
+          </button>
+          <button class="transport-button primary" id="play-button" type="button" aria-pressed="false" title="开始或暂停（空格）">
+            <span class="play-icon" aria-hidden="true">▶</span><span class="play-label">开始朗读</span>
+          </button>
+          <button class="transport-button secondary" id="next-button" type="button" title="下一张（→）">
+            <span>下一张</span><span aria-hidden="true">→</span>
+          </button>
+          <button class="transport-button quiet" id="random-button" type="button" title="随机一张（R）">
+            <span aria-hidden="true">↝</span><span>随机一张</span>
+          </button>
+        </div>
+      </div>
+
+      <article class="study-card" id="study-card" tabindex="-1" aria-labelledby="current-word">
+        <div class="study-visual">
+          <div class="image-frame">
+            <img id="current-image" src="" alt="">
+            <span class="image-number" id="current-number">12.1 · 01</span>
+          </div>
+        </div>
+        <div class="study-copy">
+          <div class="study-meta">
+            <span class="section-chip" id="current-section">第12单元 · 12.1 外貌概述</span>
+            <span class="progress-copy" id="progress-copy">1 / 60</span>
+          </div>
+          <p class="now-label"><span aria-hidden="true">●</span> NOW LEARNING</p>
+          <h2 id="current-word">gutter</h2>
+          <p class="current-chinese" id="current-chinese">雨水槽</p>
+          <button class="speak-again" id="speak-button" type="button">
+            <span class="speaker-icon" aria-hidden="true">◖))</span>
+            <span>再听一次</span>
+          </button>
+          <div class="study-progress" aria-hidden="true"><span id="study-progress-bar"></span></div>
+          <p class="study-hint">提示：点击下方任意词卡也可立即看图并听发音。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="library" aria-labelledby="library-title">
+      <div class="library-heading">
+        <div>
+          <p class="eyebrow">CARD LIBRARY · 词卡库</p>
+          <h2 id="library-title">第12单元 · 外貌和头发</h2>
+          <p class="library-count" id="library-count">本单元 60 张词卡</p>
+        </div>
+        <div class="filter-tabs" id="filter-tabs" role="group" aria-label="筛选本单元词卡"></div>
+      </div>
+
+      <div class="card-grid" id="card-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong id="footer-unit">外貌 · 第 12–18 单元</strong><span>词语与插图来自用户提供的学习资料，本页用于个人学习。</span></p>
+    <p class="keyboard-help">快捷键：← / → 切换卡片 · 空格 播放/暂停 · R 随机 · [ / ] 切换单元</p>
+  </footer>
+
+  <div class="sr-only" id="live-status" aria-live="assertive" aria-atomic="true"></div>
+  <script src="cards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
